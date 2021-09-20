@@ -11,7 +11,11 @@ const BodyContent = () => {
       <h2 className="body-content__description">
         Поминутная аренда авто твоего города
       </h2>
-      <MainButton buttonWidth="250px" buttonText="Забронировать" />
+      <MainButton
+        buttonWidth="250px"
+        buttonText="Забронировать"
+        buttonBackGroundColor="#0ec261"
+      />
     </div>
   );
 };

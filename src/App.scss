@@ -43,7 +43,6 @@ $hover-accent: linear-gradient(90deg, #0b934a 2.61%, #026e47 112.6%);
     text-transform: uppercase;
     text-decoration: none;
     color: #fefefe;
-    // background: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
     background-blend-mode: darken;
     border-radius: 8px;
     padding: 16px 19px;
@@ -52,12 +51,10 @@ $hover-accent: linear-gradient(90deg, #0b934a 2.61%, #026e47 112.6%);
     display: inline-block;
     &:hover {
       color: $grey-color-light;
-      // background: linear-gradient(90deg, #0b934a 2.61%, #026e47 112.6%);
       filter: brightness(60%);
     }
     &:active {
       color: $grey-color-light;
-      // background: linear-gradient(90deg, #076432 2.61%, #013c27 112.6%);
       background-blend-mode: darken;
     }
   }
@@ -430,6 +427,7 @@ $hover-accent: linear-gradient(90deg, #0b934a 2.61%, #026e47 112.6%);
 
       &__inner {
         margin-bottom: 135px;
+        padding-left: 64px;
       }
       display: flex;
       flex-direction: column;
