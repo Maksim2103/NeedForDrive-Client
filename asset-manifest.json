@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/gh-pages-start/static/css/main.2ff1a2f9.chunk.css",
-    "main.js": "/gh-pages-start/static/js/main.70f4e774.chunk.js",
-    "main.js.map": "/gh-pages-start/static/js/main.70f4e774.chunk.js.map",
+    "main.js": "/gh-pages-start/static/js/main.6839ea8a.chunk.js",
+    "main.js.map": "/gh-pages-start/static/js/main.6839ea8a.chunk.js.map",
     "runtime-main.js": "/gh-pages-start/static/js/runtime-main.b7d78212.js",
     "runtime-main.js.map": "/gh-pages-start/static/js/runtime-main.b7d78212.js.map",
     "static/css/2.411440cc.chunk.css": "/gh-pages-start/static/css/2.411440cc.chunk.css",
@@ -18,16 +18,13 @@
     "static/media/BackgroundSlider2.73dcc1f3.png": "/gh-pages-start/static/media/BackgroundSlider2.73dcc1f3.png",
     "static/media/BackgroundSlider3.ba131545.png": "/gh-pages-start/static/media/BackgroundSlider3.ba131545.png",
     "static/media/BackgroundSlider4.028aadac.png": "/gh-pages-start/static/media/BackgroundSlider4.028aadac.png",
-    "static/media/Facebook_white.c1876cc3.svg": "/gh-pages-start/static/media/Facebook_white.c1876cc3.svg",
-    "static/media/App.scss": "/gh-pages-start/static/media/Roboto-Regular.a8d6ac03.ttf",
-    "static/media/Instagram_white.98094ec4.svg": "/gh-pages-start/static/media/Instagram_white.98094ec4.svg",
-    "static/media/Telegram_white.e8137bbe.svg": "/gh-pages-start/static/media/Telegram_white.e8137bbe.svg"
+    "static/media/App.scss": "/gh-pages-start/static/media/Roboto-Regular.a8d6ac03.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.b7d78212.js",
     "static/css/2.411440cc.chunk.css",
     "static/js/2.51e14b36.chunk.js",
     "static/css/main.2ff1a2f9.chunk.css",
-    "static/js/main.70f4e774.chunk.js"
+    "static/js/main.6839ea8a.chunk.js"
   ]
 }
