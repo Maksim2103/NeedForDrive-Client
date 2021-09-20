@@ -45,7 +45,7 @@ const Slider = () => {
       <AwesomeSlider animation="cubeAnimation">
         {initialSliderItemData.map((el) => {
           return (
-            <div className="slider-item__wrapper">
+            <div key={el.image} className="slider-item__wrapper">
               <SliderItem
                 title={el.title}
                 description={el.description}
