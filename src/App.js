@@ -8,16 +8,10 @@ import Slider from './components/Slider';
 function App() {
   return (
     <div className="App">
-      <div className="side-bar">
-        <SideBar />
-      </div>
-      <div className="content-wrapper">
-        <div className="content">
-          <Content />
-        </div>
-        <div className="slider">
-          <Slider />
-        </div>
+      <SideBar />
+      <div className="container">
+        <Content />
+        <Slider />
       </div>
     </div>
   );

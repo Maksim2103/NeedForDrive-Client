@@ -1,40 +1,42 @@
 import React from 'react';
 
+import styles from '../sideBar.module.scss';
+
 const BurgerMenu = () => {
   return (
-    <nav className="burger-menu">
-      <input type="checkbox" id="checkbox" className="burger-menu__checkbox" />
-      <label htmlFor="checkbox" className="burger-menu__btn">
-        <div className="burger-menu__icon"></div>
+    <nav className="burgerMenu">
+      <input type="checkbox" id="checkbox" className={styles.checkbox} />
+      <label htmlFor="checkbox" className={styles.btn}>
+        <div className={styles.icon}></div>
       </label>
-      <div className="burger-menu__container">
-        <ul className="burger-menu__list">
-          <li className="burger-menu__item">
-            <a href="#section" className="burger-menu__link">
+      <div className={styles.container}>
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <a href="#section" className={styles.link}>
               ПАРКОВКА
             </a>
           </li>
-          <li className="burger-menu__item">
-            <a href="#section" className="burger-menu__link">
+          <li className={styles.item}>
+            <a href="#section" className={styles.link}>
               СТРАХОВКА
             </a>
           </li>
-          <li className="burger-menu__item">
-            <a href="#section" className="burger-menu__link">
+          <li className={styles.item}>
+            <a href="#section" className={styles.link}>
               БЕНЗИН
             </a>
           </li>
-          <li className="burger-menu__item">
-            <a href="#section" className="burger-menu__link">
+          <li className={styles.item}>
+            <a href="#section" className={styles.link}>
               ОБСЛУЖИВАНИЕ
             </a>
           </li>
         </ul>
-        <ul className="social-menu__list">
+        <ul className={styles.socialMenu__list}>
           <li>
-            <a href="https://telegram.org/" className="social-menu__link">
+            <a href="https://telegram.org/" className={styles.socialMenu__link}>
               <svg
-                className="social-menu__img"
+                className={styles.socialMenu__img}
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
@@ -51,9 +53,12 @@ const BurgerMenu = () => {
             </a>
           </li>
           <li>
-            <a href="https://www.facebook.com/" className="social-menu__link">
+            <a
+              href="https://www.facebook.com/"
+              className={styles.socialMenu__link}
+            >
               <svg
-                className="social-menu__img"
+                className={styles.socialMenu__img}
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
@@ -64,13 +69,16 @@ const BurgerMenu = () => {
                   d="M32 16C32 7.1625 24.8375 0 16 0C7.1625 0 0 7.1625 0 16C0 23.9875 5.85 30.6062 13.5 31.8062V20.625H9.4375V16H13.5V12.475C13.5 8.46563 15.8875 6.25 19.5438 6.25C21.2938 6.25 23.125 6.5625 23.125 6.5625V10.5H21.1063C19.1188 10.5 18.5 11.7344 18.5 13V16H22.9375L22.2281 20.625H18.5V31.8062C26.15 30.6062 32 23.9875 32 16Z"
                   fill="white"
                 />
-              </svg>{' '}
+              </svg>
             </a>
           </li>
           <li>
-            <a href="https://www.instagram.com/" className="social-menu__link">
+            <a
+              href="https://www.instagram.com/"
+              className={styles.socialMenu__link}
+            >
               <svg
-                className="social-menu__img"
+                className={styles.socialMenu__img}
                 width="32"
                 height="32"
                 viewBox="0 0 32 32"
@@ -98,7 +106,7 @@ const BurgerMenu = () => {
           </li>
         </ul>
       </div>
-      <div className="burger-menu__container-right"> </div>
+      <div className={styles.containerRight}> </div>
     </nav>
   );
 };

@@ -1,14 +1,17 @@
 import React from 'react';
+
+import styles from './sideBar.module.scss';
+
 import BurgerMenu from '../SideBar/BurgerMenu';
 import LanguageMenu from '../SideBar/LanguageMenu';
 
 const SideBar = () => {
   return (
-    <div className="side-bar__wrapper">
-      <div className="side-bar__burger">
+    <div className={styles.wrapper}>
+      <div className={styles.burger}>
         <BurgerMenu />
       </div>
-      <div className="side-bar__language">
+      <div className={styles.language}>
         <LanguageMenu />
       </div>
     </div>

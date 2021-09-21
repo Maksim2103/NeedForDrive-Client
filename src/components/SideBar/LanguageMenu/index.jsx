@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styles from '../sideBar.module.scss';
+
 const LanguageMenu = () => {
   return (
-    <div className="language-title">
+    <div className={styles.languageTitle}>
       <p>Eng</p>
     </div>
   );

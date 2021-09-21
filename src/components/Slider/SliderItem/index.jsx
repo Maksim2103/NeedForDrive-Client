@@ -1,18 +1,19 @@
 import React from 'react';
 import MainButton from '../../MainButton';
 
-const SliderItem = ({ title, description, image, buttonBackGroundColor }) => {
+import styles from './sliderItem.module.scss';
+
+import classNames from 'classnames/bind';
+
+let cx = classNames.bind(styles);
+
+const SliderItem = ({ title, description, type }) => {
   return (
-    <div className="slider-item" style={{ backgroundImage: `url(${image})` }}>
-      {/* <img src={image} alt="" srcset="" /> */}
-      <div className="slider-item__inner">
-        <h3 className="slider-item__title">{title}</h3>
-        <p className="slider-item__description">{description}</p>
-        <MainButton
-          buttonWidth="164px"
-          buttonText="Подробнее"
-          buttonBackGroundColor={buttonBackGroundColor}
-        />
+    <div className={cx('item', `${type}`)}>
+      <div className={styles.inner}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
+        <MainButton buttonWidth="small" buttonText="Подробнее" type={type} />
       </div>
     </div>
   );
