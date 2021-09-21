@@ -1,30 +1,28 @@
 {
   "files": {
-    "main.css": "/gh-pages-start/static/css/main.2ff1a2f9.chunk.css",
-    "main.js": "/gh-pages-start/static/js/main.6839ea8a.chunk.js",
-    "main.js.map": "/gh-pages-start/static/js/main.6839ea8a.chunk.js.map",
-    "runtime-main.js": "/gh-pages-start/static/js/runtime-main.b7d78212.js",
-    "runtime-main.js.map": "/gh-pages-start/static/js/runtime-main.b7d78212.js.map",
+    "main.css": "/gh-pages-start/static/css/main.fe03f366.chunk.css",
+    "main.js": "/gh-pages-start/static/js/main.2a7f4f23.chunk.js",
+    "main.js.map": "/gh-pages-start/static/js/main.2a7f4f23.chunk.js.map",
+    "runtime-main.js": "/gh-pages-start/static/js/runtime-main.b25d6b1c.js",
+    "runtime-main.js.map": "/gh-pages-start/static/js/runtime-main.b25d6b1c.js.map",
     "static/css/2.411440cc.chunk.css": "/gh-pages-start/static/css/2.411440cc.chunk.css",
-    "static/js/2.51e14b36.chunk.js": "/gh-pages-start/static/js/2.51e14b36.chunk.js",
-    "static/js/2.51e14b36.chunk.js.map": "/gh-pages-start/static/js/2.51e14b36.chunk.js.map",
-    "static/js/3.34239163.chunk.js": "/gh-pages-start/static/js/3.34239163.chunk.js",
-    "static/js/3.34239163.chunk.js.map": "/gh-pages-start/static/js/3.34239163.chunk.js.map",
+    "static/js/2.6a0d1fbe.chunk.js": "/gh-pages-start/static/js/2.6a0d1fbe.chunk.js",
+    "static/js/2.6a0d1fbe.chunk.js.map": "/gh-pages-start/static/js/2.6a0d1fbe.chunk.js.map",
+    "static/js/3.3d560d6d.chunk.js": "/gh-pages-start/static/js/3.3d560d6d.chunk.js",
+    "static/js/3.3d560d6d.chunk.js.map": "/gh-pages-start/static/js/3.3d560d6d.chunk.js.map",
     "index.html": "/gh-pages-start/index.html",
     "static/css/2.411440cc.chunk.css.map": "/gh-pages-start/static/css/2.411440cc.chunk.css.map",
-    "static/css/main.2ff1a2f9.chunk.css.map": "/gh-pages-start/static/css/main.2ff1a2f9.chunk.css.map",
-    "static/js/2.51e14b36.chunk.js.LICENSE.txt": "/gh-pages-start/static/js/2.51e14b36.chunk.js.LICENSE.txt",
-    "static/media/BackgroundSlider1.d4d726e2.png": "/gh-pages-start/static/media/BackgroundSlider1.d4d726e2.png",
-    "static/media/BackgroundSlider2.73dcc1f3.png": "/gh-pages-start/static/media/BackgroundSlider2.73dcc1f3.png",
-    "static/media/BackgroundSlider3.ba131545.png": "/gh-pages-start/static/media/BackgroundSlider3.ba131545.png",
-    "static/media/BackgroundSlider4.028aadac.png": "/gh-pages-start/static/media/BackgroundSlider4.028aadac.png",
+    "static/css/main.fe03f366.chunk.css.map": "/gh-pages-start/static/css/main.fe03f366.chunk.css.map",
+    "static/js/2.6a0d1fbe.chunk.js.LICENSE.txt": "/gh-pages-start/static/js/2.6a0d1fbe.chunk.js.LICENSE.txt",
+    "static/media/sliderItem.module.scss": "/gh-pages-start/static/media/BackgroundSlider4.028aadac.png",
+    "static/media/headerContent.module.scss": "/gh-pages-start/static/media/Group.dd9d4bed.svg",
     "static/media/App.scss": "/gh-pages-start/static/media/Roboto-Regular.a8d6ac03.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.b7d78212.js",
+    "static/js/runtime-main.b25d6b1c.js",
     "static/css/2.411440cc.chunk.css",
-    "static/js/2.51e14b36.chunk.js",
-    "static/css/main.2ff1a2f9.chunk.css",
-    "static/js/main.6839ea8a.chunk.js"
+    "static/js/2.6a0d1fbe.chunk.js",
+    "static/css/main.fe03f366.chunk.css",
+    "static/js/main.2a7f4f23.chunk.js"
   ]
 }
