@@ -4,7 +4,7 @@ import styles from './mainButton.module.scss';
 
 import classNames from 'classnames/bind';
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
 const MainButton = ({ buttonWidth, buttonText, type }) => {
   return (

@@ -5,7 +5,7 @@ import styles from './sliderItem.module.scss';
 
 import classNames from 'classnames/bind';
 
-let cx = classNames.bind(styles);
+const cx = classNames.bind(styles);
 
 const SliderItem = ({ title, description, type }) => {
   return (
