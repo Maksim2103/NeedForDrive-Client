@@ -1,0 +1,91 @@
+$grey-color-light: #eeeeee;
+
+@font-face {
+  font-family: Roboto;
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 64px calc((100% - 64px));
+  height: 100vh;
+  overflow: hidden;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .awssld {
+    --control-button-opacity: 0.8;
+    --control-button-hover-opacity: 1;
+    height: 100%;
+    &__bullets {
+      bottom: 27px;
+      &--active {
+        transform: scale(1);
+        background: #0ec261 !important;
+      }
+      button {
+        cursor: pointer;
+        width: 8px;
+        height: 8px;
+        background: $grey-color-light;
+      }
+    }
+
+    &__controls {
+      --organic-arrow-height: 15px;
+      --control-button-height: 100%;
+      --organic-arrow-color: #eeeeee;
+      &__arrow-right,
+      &__arrow-left {
+        opacity: var(--control-button-opacity);
+        &:hover {
+          opacity: var(--control-button-hover-opacity);
+        }
+      }
+      button {
+        height: 100vh;
+        &:hover {
+          cursor: pointer;
+          --control-button-background: rgba(14, 194, 97, 0.1);
+        }
+      }
+    }
+    height: 100vh;
+    &__container {
+      height: 100vh;
+    }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .App {
+    .content {
+      &__inner {
+        padding: 32px 32px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .App {
+    grid-template-columns: 86px calc((100% - 86px));
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .App {
+    grid-template-columns: 0px 1fr;
+
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+}

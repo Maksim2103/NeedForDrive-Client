@@ -1,0 +1,60 @@
+$grey-color-light: #eeeeee;
+
+.mainButton {
+  cursor: pointer;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  width: 100%;
+  background-blend-mode: darken;
+  border-radius: 8px;
+  padding: 16px 19px;
+  transition: all 0.5s;
+  display: inline-block;
+  &:hover {
+    color: $grey-color-light;
+    filter: brightness(90%);
+  }
+  &:active {
+    color: $grey-color-light;
+    filter: brightness(80%);
+  }
+}
+
+.main {
+  background: linear-gradient(90deg, #13493f 0%, #0c7b1b 100%);
+}
+
+.insurance {
+  background: linear-gradient(90deg, #132949 0%, #0c7b67 100%);
+}
+
+.fuel {
+  background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+}
+
+.service {
+  background: linear-gradient(90deg, #281349 0%, #720c7b 100%);
+}
+
+.big {
+  width: 250px;
+}
+
+.small {
+  width: 164px;
+}
+
+.applicationBtn {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .mainButton {
+    width: 100% !important;
+  }
+}
