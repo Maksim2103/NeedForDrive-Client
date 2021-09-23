@@ -1,0 +1,21 @@
+$main-color-accent: #0ec261;
+$grey-color-dark: #999999;
+
+.insurancePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  h3 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: $main-color-accent;
+  }
+  h4 {
+    font-size: 30px;
+    font-weight: 300;
+    color: $grey-color-dark;
+  }
+}

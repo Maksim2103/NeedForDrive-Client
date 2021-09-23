@@ -1,0 +1,15 @@
+$grey-color-dark: #999999;
+
+.orderBreadCrumbs {
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: $grey-color-dark;
+  }
+}
