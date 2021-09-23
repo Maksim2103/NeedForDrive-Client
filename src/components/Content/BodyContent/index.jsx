@@ -11,12 +11,7 @@ const BodyContent = () => {
       <h2 className={styles.description}>
         Поминутная аренда авто твоего города
       </h2>
-      <MainButton
-        buttonWidth="big"
-        buttonText="Забронировать"
-        type="main"
-        link="/order"
-      />
+      <MainButton buttonWidth="big" buttonText="Забронировать" type="main" />
     </div>
   );
 };

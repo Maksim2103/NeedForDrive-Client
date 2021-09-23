@@ -3,7 +3,7 @@ import SliderItem from './SliderItem';
 
 import AwesomeSlider from 'react-awesome-slider';
 
-import '../../assets/styles/sliderAwesome.css';
+import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 import styles from './slider.module.scss';
@@ -14,25 +14,21 @@ const initialSliderItemData = [
     description:
       'Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах.',
     type: 'main',
-    link: '/parcking',
   },
   {
     title: 'Страховка',
     description: 'Полная страховка автомобиля',
     type: 'insurance',
-    link: '/insurance',
   },
   {
     title: 'Бензин',
     description: 'Полный бак на любой заправке города за наш счёт',
     type: 'fuel',
-    link: '/fuel',
   },
   {
     title: 'Обслуживание',
     description: 'Автомобиль проходит еженедельное ТО',
     type: 'service',
-    link: '/service',
   },
 ];
 
@@ -47,7 +43,6 @@ const Slider = () => {
                 title={el.title}
                 description={el.description}
                 type={el.type}
-                link={el.link}
               />
             </div>
           );
