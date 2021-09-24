@@ -1,3 +1,4 @@
+$main-color-accent: #0ec261;
 $grey-color-dark: #999999;
 
 .orderBreadCrumbs {
@@ -11,5 +12,26 @@ $grey-color-dark: #999999;
     font-size: 14px;
     line-height: 16px;
     color: $grey-color-dark;
+  }
+  .selected {
+    color: $main-color-accent;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .orderBreadCrumbs {
+    a {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .orderBreadCrumbs {
+    a {
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
 }

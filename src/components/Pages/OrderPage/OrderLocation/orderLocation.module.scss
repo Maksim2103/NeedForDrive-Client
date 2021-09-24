@@ -1,0 +1,52 @@
+$main-color-black: #121212;
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  margin-right: 220px;
+}
+
+.text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: $main-color-black;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .colLeft {
+    margin-right: 90px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .colLeft {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .colLeft {
+    display: flex;
+    flex-direction: column;
+    margin-right: 0px;
+  }
+
+  .text {
+    display: none;
+  }
+}

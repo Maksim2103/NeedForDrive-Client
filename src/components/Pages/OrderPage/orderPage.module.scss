@@ -4,3 +4,9 @@
   height: 100vh;
   overflow: hidden;
 }
+
+@media (max-width: 767px) {
+  .orderPage {
+    grid-template-columns: 0px 1fr;
+  }
+}

@@ -8,7 +8,9 @@ import styles from './orderBreadCrumbs.module.scss';
 const OrderBreadCrumbs = () => {
   return (
     <div className={styles.orderBreadCrumbs}>
-      <NavLink to="">Местоположение</NavLink>
+      <NavLink activeClassName={styles.selected} to="">
+        Местоположение
+      </NavLink>
       <TriangularSeparator />
       <NavLink to="">Модель</NavLink>
       <TriangularSeparator />

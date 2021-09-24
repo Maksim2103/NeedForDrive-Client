@@ -1,6 +1,8 @@
 import React from 'react';
+
 import HeaderContent from '../../../Content/HeaderContent';
 import OrderBreadCrumbs from '../OrderBreadCrumbs';
+import OrderLocation from '../OrderLocation';
 
 import styles from './orderContainer.module.scss';
 
@@ -10,8 +12,10 @@ const OrderContainer = () => {
       <div className={styles.headerContainer}>
         <HeaderContent />
       </div>
-      <OrderBreadCrumbs />
-      <div></div>
+      <div className={styles.orderBreadCrumbs}>
+        <OrderBreadCrumbs />
+      </div>
+      <OrderLocation />
     </div>
   );
 };
