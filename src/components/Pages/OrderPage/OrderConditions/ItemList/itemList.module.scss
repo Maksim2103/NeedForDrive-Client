@@ -50,3 +50,8 @@ $grey-color-dark: #999999;
     width: 240px;
   }
 }
+@media (max-width: 767px) {
+  .itemList {
+    width: 100%;
+  }
+}

@@ -46,10 +46,12 @@ $grey-color-dark: #999999;
   }
   .title {
     margin-bottom: 10px;
+    // padding-right: 16px;
   }
   .text {
     display: flex;
     align-items: center;
+    // padding-right: 16px;
     &::before {
       top: 0;
     }

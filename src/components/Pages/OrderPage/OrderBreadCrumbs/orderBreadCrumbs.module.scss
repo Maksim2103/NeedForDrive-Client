@@ -4,6 +4,8 @@ $grey-color-dark: #999999;
 .orderBreadCrumbs {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex: 1;
   a {
     text-decoration: none;
     font-family: Roboto;
