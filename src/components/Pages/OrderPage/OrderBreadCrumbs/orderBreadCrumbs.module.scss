@@ -1,0 +1,40 @@
+$main-color-accent: #0ec261;
+$grey-color-dark: #999999;
+
+.orderBreadCrumbs {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  a {
+    text-decoration: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: $grey-color-dark;
+  }
+  .selected {
+    color: $main-color-accent;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .orderBreadCrumbs {
+    a {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .orderBreadCrumbs {
+    justify-content: space-between;
+
+    a {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+}

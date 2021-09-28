@@ -1,3 +1,4 @@
+$main-color-accent: #0ec261;
 $grey-color-light: #eeeeee;
 
 .mainButton {
@@ -40,6 +41,10 @@ $grey-color-light: #eeeeee;
   background: linear-gradient(90deg, #281349 0%, #720c7b 100%);
 }
 
+.order {
+  background: $main-color-accent;
+}
+
 .big {
   width: 250px;
 }
@@ -48,9 +53,19 @@ $grey-color-light: #eeeeee;
   width: 164px;
 }
 
+.orderWidth {
+  width: 287px;
+}
+
 .applicationBtn {
   text-decoration: none;
   color: #ffffff;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .orderWidth {
+    width: 240px;
+  }
 }
 
 @media (max-width: 767px) {
