@@ -2,15 +2,15 @@ import React from 'react';
 
 import styles from './itemList.module.scss';
 
-const ItemList = () => {
+const ItemList = ({ title, description, doubleDescription }) => {
   return (
     <div className={styles.itemList}>
       <ul className={styles.ingredients}>
         <li>
-          <p className={styles.title}> Пункт выдачи</p>
+          <p className={styles.title}> {title}</p>
           <div className={styles.value}>
-            <p className={styles.description}>Ульяновск,</p>
-            <p className={styles.description}>Нариманова 42</p>
+            <p className={styles.description}> {description} </p>
+            <p className={styles.description}> {doubleDescription} </p>
           </div>
         </li>
       </ul>

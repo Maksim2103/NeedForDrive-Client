@@ -1,8 +1,11 @@
 import React from 'react';
 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import HeaderContent from '../../../Content/HeaderContent';
 import OrderBreadCrumbs from '../OrderBreadCrumbs';
 import OrderLocation from '../OrderLocation';
+import OrderModel from '../OrderModel';
 
 import styles from './orderContainer.module.scss';
 
@@ -15,7 +18,12 @@ const OrderContainer = () => {
       <div className={styles.orderBreadCrumbs}>
         <OrderBreadCrumbs />
       </div>
-      <OrderLocation />
+      <Router>
+        <Switch>
+          <Route exact path="/order" component={OrderLocation} />
+          <Route exact path="/order/model/" component={OrderModel} />
+        </Switch>
+      </Router>
     </div>
   );
 };
