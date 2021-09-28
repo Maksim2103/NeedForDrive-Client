@@ -1,0 +1,12 @@
+.triangularSeparator {
+  background-image: url('../../assets/images/TriangularSeparator.svg');
+  width: 6px;
+  height: 8px;
+  margin: 0 16px;
+}
+
+@media (max-width: 767px) {
+  .triangularSeparator {
+    margin: 0 8px;
+  }
+}

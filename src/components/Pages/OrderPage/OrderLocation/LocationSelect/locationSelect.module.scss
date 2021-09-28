@@ -1,0 +1,91 @@
+$grey-color-dark: #999999;
+$main-color-black: #121212;
+
+.container {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 42%;
+  input {
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+    flex: 1;
+    padding-left: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $grey-color-dark;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    background-image: url('../../../../../assets/images/CloseIcon.png');
+    width: 8px;
+    height: 8px;
+    right: 0;
+    top: 0;
+  }
+  &__input {
+    margin-bottom: 8px;
+    span {
+      margin-right: 10px;
+      text-align: right;
+      width: 95px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      color: $main-color-black;
+    }
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    width: 50%;
+    input {
+      font-size: 12px;
+    }
+    &__input {
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    width: 75%;
+    input {
+      font-size: 12px;
+    }
+    &__input {
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+    margin-bottom: 50px;
+
+    input {
+      font-size: 12px;
+    }
+    &__input {
+      span {
+        font-size: 12px;
+        width: 80px;
+      }
+    }
+  }
+}
