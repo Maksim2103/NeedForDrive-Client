@@ -1,0 +1,109 @@
+$main-color-accent: #0ec261;
+$main-color-black: #121212;
+$grey-color-dark: #999999;
+
+.wrapper {
+  .title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: #121212;
+    margin-bottom: 16px;
+  }
+  .inputsWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 45px;
+    align-items: flex-start;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding-left: 20px;
+    }
+    label {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      color: $grey-color-dark;
+    }
+
+    .label-active {
+      color: $main-color-black;
+    }
+
+    .checkInputButton {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      margin-left: 20px;
+      &:checked + .checkSpan {
+        width: 16px;
+        height: 16px;
+        border: none;
+        margin-left: -22px;
+        background-image: url('../../../../../../assets/images/check.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: 3px;
+        background-position-y: 1px;
+        outline: 2px solid $main-color-accent;
+        outline-offset: -4px;
+        position: absolute;
+      }
+    }
+
+    .checkSpan {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 3px solid $grey-color-dark;
+      margin-left: -20px;
+      overflow: visible;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    .inputsWrapper {
+      flex-direction: row;
+      margin-bottom: 0px;
+      .container {
+        width: 90px;
+        margin-right: 6px;
+        padding-left: 20px;
+      }
+      label {
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .wrapper {
+    .title {
+      font-size: 10px;
+      line-height: 12px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .wrapper {
+    .title {
+      font-size: 10px;
+      line-height: 12px;
+      margin-bottom: 2px;
+    }
+  }
+}

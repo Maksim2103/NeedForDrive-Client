@@ -73,3 +73,11 @@ $grey-color-light: #eeeeee;
     width: 100% !important;
   }
 }
+
+@media screen and (max-height: 600px) {
+  .mainButton {
+    padding: 8px 19px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

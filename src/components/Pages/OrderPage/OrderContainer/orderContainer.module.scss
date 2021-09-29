@@ -29,3 +29,13 @@
     padding: 0 16px;
   }
 }
+
+@media screen and (max-height: 750px) {
+  .headerContainer {
+    margin-bottom: 20px;
+  }
+
+  .orderBreadCrumbs {
+    margin-bottom: 20px;
+  }
+}

@@ -18,6 +18,8 @@ const initialOrderConditionsData = [
   },
 ];
 
+const price = 'Цена: от 10 000 до 32 000 ₽';
+
 const OrderModel = () => {
   return (
     <div className={styles.wrapper}>
@@ -26,7 +28,7 @@ const OrderModel = () => {
         <ModelList />
       </div>
       <div className={styles.colRight}>
-        <OrderConditions data={initialOrderConditionsData} />
+        <OrderConditions data={initialOrderConditionsData} price={price} />
       </div>
     </div>
   );

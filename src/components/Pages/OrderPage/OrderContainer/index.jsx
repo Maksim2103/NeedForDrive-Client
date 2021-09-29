@@ -3,10 +3,12 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HeaderContent from '../../../Content/HeaderContent';
-import NotFoundPage from '../../NotFoundPage';
 import OrderBreadCrumbs from '../OrderBreadCrumbs';
+
+import NotFoundPage from '../../NotFoundPage';
 import OrderLocation from '../OrderLocation';
 import OrderModel from '../OrderModel';
+import OrderOptions from '../OrderOptions';
 
 import styles from './orderContainer.module.scss';
 
@@ -22,6 +24,7 @@ const OrderContainer = () => {
       <Switch>
         <Route exact path="/order/location" component={OrderLocation} />
         <Route exact path="/order/model" component={OrderModel} />
+        <Route exact path="/order/options" component={OrderOptions} />
         <Route exact path="*" component={NotFoundPage} />
       </Switch>
     </div>

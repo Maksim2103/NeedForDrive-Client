@@ -16,11 +16,11 @@ const OrderBreadCrumbs = () => {
         Модель
       </NavLink>
       <TriangularSeparator />
-      <NavLink to="order/options" activeClassName={styles.selected}>
+      <NavLink to="/order/options" activeClassName={styles.selected}>
         Дополнительно
       </NavLink>
       <TriangularSeparator />
-      <NavLink to="order/total" activeClassName={styles.selected}>
+      <NavLink to="/order/total" activeClassName={styles.selected}>
         Итого
       </NavLink>
     </div>

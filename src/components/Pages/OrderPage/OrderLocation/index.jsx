@@ -13,6 +13,8 @@ const initialOrderConditionsData = [
   },
 ];
 
+const price = 'Цена: от 8 000 до 12 000 ₽';
+
 const OrderLocation = () => {
   return (
     <div className={styles.wrapper}>
@@ -22,7 +24,7 @@ const OrderLocation = () => {
         <LocationMap />
       </div>
       <div className={styles.colRight}>
-        <OrderConditions data={initialOrderConditionsData} />
+        <OrderConditions data={initialOrderConditionsData} price={price} />
       </div>
     </div>
   );
