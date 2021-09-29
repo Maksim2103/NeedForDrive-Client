@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import HeaderContent from '../../../Content/HeaderContent';
+import NotFoundPage from '../../NotFoundPage';
 import OrderBreadCrumbs from '../OrderBreadCrumbs';
 import OrderLocation from '../OrderLocation';
 import OrderModel from '../OrderModel';
@@ -18,12 +19,11 @@ const OrderContainer = () => {
       <div className={styles.orderBreadCrumbs}>
         <OrderBreadCrumbs />
       </div>
-      <Router>
-        <Switch>
-          <Route exact path="/order" component={OrderLocation} />
-          <Route exact path="/order/model/" component={OrderModel} />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route exact path="/order/location" component={OrderLocation} />
+        <Route exact path="/order/model" component={OrderModel} />
+        <Route exact path="*" component={NotFoundPage} />
+      </Switch>
     </div>
   );
 };
