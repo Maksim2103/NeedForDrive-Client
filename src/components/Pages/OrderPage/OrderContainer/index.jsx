@@ -11,6 +11,7 @@ import OrderModel from '../OrderModel';
 import OrderOptions from '../OrderOptions';
 
 import styles from './orderContainer.module.scss';
+import OrderTotal from '../OrderTotal';
 
 const OrderContainer = () => {
   return (
@@ -25,6 +26,7 @@ const OrderContainer = () => {
         <Route exact path="/order/location" component={OrderLocation} />
         <Route exact path="/order/model" component={OrderModel} />
         <Route exact path="/order/options" component={OrderOptions} />
+        <Route exact path="/order/total" component={OrderTotal} />
         <Route exact path="*" component={NotFoundPage} />
       </Switch>
     </div>
