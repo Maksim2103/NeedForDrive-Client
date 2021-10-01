@@ -14,6 +14,8 @@ const initialOrderConditionsData = [
 ];
 
 const price = 'Цена: от 8 000 до 12 000 ₽';
+const buttonTitle = 'Выбрать модель';
+const buttonLink = '/order/model';
 
 const OrderLocation = () => {
   return (
@@ -24,7 +26,12 @@ const OrderLocation = () => {
         <LocationMap />
       </div>
       <div className={styles.colRight}>
-        <OrderConditions data={initialOrderConditionsData} price={price} />
+        <OrderConditions
+          data={initialOrderConditionsData}
+          price={price}
+          buttonTitle={buttonTitle}
+          buttonLink={buttonLink}
+        />
       </div>
     </div>
   );

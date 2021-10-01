@@ -38,6 +38,8 @@ const initialOrderConditionsData = [
 ];
 
 const price = 'Цена: 16 000 ₽';
+const buttonTitle = 'Итого';
+const buttonLink = '/order/total';
 
 const OrderOptions = () => {
   return (
@@ -46,7 +48,12 @@ const OrderOptions = () => {
         <OptionsSelect />
       </div>
       <div className={styles.colRight}>
-        <OrderConditions data={initialOrderConditionsData} price={price} />
+        <OrderConditions
+          data={initialOrderConditionsData}
+          price={price}
+          buttonTitle={buttonTitle}
+          buttonLink={buttonLink}
+        />
       </div>
     </div>
   );

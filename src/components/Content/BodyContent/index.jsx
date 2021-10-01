@@ -3,6 +3,8 @@ import MainButton from '../../MainButton';
 
 import styles from './bodyContent.module.scss';
 
+const buttonTitle = 'Забронировать';
+
 const BodyContent = () => {
   return (
     <div className={styles.inner}>
@@ -13,7 +15,7 @@ const BodyContent = () => {
       </h2>
       <MainButton
         buttonWidth="big"
-        buttonText="Забронировать"
+        buttonTitle={buttonTitle}
         type="main"
         link="/order"
       />

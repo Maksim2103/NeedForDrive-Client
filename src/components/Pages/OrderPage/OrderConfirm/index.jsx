@@ -1,9 +1,11 @@
 import React from 'react';
 
-import styles from './orderTotal.module.scss';
+import styles from './orderConfirm.module.scss';
 
-import TotalDetails from './TotalDetals';
+import TotalDetails from '../OrderTotal/TotalDetals/index';
 import OrderConditions from '../OrderConditions';
+
+import OrderModalConfirm from './OrderModalConfirm';
 
 const initialOrderConditionsData = [
   {
@@ -42,7 +44,7 @@ const price = 'Цена: 16 000 ₽';
 const buttonTitle = 'Заказать';
 const buttonLink = '/order/confirm';
 
-const OrderTotal = () => {
+const OrderConfirm = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -56,7 +58,8 @@ const OrderTotal = () => {
           buttonLink={buttonLink}
         />
       </div>
+      <OrderModalConfirm />
     </div>
   );
 };
-export default OrderTotal;
+export default OrderConfirm;
