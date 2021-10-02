@@ -15,7 +15,7 @@ const BodyContent = () => {
         buttonWidth="big"
         buttonText="Забронировать"
         type="main"
-        link="/order"
+        link="/order/location"
       />
     </div>
   );

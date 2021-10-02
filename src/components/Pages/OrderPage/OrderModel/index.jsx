@@ -1,9 +1,9 @@
 import React from 'react';
 import OrderConditions from '../OrderConditions';
-import LocationMap from './LocationMap';
-import LocationSelect from './LocationSelect';
+import ModelList from './ModelList';
+import ModelSelect from './ModelSelect';
 
-import styles from './orderLocation.module.scss';
+import styles from './orderModel.module.scss';
 
 const initialOrderConditionsData = [
   {
@@ -11,15 +11,19 @@ const initialOrderConditionsData = [
     description: 'Ульяновск',
     doubleDescription: 'Нариманова 42',
   },
+  {
+    title: 'Модель',
+    description: 'Hyndai, i30 N',
+    doubleDescription: null,
+  },
 ];
 
-const OrderLocation = () => {
+const OrderModel = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
-        <LocationSelect />
-        <p className={styles.text}>Выбрать на карте:</p>
-        <LocationMap />
+        <ModelSelect />
+        <ModelList />
       </div>
       <div className={styles.colRight}>
         <OrderConditions data={initialOrderConditionsData} />
@@ -27,4 +31,4 @@ const OrderLocation = () => {
     </div>
   );
 };
-export default OrderLocation;
+export default OrderModel;

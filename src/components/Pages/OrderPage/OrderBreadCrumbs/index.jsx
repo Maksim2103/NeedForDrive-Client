@@ -1,22 +1,24 @@
 import React from 'react';
 
 import { NavLink } from 'react-router-dom';
-import TriangularSeparator from '../../../TriangularSeparator';
 
 import styles from './orderBreadCrumbs.module.scss';
 
 const OrderBreadCrumbs = () => {
   return (
     <div className={styles.orderBreadCrumbs}>
-      <NavLink activeClassName={styles.selected} to="">
+      <NavLink to="/order/location" activeClassName={styles.selected}>
         Местоположение
       </NavLink>
-      <TriangularSeparator />
-      <NavLink to="">Модель</NavLink>
-      <TriangularSeparator />
-      <NavLink to="">Дополнительно</NavLink>
-      <TriangularSeparator />
-      <NavLink to="">Итого</NavLink>
+      <NavLink to="/order/model" activeClassName={styles.selected}>
+        Модель
+      </NavLink>
+      <NavLink to="order/options" activeClassName={styles.selected}>
+        Дополнительно
+      </NavLink>
+      <NavLink to="order/total" activeClassName={styles.selected}>
+        Итого
+      </NavLink>
     </div>
   );
 };
