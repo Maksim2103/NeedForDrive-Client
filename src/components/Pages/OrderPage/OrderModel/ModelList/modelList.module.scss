@@ -1,0 +1,25 @@
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  max-height: 576px;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+}

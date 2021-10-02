@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/gh-pages-start" component={MainPage} />
-          <Route exact path="/order" component={OrderPage} />
+          <Route path="/order" component={OrderPage} />
           <Route exact path="/parcking" component={ParckingPage} />
           <Route exact path="/insurance" component={InsurancePage} />
           <Route exact path="/fuel" component={FuelPage} />
