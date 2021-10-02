@@ -51,7 +51,6 @@ $main-color-black: #121212;
       font-size: 14px;
       line-height: 16px;
       color: $main-color-black;
-      // color: $grey-color-dark;
     }
     display: flex;
   }
@@ -88,52 +87,6 @@ $main-color-black: #121212;
 @media (max-width: 767px) {
   .container {
     width: 100%;
-    margin-bottom: 10px;
-
-    input {
-      font-size: 12px;
-    }
-    &__input {
-      span {
-        font-size: 12px;
-        width: 80px;
-      }
-    }
-  }
-}
-
-@media screen and (max-height: 750px) {
-  .container {
-    .title {
-      font-size: 10px;
-      line-height: 12px;
-      margin-bottom: 5px;
-    }
-    input {
-      font-size: 10px;
-    }
-    &__input {
-      span {
-        font-size: 10px;
-      }
-    }
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .container {
-    .title {
-      font-size: 10px;
-      line-height: 12px;
-      margin-bottom: 2px;
-    }
-    input {
-      font-size: 10px;
-    }
-    &__input {
-      span {
-        font-size: 10px;
-      }
-    }
+    margin-bottom: 30px;
   }
 }

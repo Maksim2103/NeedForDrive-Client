@@ -75,35 +75,6 @@ $grey-color-dark: #999999;
     .inputsWrapper {
       flex-direction: row;
       margin-bottom: 0px;
-      .container {
-        width: 90px;
-        margin-right: 6px;
-        padding-left: 20px;
-      }
-      label {
-        font-size: 10px;
-        line-height: 12px;
-      }
-    }
-  }
-}
-
-@media screen and (max-height: 750px) {
-  .wrapper {
-    .title {
-      font-size: 10px;
-      line-height: 12px;
-      margin-bottom: 5px;
-    }
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .wrapper {
-    .title {
-      font-size: 10px;
-      line-height: 12px;
-      margin-bottom: 2px;
     }
   }
 }
