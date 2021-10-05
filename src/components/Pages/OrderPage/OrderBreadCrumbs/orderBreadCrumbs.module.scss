@@ -31,16 +31,18 @@ $grey-color-dark: #999999;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (max-width: 376px) {
   .orderBreadCrumbs {
+    justify-content: space-between;
+
     a {
       font-size: 12px;
-      line-height: 14px;
+      line-height: 12px;
     }
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 325px) {
   .orderBreadCrumbs {
     a {
       font-size: 10px;
