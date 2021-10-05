@@ -4,13 +4,13 @@ import ItemList from './ItemList';
 
 import styles from './orderConditions.module.scss';
 
-const OrderConditions = ({ data, price }) => {
+const OrderConditions = ({ data, price, buttonTitle, buttonLink }) => {
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
-      {data.map((el) => {
+      {data.map((el, index) => {
         return (
-          <div key={Math.random()}>
+          <div key={index}>
             <ItemList
               title={el.title}
               description={el.description}
@@ -22,9 +22,9 @@ const OrderConditions = ({ data, price }) => {
       <h3 className={styles.price}>{price}</h3>
       <MainButton
         buttonWidth="orderWidth"
-        buttonText="Выбрать модель"
         type="order"
-        link="/order/model"
+        link={buttonLink}
+        buttonTitle={buttonTitle}
       />
     </div>
   );

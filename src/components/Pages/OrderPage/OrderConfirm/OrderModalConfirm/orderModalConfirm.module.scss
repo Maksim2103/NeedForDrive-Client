@@ -1,0 +1,44 @@
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 370px;
+}
+
+.title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: #121212;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 125px;
+    width: 90%;
+  }
+}

@@ -50,9 +50,9 @@ const initialItemListData = [
 const ModelList = () => {
   return (
     <div className={styles.wrapper}>
-      {initialItemListData.map((el) => {
+      {initialItemListData.map((el, index) => {
         return (
-          <div key={Math.random()}>
+          <div key={index}>
             <ModelItem
               img={el.img}
               price={el.price}

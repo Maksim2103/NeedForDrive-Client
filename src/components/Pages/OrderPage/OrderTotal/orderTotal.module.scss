@@ -13,7 +13,7 @@ $main-color-black: #121212;
 
 @media (min-width: 1024px) and (max-width: 1439px) {
   .colLeft {
-    margin-right: 90px;
+    margin-right: 50px;
   }
 }
 
@@ -25,16 +25,24 @@ $main-color-black: #121212;
 
 @media (max-width: 767px) {
   .wrapper {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 0 16px;
   }
-
   .colLeft {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-right: 0px;
-    margin-bottom: 20px;
+    margin: 10px;
+  }
+  .colRight {
+    padding: 16px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .colLeft {
+    margin: 0;
+  }
+  .colRight {
+    padding: 0 16px;
   }
 }
