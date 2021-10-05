@@ -7,6 +7,8 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
+const buttonTitle = 'Подробнее';
+
 const SliderItem = ({ title, description, type, link }) => {
   return (
     <div className={cx('item', `${type}`)}>
@@ -15,7 +17,7 @@ const SliderItem = ({ title, description, type, link }) => {
         <p className={styles.description}>{description}</p>
         <MainButton
           buttonWidth="small"
-          buttonText="Подробнее"
+          buttonTitle={buttonTitle}
           type={type}
           link={link}
         />

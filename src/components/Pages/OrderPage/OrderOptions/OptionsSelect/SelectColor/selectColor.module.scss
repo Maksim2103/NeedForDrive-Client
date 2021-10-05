@@ -1,0 +1,73 @@
+$main-color-accent: #0ec261;
+$main-color-black: #121212;
+$grey-color-dark: #999999;
+
+.wrapper {
+  .title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: #121212;
+    margin-bottom: 16px;
+  }
+  .inputsWrapper {
+    display: flex;
+    margin-bottom: 45px;
+    align-items: center;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 100px;
+      margin-right: 16px;
+      padding-left: 20px;
+    }
+    label {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      color: $grey-color-dark;
+    }
+
+    .label-active {
+      color: $main-color-black;
+    }
+
+    .radioInputButton {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      margin-left: 20px;
+      &:checked + .radioSpan {
+        border: 3px solid $main-color-accent;
+      }
+    }
+
+    .radioSpan {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 3px solid $grey-color-dark;
+      border-radius: 50%;
+      margin-left: -20px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    .inputsWrapper {
+      margin-bottom: 10px;
+      .container {
+        width: 90px;
+        margin-right: 6px;
+        padding-left: 20px;
+      }
+    }
+  }
+}
