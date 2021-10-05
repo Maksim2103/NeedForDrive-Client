@@ -63,13 +63,8 @@ $grey-color-dark: #999999;
   .wrapper {
     .inputsWrapper {
       flex-direction: row;
-      justify-content: space-evenly;
-      margin-bottom: 10px;
-      .container {
-        width: 90px;
-        margin-right: 6px;
-        padding-left: 20px;
-      }
+      justify-content: space-between;
+      margin-bottom: 30px;
     }
   }
 }
