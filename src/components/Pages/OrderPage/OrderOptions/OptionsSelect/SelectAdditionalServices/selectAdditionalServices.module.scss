@@ -3,6 +3,8 @@ $main-color-black: #121212;
 $grey-color-dark: #999999;
 
 .wrapper {
+  position: relative;
+
   .title {
     font-family: Roboto;
     font-style: normal;
@@ -22,6 +24,7 @@ $grey-color-dark: #999999;
       justify-content: space-between;
       margin-bottom: 8px;
       padding-left: 20px;
+      position: relative;
     }
     label {
       font-family: Roboto;
@@ -75,6 +78,9 @@ $grey-color-dark: #999999;
     .inputsWrapper {
       flex-direction: row;
       margin-bottom: 0px;
+      label {
+        margin-right: 5px;
+      }
     }
   }
 }

@@ -15,7 +15,11 @@ $grey-color-dark: #999999;
     line-height: 16px;
     color: $grey-color-dark;
     padding-right: 38px;
-    &:nth-child(-n + 3)::after {
+    &:last-child {
+      padding-right: 0px;
+    }
+
+    &::after {
       content: '';
       position: absolute;
       background-image: url('../../../../assets/images/TriangularSeparator.svg');
@@ -25,19 +29,26 @@ $grey-color-dark: #999999;
       right: 0px;
       top: 4px;
     }
+    &:last-child::after {
+      display: none;
+    }
   }
   .selected {
     color: $main-color-accent;
   }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 767px) {
   .orderBreadCrumbs {
-    justify-content: space-between;
-
     a {
       font-size: 12px;
       line-height: 12px;
+      padding-right: 26px;
+
+      &::after {
+        margin: 0 8px;
+        top: 3px;
+      }
     }
   }
 }
@@ -49,7 +60,7 @@ $grey-color-dark: #999999;
       line-height: 12px;
       padding-right: 18px;
 
-      &:nth-child(-n + 3)::after {
+      &::after {
         margin: 0 6px;
         right: 0px;
         top: 2px;

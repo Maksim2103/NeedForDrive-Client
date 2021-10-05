@@ -5,7 +5,7 @@
 }
 
 .headerContainer {
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .orderBreadCrumbs {
@@ -24,16 +24,6 @@
     width: 100%;
   }
   .orderBreadCrumbs {
-    padding: 0 16px;
-  }
-}
-
-@media screen and (max-height: 750px) {
-  .headerContainer {
-    margin-bottom: 20px;
-  }
-
-  .orderBreadCrumbs {
-    margin-bottom: 20px;
+    padding: 16px 16px;
   }
 }
