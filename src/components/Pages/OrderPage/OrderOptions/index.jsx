@@ -1,9 +1,8 @@
 import React from 'react';
 import OrderConditions from '../OrderConditions';
-import ModelList from './ModelList';
-import ModelSelect from './ModelSelect';
+import OptionsSelect from './OptionsSelect';
 
-import styles from './orderModel.module.scss';
+import styles from './orderOptions.module.scss';
 
 const initialOrderConditionsData = [
   {
@@ -16,18 +15,37 @@ const initialOrderConditionsData = [
     description: 'Hyndai, i30 N',
     doubleDescription: null,
   },
+  {
+    title: 'Цвет',
+    description: 'Голубой',
+    doubleDescription: null,
+  },
+  {
+    title: 'Длительность аренды',
+    description: '1д 2ч',
+    doubleDescription: null,
+  },
+  {
+    title: 'Тариф',
+    description: 'На сутки',
+    doubleDescription: null,
+  },
+  {
+    title: 'Полный бак',
+    description: 'Да',
+    doubleDescription: null,
+  },
 ];
 
-const price = 'Цена: от 10 000 до 32 000 ₽';
-const buttonTitle = 'Дополнительно';
-const buttonLink = '/order/options';
+const price = 'Цена: 16 000 ₽';
+const buttonTitle = 'Итого';
+const buttonLink = '/order/total';
 
-const OrderModel = () => {
+const OrderOptions = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
-        <ModelSelect />
-        <ModelList />
+        <OptionsSelect />
       </div>
       <div className={styles.colRight}>
         <OrderConditions
@@ -40,4 +58,4 @@ const OrderModel = () => {
     </div>
   );
 };
-export default OrderModel;
+export default OrderOptions;

@@ -57,6 +57,10 @@ $grey-color-light: #eeeeee;
   width: 287px;
 }
 
+.orderConfirmWidth {
+  width: 177px;
+}
+
 .applicationBtn {
   text-decoration: none;
   color: #ffffff;
@@ -71,5 +75,13 @@ $grey-color-light: #eeeeee;
 @media (max-width: 767px) {
   .mainButton {
     width: 100% !important;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .mainButton {
+    padding: 8px 19px;
+    font-size: 14px;
+    line-height: 16px;
   }
 }

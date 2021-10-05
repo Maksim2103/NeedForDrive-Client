@@ -6,19 +6,32 @@ const ModelSelect = () => {
   return (
     <div className={styles.wrapper}>
       <label className={styles.container}>
-        <input className={styles.radioInputButton} type="radio" checked />
+        <input
+          className={styles.radioInputButton}
+          type="radio"
+          name="ModelSelect"
+          checked
+        />
         <span className={styles.radioSpan}></span>
         Все модели
       </label>
 
       <label className={styles.container}>
-        <input className={styles.radioInputButton} type="radio" />
+        <input
+          className={styles.radioInputButton}
+          type="radio"
+          name="ModelSelect"
+        />
         <span className={styles.radioSpan}></span>
         Эконом
       </label>
 
       <label className={styles.container}>
-        <input className={styles.radioInputButton} type="radio" />
+        <input
+          className={styles.radioInputButton}
+          type="radio"
+          name="ModelSelect"
+        />
         <span className={styles.radioSpan}></span>
         Премиум
       </label>

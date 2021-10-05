@@ -50,8 +50,21 @@ $grey-color-dark: #999999;
     width: 240px;
   }
 }
+
 @media (max-width: 767px) {
   .itemList {
     width: 100%;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .title {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  .description {
+    font-size: 10px;
+    line-height: 12px;
   }
 }

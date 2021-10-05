@@ -8,11 +8,11 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const MainButton = ({ buttonWidth, buttonText, type, link }) => {
+const MainButton = ({ buttonWidth, buttonTitle, type, link }) => {
   return (
     <div className={cx('mainButton', `${type}`, `${buttonWidth}`)}>
       <NavLink to={link} className={styles.applicationBtn} href="section#">
-        {buttonText}
+        {buttonTitle}
       </NavLink>
     </div>
   );
