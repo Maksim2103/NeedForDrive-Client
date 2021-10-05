@@ -15,6 +15,10 @@ $grey-color-dark: #999999;
     line-height: 16px;
     color: $grey-color-dark;
     padding-right: 38px;
+    &:nth-last-child(1) {
+      padding-right: 0px;
+    }
+
     &:nth-child(-n + 3)::after {
       content: '';
       position: absolute;
@@ -31,15 +35,17 @@ $grey-color-dark: #999999;
   }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 767px) {
   .orderBreadCrumbs {
     justify-content: space-between;
 
     a {
       font-size: 12px;
       line-height: 12px;
+      padding-right: 26px;
 
       &:nth-child(-n + 3)::after {
+        margin: 0 8px;
         top: 3px;
       }
     }
