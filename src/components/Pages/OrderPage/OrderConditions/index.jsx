@@ -8,9 +8,9 @@ const OrderConditions = ({ data, price, buttonTitle, buttonLink }) => {
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
-      {data.map((el) => {
+      {data.map((el, index) => {
         return (
-          <div key={Math.random()}>
+          <div key={index}>
             <ItemList
               title={el.title}
               description={el.description}

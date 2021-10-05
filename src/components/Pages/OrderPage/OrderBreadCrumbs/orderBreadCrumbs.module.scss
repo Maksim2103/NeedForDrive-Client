@@ -6,6 +6,7 @@ $grey-color-dark: #999999;
   align-items: center;
   flex: 1;
   a {
+    position: relative;
     text-decoration: none;
     font-family: Roboto;
     font-style: normal;
@@ -13,6 +14,17 @@ $grey-color-dark: #999999;
     font-size: 14px;
     line-height: 16px;
     color: $grey-color-dark;
+    padding-right: 38px;
+    &:nth-child(-n + 3)::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../../../assets/images/TriangularSeparator.svg');
+      width: 6px;
+      height: 8px;
+      margin: 0 16px;
+      right: 0px;
+      top: 4px;
+    }
   }
   .selected {
     color: $main-color-accent;
@@ -30,11 +42,16 @@ $grey-color-dark: #999999;
 
 @media (max-width: 767px) {
   .orderBreadCrumbs {
-    justify-content: space-between;
-
     a {
       font-size: 10px;
       line-height: 12px;
+      padding-right: 18px;
+
+      &:nth-child(-n + 3)::after {
+        margin: 0 6px;
+        right: 0px;
+        top: 2px;
+      }
     }
   }
 }

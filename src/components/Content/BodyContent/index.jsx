@@ -17,7 +17,7 @@ const BodyContent = () => {
         buttonWidth="big"
         buttonTitle={buttonTitle}
         type="main"
-        link="/order"
+        link="/order/location"
       />
     </div>
   );
