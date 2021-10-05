@@ -13,10 +13,10 @@ const OrderBreadCrumbs = () => {
       <NavLink to="/order/model" activeClassName={styles.selected}>
         Модель
       </NavLink>
-      <NavLink to="order/options" activeClassName={styles.selected}>
+      <NavLink to="/order/options" activeClassName={styles.selected}>
         Дополнительно
       </NavLink>
-      <NavLink to="order/total" activeClassName={styles.selected}>
+      <NavLink to="/order/total" activeClassName={styles.selected}>
         Итого
       </NavLink>
     </div>

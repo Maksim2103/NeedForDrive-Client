@@ -27,6 +27,7 @@ $grey-color-light: #eeeeee;
 
 .App {
   height: 100vh;
+  overflow-x: hidden;
 
   .container {
     display: grid;
