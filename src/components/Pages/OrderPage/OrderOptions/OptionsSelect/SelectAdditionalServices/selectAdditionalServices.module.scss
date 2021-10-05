@@ -75,6 +75,9 @@ $grey-color-dark: #999999;
     .inputsWrapper {
       flex-direction: row;
       margin-bottom: 0px;
+      label {
+        margin-right: 5px;
+      }
     }
   }
 }

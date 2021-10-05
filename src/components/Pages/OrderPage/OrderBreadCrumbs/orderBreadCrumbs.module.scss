@@ -38,6 +38,10 @@ $grey-color-dark: #999999;
     a {
       font-size: 12px;
       line-height: 12px;
+
+      &:nth-child(-n + 3)::after {
+        top: 3px;
+      }
     }
   }
 }
