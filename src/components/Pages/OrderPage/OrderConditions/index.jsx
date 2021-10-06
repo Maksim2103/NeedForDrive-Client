@@ -4,7 +4,7 @@ import ItemList from './ItemList';
 
 import styles from './orderConditions.module.scss';
 
-const OrderConditions = ({ data, price, buttonTitle, buttonLink }) => {
+const OrderConditions = ({ data, price, buttonTitle, buttonLink, type }) => {
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
@@ -22,7 +22,7 @@ const OrderConditions = ({ data, price, buttonTitle, buttonLink }) => {
       <h3 className={styles.price}>{price}</h3>
       <MainButton
         buttonWidth="orderWidth"
-        type="order"
+        type={type}
         link={buttonLink}
         buttonTitle={buttonTitle}
       />

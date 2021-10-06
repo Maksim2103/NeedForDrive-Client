@@ -1,10 +1,20 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+
 import MainButton from '../../../../MainButton';
+
+import { hiddenBreadCrumbs } from '../../../../../redux/orderSlice';
 
 import styles from './orderModalConfirm.module.scss';
 
 const OrderModalConfirm = () => {
+  const dispatch = useDispatch();
+
+  const hiddenBreadCrumbsFunc = () => {
+    dispatch(hiddenBreadCrumbs(false));
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.contentWrapper}>
@@ -15,6 +25,7 @@ const OrderModalConfirm = () => {
             buttonTitle="Подтвердить"
             type="order"
             link="/order/completed"
+            onClick={hiddenBreadCrumbsFunc}
           />
           <MainButton
             buttonWidth="orderConfirmWidth"

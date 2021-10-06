@@ -21,6 +21,7 @@ const initialOrderConditionsData = [
 const price = 'Цена: от 10 000 до 32 000 ₽';
 const buttonTitle = 'Дополнительно';
 const buttonLink = '/order/options';
+const buttonType = 'order';
 
 const OrderModel = () => {
   return (
@@ -35,6 +36,7 @@ const OrderModel = () => {
           price={price}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
+          type={buttonType}
         />
       </div>
     </div>

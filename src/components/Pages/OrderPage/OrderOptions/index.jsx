@@ -40,6 +40,7 @@ const initialOrderConditionsData = [
 const price = 'Цена: 16 000 ₽';
 const buttonTitle = 'Итого';
 const buttonLink = '/order/total';
+const buttonType = 'order';
 
 const OrderOptions = () => {
   return (
@@ -53,6 +54,7 @@ const OrderOptions = () => {
           price={price}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
+          type={buttonType}
         />
       </div>
     </div>
