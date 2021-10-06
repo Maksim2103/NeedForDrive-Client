@@ -1,19 +1,17 @@
 {
   "files": {
-    "main.css": "/gh-pages-start/static/css/main.d6680787.chunk.css",
-    "main.js": "/gh-pages-start/static/js/main.8a16906a.chunk.js",
-    "main.js.map": "/gh-pages-start/static/js/main.8a16906a.chunk.js.map",
-    "runtime-main.js": "/gh-pages-start/static/js/runtime-main.02d5a2f6.js",
-    "runtime-main.js.map": "/gh-pages-start/static/js/runtime-main.02d5a2f6.js.map",
+    "main.css": "/gh-pages-start/static/css/main.17de9069.chunk.css",
+    "main.js": "/gh-pages-start/static/js/main.59ddc09f.chunk.js",
+    "main.js.map": "/gh-pages-start/static/js/main.59ddc09f.chunk.js.map",
+    "runtime-main.js": "/gh-pages-start/static/js/runtime-main.e3856f37.js",
+    "runtime-main.js.map": "/gh-pages-start/static/js/runtime-main.e3856f37.js.map",
     "static/css/2.1c5cea00.chunk.css": "/gh-pages-start/static/css/2.1c5cea00.chunk.css",
-    "static/js/2.1a2c5846.chunk.js": "/gh-pages-start/static/js/2.1a2c5846.chunk.js",
-    "static/js/2.1a2c5846.chunk.js.map": "/gh-pages-start/static/js/2.1a2c5846.chunk.js.map",
-    "static/js/3.98d5f192.chunk.js": "/gh-pages-start/static/js/3.98d5f192.chunk.js",
-    "static/js/3.98d5f192.chunk.js.map": "/gh-pages-start/static/js/3.98d5f192.chunk.js.map",
+    "static/js/2.a2405386.chunk.js": "/gh-pages-start/static/js/2.a2405386.chunk.js",
+    "static/js/2.a2405386.chunk.js.map": "/gh-pages-start/static/js/2.a2405386.chunk.js.map",
     "index.html": "/gh-pages-start/index.html",
     "static/css/2.1c5cea00.chunk.css.map": "/gh-pages-start/static/css/2.1c5cea00.chunk.css.map",
-    "static/css/main.d6680787.chunk.css.map": "/gh-pages-start/static/css/main.d6680787.chunk.css.map",
-    "static/js/2.1a2c5846.chunk.js.LICENSE.txt": "/gh-pages-start/static/js/2.1a2c5846.chunk.js.LICENSE.txt",
+    "static/css/main.17de9069.chunk.css.map": "/gh-pages-start/static/css/main.17de9069.chunk.css.map",
+    "static/js/2.a2405386.chunk.js.LICENSE.txt": "/gh-pages-start/static/js/2.a2405386.chunk.js.LICENSE.txt",
     "static/media/sliderItem.module.scss": "/gh-pages-start/static/media/BackgroundSlider4.028aadac.png",
     "static/media/headerContent.module.scss": "/gh-pages-start/static/media/Group.dd9d4bed.svg",
     "static/media/App.module.scss": "/gh-pages-start/static/media/Roboto-Regular.a8d6ac03.ttf",
@@ -21,13 +19,14 @@
     "static/media/car1.7e813c65.png": "/gh-pages-start/static/media/car1.7e813c65.png",
     "static/media/car2.1d3c5aa9.png": "/gh-pages-start/static/media/car2.1d3c5aa9.png",
     "static/media/car3.7a2c0518.png": "/gh-pages-start/static/media/car3.7a2c0518.png",
-    "static/media/car4.0c90fca2.png": "/gh-pages-start/static/media/car4.0c90fca2.png"
+    "static/media/car4.0c90fca2.png": "/gh-pages-start/static/media/car4.0c90fca2.png",
+    "static/media/selectAdditionalServices.module.scss": "/gh-pages-start/static/media/check.17659989.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.02d5a2f6.js",
+    "static/js/runtime-main.e3856f37.js",
     "static/css/2.1c5cea00.chunk.css",
-    "static/js/2.1a2c5846.chunk.js",
-    "static/css/main.d6680787.chunk.css",
-    "static/js/main.8a16906a.chunk.js"
+    "static/js/2.a2405386.chunk.js",
+    "static/css/main.17de9069.chunk.css",
+    "static/js/main.59ddc09f.chunk.js"
   ]
 }
