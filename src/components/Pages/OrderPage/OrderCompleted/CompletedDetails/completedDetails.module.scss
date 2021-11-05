@@ -80,6 +80,11 @@ $grey-color-dark: #999999;
       }
     }
   }
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {

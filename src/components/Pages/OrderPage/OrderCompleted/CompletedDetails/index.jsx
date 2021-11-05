@@ -19,8 +19,8 @@ const CompletedDetails = () => {
           <span>Доступна с</span>12.06.2019 12:00
         </h3>
       </div>
-      <div>
-        <img className={styles.image} src={image} alt="car" />
+      <div className={styles.image}>
+        <img src={image} alt="car" />
       </div>
     </div>
   );

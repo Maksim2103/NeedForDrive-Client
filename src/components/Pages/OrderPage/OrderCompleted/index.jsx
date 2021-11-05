@@ -39,7 +39,7 @@ const initialOrderConditionsData = [
 ];
 
 const price = 'Цена: 16 000 ₽';
-const buttonTitle = 'Заказать';
+const buttonTitle = 'Отменить';
 const buttonLink = '/order/complete';
 const buttonType = 'fuel';
 

@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Switch, Route } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
 
 import HeaderContent from '../../../Content/HeaderContent';
 import OrderBreadCrumbs from '../OrderBreadCrumbs';
@@ -18,17 +16,17 @@ import OrderConfirm from '../OrderConfirm';
 import OrderCompleted from '../OrderCompleted';
 
 const OrderContainer = () => {
-  const isBreadCrumbs = useSelector((state) => state.order.isBreadCrumbs);
+  const [isBreadCrumbs, setIsBreadCrumbs] = useState(false);
   return (
     <div className={styles.orderContainer}>
       <div className={styles.headerContainer}>
         <HeaderContent />
       </div>
-      {isBreadCrumbs ? (
+      {isBreadCrumbs && (
         <div className={styles.orderBreadCrumbs}>
           <OrderBreadCrumbs />
         </div>
-      ) : null}
+      )}
       <Switch>
         <Route exact path="/order/location" component={OrderLocation} />
         <Route exact path="/order/model" component={OrderModel} />
