@@ -5,13 +5,9 @@ const orderSlice = createSlice({
   initialState: {
     isBreadCrumbs: true,
   },
-  reducers: {
-    hiddenBreadCrumbs(state, action) {
-      state.isBreadCrumbs = false;
-    },
-  },
+  reducers: {},
 });
 
-export const { hiddenBreadCrumbs } = orderSlice.actions;
+export const {} = orderSlice.actions;
 
 export default orderSlice.reducer;

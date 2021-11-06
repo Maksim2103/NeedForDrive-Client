@@ -1,18 +1,12 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
-
 import MainButton from '../../../../MainButton';
-
-import { hiddenBreadCrumbs } from '../../../../../redux/orderSlice';
 
 import styles from './orderModalConfirm.module.scss';
 
-const OrderModalConfirm = () => {
-  const dispatch = useDispatch();
-
+const OrderModalConfirm = ({ setIsBreadCrumbs }) => {
   const hiddenBreadCrumbsFunc = () => {
-    dispatch(hiddenBreadCrumbs(false));
+    setIsBreadCrumbs(false);
   };
 
   return (

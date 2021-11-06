@@ -23,7 +23,7 @@ const buttonTitle = 'Дополнительно';
 const buttonLink = '/order/options';
 const buttonType = 'order';
 
-const OrderModel = () => {
+const OrderModel = ({ setIsBreadCrumbs }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -37,6 +37,7 @@ const OrderModel = () => {
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
           type={buttonType}
+          setIsBreadCrumbs={setIsBreadCrumbs}
         />
       </div>
     </div>

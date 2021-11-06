@@ -4,7 +4,17 @@ import ItemList from './ItemList';
 
 import styles from './orderConditions.module.scss';
 
-const OrderConditions = ({ data, price, buttonTitle, buttonLink, type }) => {
+const OrderConditions = ({
+  data,
+  price,
+  buttonTitle,
+  buttonLink,
+  type,
+  setIsBreadCrumbs,
+}) => {
+  const handleChangeIsBreadCrumbs = () => {
+    setIsBreadCrumbs(true);
+  };
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
@@ -25,6 +35,7 @@ const OrderConditions = ({ data, price, buttonTitle, buttonLink, type }) => {
         type={type}
         link={buttonLink}
         buttonTitle={buttonTitle}
+        onClick={handleChangeIsBreadCrumbs}
       />
     </div>
   );

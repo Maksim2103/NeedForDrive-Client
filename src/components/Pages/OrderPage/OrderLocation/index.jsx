@@ -18,7 +18,7 @@ const buttonTitle = 'Выбрать модель';
 const buttonLink = '/order/model';
 const buttonType = 'order';
 
-const OrderLocation = () => {
+const OrderLocation = ({ setIsBreadCrumbs }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -33,6 +33,7 @@ const OrderLocation = () => {
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
           type={buttonType}
+          setIsBreadCrumbs={setIsBreadCrumbs}
         />
       </div>
     </div>
