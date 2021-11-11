@@ -19,14 +19,25 @@ $main-color-black: #121212;
     line-height: 16px;
     color: $grey-color-dark;
   }
-  &::before {
+  &__button,
+  &__button_points {
+    border: none;
     content: '';
     position: absolute;
+    background-color: white;
     background-image: url('../../../../../assets/images/CloseIcon.png');
-    width: 8px;
-    height: 8px;
-    right: 0;
-    top: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    height: 10px;
+    right: 6px;
+    top: 5px;
+    z-index: 99999;
+    cursor: pointer;
+  }
+  &__button_points {
+    right: 6px;
+    top: 30px;
   }
   &__input {
     margin-bottom: 8px;
@@ -47,7 +58,7 @@ $main-color-black: #121212;
 
 @media (min-width: 1024px) and (max-width: 1439px) {
   .container {
-    width: 50%;
+    width: 70%;
     input {
       font-size: 12px;
     }
@@ -61,7 +72,7 @@ $main-color-black: #121212;
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .container {
-    width: 75%;
+    width: 90%;
     input {
       font-size: 12px;
     }

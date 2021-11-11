@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCities } from '../../../../redux/reducers/orderSlice';
+import { fetchAsyncGetCities } from '../../../../redux/thunks';
 import OrderConditions from '../OrderConditions';
 import LocationMap from './LocationMap';
 import LocationSelect from './LocationSelect';
@@ -19,6 +22,14 @@ const buttonLink = '/order/model';
 const buttonType = 'order';
 
 const OrderLocation = ({ setIsBreadCrumbs }) => {
+  const dispatch = useDispatch();
+
+  const state = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(fetchAsyncGetCities());
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
