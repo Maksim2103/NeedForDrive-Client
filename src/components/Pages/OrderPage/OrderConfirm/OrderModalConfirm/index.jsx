@@ -4,7 +4,11 @@ import MainButton from '../../../../MainButton';
 
 import styles from './orderModalConfirm.module.scss';
 
-const OrderModalConfirm = () => {
+const OrderModalConfirm = ({ setIsBreadCrumbs }) => {
+  const hiddenBreadCrumbsFunc = () => {
+    setIsBreadCrumbs(false);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.contentWrapper}>
@@ -15,6 +19,7 @@ const OrderModalConfirm = () => {
             buttonTitle="Подтвердить"
             type="order"
             link="/order/completed"
+            onClick={hiddenBreadCrumbsFunc}
           />
           <MainButton
             buttonWidth="orderConfirmWidth"
