@@ -18,7 +18,6 @@ import OrderCompleted from '../OrderCompleted';
 const OrderContainer = () => {
   const [isBreadCrumbs, setIsBreadCrumbs] = useState(true);
 
-  console.log('isBreadCrumbs', isBreadCrumbs);
   return (
     <div className={styles.orderContainer}>
       <div className={styles.headerContainer}>

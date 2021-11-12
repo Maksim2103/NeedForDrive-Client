@@ -12,9 +12,6 @@ const OrderConditions = ({
   type,
   setIsBreadCrumbs,
 }) => {
-  const handleChangeIsBreadCrumbs = () => {
-    setIsBreadCrumbs(true);
-  };
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
@@ -35,7 +32,7 @@ const OrderConditions = ({
         type={type}
         link={buttonLink}
         buttonTitle={buttonTitle}
-        onClick={handleChangeIsBreadCrumbs}
+        onClick={() => setIsBreadCrumbs(true)}
       />
     </div>
   );
