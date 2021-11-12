@@ -1,15 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAsyncGetCities } from '../thunks';
+import {
+  fetchAsyncGetCities,
+  fetchAsyncGetCityCoordinates,
+  fetchAsyncGetPoints,
+} from '../thunks';
 
 export const orderSlice = createSlice({
   name: 'orderSlice',
   initialState: {
-    cityName: 'Ульяновск',
-    cityId: '',
     orderForm: {
       orderStatusId: {},
-      cityId: {},
-      pointId: {},
+      cityId: {
+        name: 'Ульяновск',
+      },
+      pointId: {
+        name: '',
+        cityId: {},
+        address: '',
+      },
       carId: {},
       color: 'string',
       dateFrom: 0,
@@ -23,10 +31,10 @@ export const orderSlice = createSlice({
   },
   reducers: {
     setCityName: (state, action) => {
-      state.cityName = action.payload;
+      state.orderForm.cityId.name = action.payload;
     },
-    setCityId: (state, action) => {
-      state.cityId = action.payload;
+    setPoint: (state, action) => {
+      state.orderForm.pointId.address = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -42,13 +50,47 @@ export const orderSlice = createSlice({
       state.loadingResponseCities = 'failed';
       state.errorResponseCities = action.error.message;
     });
+
+    builder.addCase(fetchAsyncGetPoints.pending, (state) => {
+      state.dataResponsePoints = [];
+      state.loadingResponsePoints = 'pending';
+    });
+    builder.addCase(fetchAsyncGetPoints.fulfilled, (state, { payload }) => {
+      state.dataResponsePoints = payload;
+      state.loadingResponsePoints = 'succeeded';
+    });
+    builder.addCase(fetchAsyncGetPoints.rejected, (state, action) => {
+      state.loadingResponsePoints = 'failed';
+      state.errorResponsePoints = action.error.message;
+    });
+
+    builder.addCase(fetchAsyncGetCityCoordinates.pending, (state) => {
+      state.dataResponseCoordinates = [];
+      state.loadingResponseCoordinates = 'pending';
+    });
+    builder.addCase(
+      fetchAsyncGetCityCoordinates.fulfilled,
+      (state, payload) => {
+        state.dataResponseCoordinates = payload.payload;
+        state.loadingResponseCoordinates = 'succeeded';
+      },
+    );
+    builder.addCase(fetchAsyncGetCityCoordinates.rejected, (state, action) => {
+      state.loadingResponseCoordinates = 'failed';
+      state.errorResponseCoordinates = action.error.message;
+    });
   },
 });
 
 export const selectResponseCities = (state = []) =>
   state.orderPage.dataResponseCities;
-export const selectCity = (state) => state.orderPage.cityName;
+export const selectCity = (state) => state.orderPage.orderForm.cityId.name;
+export const selectResponsePoints = (state = []) =>
+  state.orderPage.dataResponsePoints;
+export const selectOrderForm = (state) => state.orderPage.orderForm;
+export const selectCityCoordinate = (state = []) =>
+  state.orderPage.dataResponseCoordinates;
 
-export const { setCityName, setCityId } = orderSlice.actions;
+export const { setCityName, setPoint } = orderSlice.actions;
 
 export default orderSlice.reducer;

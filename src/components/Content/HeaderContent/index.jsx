@@ -7,9 +7,7 @@ import styles from './headerContent.module.scss';
 const HeaderContent = () => {
   const city = useSelector(selectCity);
 
-  console.log('city', city);
-
-  useEffect(() => {}, [selectCity]);
+  useEffect(() => {}, [city]);
 
   return (
     <div className={styles.wrapper}>

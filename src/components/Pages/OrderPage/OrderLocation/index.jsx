@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCities } from '../../../../redux/reducers/orderSlice';
-import { fetchAsyncGetCities } from '../../../../redux/thunks';
+import {
+  fetchAsyncGetCities,
+  fetchAsyncGetCityCoordinates,
+  fetchAsyncGetPoints,
+} from '../../../../redux/thunks';
 import OrderConditions from '../OrderConditions';
 import LocationMap from './LocationMap';
 import LocationSelect from './LocationSelect';
@@ -26,9 +29,25 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
 
   const state = useSelector((state) => state);
 
+  const {
+    orderPage: {
+      orderForm: {
+        cityId: { name },
+      },
+    },
+  } = state;
+
   useEffect(() => {
     dispatch(fetchAsyncGetCities());
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAsyncGetPoints());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAsyncGetCityCoordinates(name));
+  }, [dispatch, name]);
 
   return (
     <div className={styles.wrapper}>

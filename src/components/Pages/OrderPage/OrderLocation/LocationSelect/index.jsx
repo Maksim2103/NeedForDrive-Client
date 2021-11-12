@@ -1,49 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectResponseCities,
-  setCityId,
+  selectResponsePoints,
+  setPoint,
   setCityName,
 } from '../../../../../redux/reducers/orderSlice';
 
 import styles from './locationSelect.module.scss';
 
 const LocationSelect = () => {
-  const cities = useSelector(selectResponseCities);
-  console.log(`cities`, cities);
-  const city = useSelector(setCityName);
-
   const dispatch = useDispatch();
 
+  const citiesData = useSelector(selectResponseCities);
+  const pointsData = useSelector(selectResponsePoints);
+
   const [cityNameLocation, setCityNameLocation] = useState('');
-  const [cityIdLocation, setCityIdLocation] = useState('');
-
-  console.log(`cityNameLocation1`, cityNameLocation);
-
-  // useEffect(() => {
-  //   dispatch(setCityName(cityNameLocation));
-  // }, [cityNameLocation]);
-
-  // useEffect(() => {
-  //   dispatch(setCityId(cityIdLocation));
-  // }, [cityIdLocation]);
-
-  // useEffect(() => {
-  //   getIdFromCityName(cityNameLocation);
-  // }, [cityNameLocation]);
-
-  const getIdFromCityName = (city) => {
-    const id = cities?.filter((el) => {
-      if (el.name === city) {
-        return el;
-      }
-    });
-    return id;
-  };
-
-  const idd = getIdFromCityName(cityNameLocation);
-
-  console.log(`idd`, idd);
+  const [pointLocation, setPointLocation] = useState('');
 
   const handleChangeCityName = (e) => {
     const value = e.target.value;
@@ -51,15 +24,28 @@ const LocationSelect = () => {
     dispatch(setCityName(value));
   };
 
-  const handleResetCityValue = () => {
-    setCityNameLocation('');
-    setCityName('');
+  const handleChangePoint = (e) => {
+    const value = e.target.value;
+    setPointLocation(value);
+    dispatch(setPoint(value));
   };
 
-  const handleResetCityIdValue = () => {
-    setCityIdLocation('');
-    setCityId('');
+  const handleResetCityValue = () => {
+    setCityNameLocation('');
+    dispatch(setCityName(''));
+    handleResetPoint();
   };
+
+  const handleResetPoint = () => {
+    setPointLocation('');
+    dispatch(setPoint(''));
+  };
+
+  const filteredPointsData = pointsData?.filter((el) => {
+    if (el.cityId?.name === cityNameLocation) {
+      return el;
+    }
+  });
 
   return (
     <div className={styles.container}>
@@ -73,7 +59,7 @@ const LocationSelect = () => {
           onChange={handleChangeCityName}
         />
         <datalist id="cities">
-          {cities?.map((el) => {
+          {citiesData?.map((el) => {
             return <option value={el.name} key={el.id}></option>;
           })}
         </datalist>
@@ -90,16 +76,18 @@ const LocationSelect = () => {
           type="text"
           list="points"
           placeholder="Начните вводить пункт..."
+          value={pointLocation}
+          onChange={handleChangePoint}
         />
         <datalist id="points">
-          {cities?.map((el) => {
-            return <option value={el.name} key={el.id}></option>;
+          {filteredPointsData?.map((el) => {
+            return <option value={el.address} key={el.id}></option>;
           })}
         </datalist>
-        {cityIdLocation && (
+        {pointLocation && (
           <button
             className={styles.container__button_points}
-            onClick={handleResetCityIdValue}
+            onClick={handleResetPoint}
           ></button>
         )}
       </div>
