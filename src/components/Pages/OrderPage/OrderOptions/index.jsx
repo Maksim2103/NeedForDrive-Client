@@ -40,8 +40,9 @@ const initialOrderConditionsData = [
 const price = 'Цена: 16 000 ₽';
 const buttonTitle = 'Итого';
 const buttonLink = '/order/total';
+const buttonType = 'order';
 
-const OrderOptions = () => {
+const OrderOptions = ({ setIsBreadCrumbs }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -53,6 +54,8 @@ const OrderOptions = () => {
           price={price}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
+          type={buttonType}
+          setIsBreadCrumbs={setIsBreadCrumbs}
         />
       </div>
     </div>

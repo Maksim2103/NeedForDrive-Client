@@ -4,39 +4,6 @@ import styles from './totalDetails.module.scss';
 
 import image from '../../../../../assets/images/car2.png';
 
-// const initialOrderConditionsData = [
-//   {
-//     title: 'Пункт выдачи',
-//     description: 'Ульяновск',
-//     doubleDescription: 'Нариманова 42',
-//   },
-//   {
-//     title: 'Модель',
-//     description: 'Hyndai, i30 N',
-//     doubleDescription: null,
-//   },
-//   {
-//     title: 'Цвет',
-//     description: 'Голубой',
-//     doubleDescription: null,
-//   },
-//   {
-//     title: 'Длительность аренды',
-//     description: '1д 2ч',
-//     doubleDescription: null,
-//   },
-//   {
-//     title: 'Тариф',
-//     description: 'На сутки',
-//     doubleDescription: null,
-//   },
-//   {
-//     title: 'Полный бак',
-//     description: 'Да',
-//     doubleDescription: null,
-//   },
-// ];
-
 const TotalDetails = () => {
   return (
     <div className={styles.wrapper}>
