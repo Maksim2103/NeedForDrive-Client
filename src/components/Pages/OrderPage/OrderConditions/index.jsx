@@ -12,6 +12,7 @@ const OrderConditions = ({
   type,
   setIsBreadCrumbs,
 }) => {
+
   const data = useSelector(selectOrderForm);
 
   const cityName = data.cityId?.name;
@@ -23,6 +24,7 @@ const OrderConditions = ({
   const fullTank = data?.isFillTank;
   const priceMin = '';
   const priceMax = '';
+
 
   return (
     <div>
