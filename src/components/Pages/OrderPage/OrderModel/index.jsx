@@ -5,20 +5,6 @@ import ModelSelect from './ModelSelect';
 
 import styles from './orderModel.module.scss';
 
-const initialOrderConditionsData = [
-  {
-    title: 'Пункт выдачи',
-    description: 'Ульяновск',
-    doubleDescription: 'Нариманова 42',
-  },
-  {
-    title: 'Модель',
-    description: 'Hyndai, i30 N',
-    doubleDescription: null,
-  },
-];
-
-const price = 'Цена: от 10 000 до 32 000 ₽';
 const buttonTitle = 'Дополнительно';
 const buttonLink = '/order/options';
 const buttonType = 'order';
@@ -32,8 +18,7 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
       </div>
       <div className={styles.colRight}>
         <OrderConditions
-          data={initialOrderConditionsData}
-          price={price}
+          // data={data}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
           type={buttonType}

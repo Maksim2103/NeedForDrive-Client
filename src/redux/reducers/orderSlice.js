@@ -13,7 +13,7 @@ export const orderSlice = createSlice({
     orderForm: {
       orderStatusId: {},
       cityId: {
-        name: 'Ульяновск',
+        name: 'Казань',
       },
       pointId: {
         name: '',
@@ -21,8 +21,8 @@ export const orderSlice = createSlice({
         address: '',
       },
       carId: {},
-      color: 'string',
-      dateFrom: 0,
+      color: '',
+      dateFrom: '',
       dateTo: 0,
       rateId: {},
       price: 0,
@@ -40,6 +40,9 @@ export const orderSlice = createSlice({
     },
     setFilteredPoints: (state, action) => {
       state.filteredPoints = action.payload;
+    },
+    setResetPointsCoordinates: (state) => {
+      state.dataResponsePointsCoordinates = [];
     },
   },
   extraReducers: (builder) => {
@@ -118,9 +121,14 @@ export const selectOrderForm = (state) => state.orderPage.orderForm;
 export const selectCityCoordinate = (state = []) =>
   state.orderPage.dataResponseCoordinates;
 export const selectFilteredPoints = (state) => state.orderPage.filteredPoints;
-export const selectPointsCoordinates = (state) =>
+export const selectPointsCoordinates = (state = []) =>
   state.orderPage.dataResponsePointsCoordinates;
 
-export const { setCityName, setPoint, setFilteredPoints } = orderSlice.actions;
+export const {
+  setCityName,
+  setPoint,
+  setFilteredPoints,
+  setResetPointsCoordinates,
+} = orderSlice.actions;
 
 export default orderSlice.reducer;

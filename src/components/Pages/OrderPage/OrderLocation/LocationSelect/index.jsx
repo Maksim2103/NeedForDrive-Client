@@ -5,7 +5,7 @@ import {
   selectResponsePoints,
   setPoint,
   setCityName,
-  setFilteredPoints,
+  setResetPointsCoordinates,
 } from '../../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetPointsCoordinates } from '../../../../../redux/thunks';
 
@@ -17,12 +17,22 @@ const LocationSelect = () => {
   const citiesData = useSelector(selectResponseCities);
   const pointsData = useSelector(selectResponsePoints);
 
-  const [cityNameLocation, setCityNameLocation] = useState('');
-  const [pointLocation, setPointLocation] = useState('');
+  const state = useSelector((state) => state);
+
+  const {
+    orderPage: {
+      orderForm: {
+        cityId: { name },
+        pointId: { address },
+      },
+    },
+  } = state;
+
+  const [cityNameLocation, setCityNameLocation] = useState(name);
+  const [pointLocation, setPointLocation] = useState(address);
 
   const handleChangeCityName = (e) => {
     const value = e.target.value;
-    console.log(`value name change`, value);
     setCityNameLocation(value);
     dispatch(setCityName(value));
   };
@@ -37,6 +47,7 @@ const LocationSelect = () => {
     setCityNameLocation('');
     dispatch(setCityName(''));
     handleResetPoint();
+    dispatch(setResetPointsCoordinates([]));
   };
 
   const handleResetPoint = () => {
@@ -45,29 +56,18 @@ const LocationSelect = () => {
   };
 
   const filteredPointsData = useMemo(
-    () =>
-      pointsData?.filter((el) => {
-        if (el.cityId?.name === cityNameLocation) {
-          return el;
-        }
-      }),
+    () => pointsData?.filter((el) => el.cityId?.name === cityNameLocation),
     [pointsData, cityNameLocation],
   );
 
-  useEffect(() => {
-    dispatch(setFilteredPoints(filteredPointsData));
-  }, [dispatch, filteredPointsData]);
-
-  const foo = useMemo(
+  useEffect(
     () =>
-      filteredPointsData?.map((el) => {
+      filteredPointsData?.forEach((el) => {
         const address = `${el.cityId.name} ${el.address}`;
         dispatch(fetchAsyncGetPointsCoordinates(address));
       }),
-    [filteredPointsData],
+    [dispatch, filteredPointsData],
   );
-
-  console.log(`cityNameLocation`, cityNameLocation);
 
   return (
     <div className={styles.container}>

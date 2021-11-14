@@ -7,35 +7,47 @@ import ItemList from './ItemList';
 import styles from './orderConditions.module.scss';
 
 const OrderConditions = ({
-  data,
   buttonTitle,
   buttonLink,
   type,
   setIsBreadCrumbs,
 }) => {
-  const { price } = useSelector(selectOrderForm);
+  const data = useSelector(selectOrderForm);
 
-  console.log(`data`, data);
-
-  const cityName = data.cityId.name;
-  const pointName = data.poindId?.address;
+  const cityName = data.cityId?.name;
+  const pointName = data.pointId?.address;
+  const model = data.carId?.name;
+  const color = data.carId?.color;
+  const rentTime = '';
+  const rate = data?.rateId.name;
+  const fullTank = data?.isFillTank;
+  const priceMin = '';
+  const priceMax = '';
 
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
       <div>
-        <ItemList
-          title="Пункт выдачи"
-          description={cityName}
-          doubleDescription={pointName}
-        />
-        <ItemList title="Модель" description="вавав" />
-        <ItemList title="Цвет" description="вавав" />
-        <ItemList title="Длительность аренды" description="вавав" />
-        <ItemList title="Тариф" description="вавав" />
-        <ItemList title="Полный бак" description="вавав" />
+        {cityName && pointName && (
+          <ItemList
+            title="Пункт выдачи"
+            description={cityName}
+            doubleDescription={pointName}
+          />
+        )}
+        {model && <ItemList title="Модель" description={model} />}
+        {color && <ItemList title="Цвет" description={color} />}
+        {rentTime && (
+          <ItemList title="Длительность аренды" description={rentTime} />
+        )}
+        {rate && <ItemList title="Тариф" description={rate} />}
+        {fullTank && <ItemList title="Полный бак" description={'да'} />}
       </div>
-      <h3 className={styles.price}>{`Цена: от ${price} до ${price} ₽`}</h3>
+      {priceMin && priceMax && (
+        <h3
+          className={styles.price}
+        >{`Цена: от ${priceMin} до ${priceMax} ₽`}</h3>
+      )}
       <MainButton
         buttonWidth="orderWidth"
         type={type}

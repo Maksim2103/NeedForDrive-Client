@@ -11,20 +11,11 @@ import LocationSelect from './LocationSelect';
 
 import styles from './orderLocation.module.scss';
 
-// const initialOrderConditionsData = [
-//   {
-//     title: 'Пункт выдачи',
-//     description: 'Ульяновск',
-//     doubleDescription: 'Нариманова 42',
-//   },
-// ];
-
-const price = 'Цена: от 8 000 до 12 000 ₽';
 const buttonTitle = 'Выбрать модель';
 const buttonLink = '/order/model';
 const buttonType = 'order';
 
-const OrderLocation = ({ setIsBreadCrumbs, data }) => {
+const OrderLocation = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state);
@@ -61,8 +52,6 @@ const OrderLocation = ({ setIsBreadCrumbs, data }) => {
       </div>
       <div className={styles.colRight}>
         <OrderConditions
-          data={data}
-          price={price}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
           type={buttonType}
