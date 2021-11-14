@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   YMaps,
@@ -9,14 +9,27 @@ import {
   ZoomControl,
 } from 'react-yandex-maps';
 
-import { selectCityCoordinate } from '../../../../../redux/reducers/orderSlice';
+import {
+  selectCityCoordinate,
+  selectFilteredPoints,
+  selectPointsCoordinates,
+} from '../../../../../redux/reducers/orderSlice';
+import { fetchAsyncGetPointsCoordinates } from '../../../../../redux/thunks';
 
 import styles from './locationMap.module.scss';
 
 const LocationMap = () => {
-  const responseCityCoordinates = useSelector(selectCityCoordinate);
+  const dispatch = useDispatch();
+  const cityCoordinatesData = useSelector(selectCityCoordinate);
+  const filteredPointsData = useSelector(selectFilteredPoints);
+  const pointsCoordinatesData = useSelector(selectPointsCoordinates);
 
-  const cityCoordinates = responseCityCoordinates?.map((el) => Number(el));
+  const cityCoordinates = cityCoordinatesData?.map((el) => Number(el));
+  const pointsCoordinates = pointsCoordinatesData?.map((el) => Number(el));
+
+  useEffect(() => {
+    dispatch(fetchAsyncGetPointsCoordinates(filteredPointsData));
+  }, [dispatch, filteredPointsData]);
 
   return (
     <div className={styles.mapContainer}>
@@ -29,7 +42,9 @@ const LocationMap = () => {
             zoom: 12,
           }}
         >
-          <Placemark geometry={[55.758493564040364, 37.61172907607578]} />
+          {pointsCoordinates?.map((el) => (
+            <Placemark geometry={el} />
+          ))}
           <FullscreenControl options={{ float: 'right' }} />
           <ZoomControl options={{ position: 'top' }} />
         </Map>

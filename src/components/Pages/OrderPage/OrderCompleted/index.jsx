@@ -43,7 +43,7 @@ const buttonTitle = 'Отменить';
 const buttonLink = '/order/total';
 const buttonType = 'fuel';
 
-const OrderCompleted = ({ setIsBreadCrumbs }) => {
+const OrderCompleted = ({ data, setIsBreadCrumbs }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>

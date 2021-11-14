@@ -11,20 +11,20 @@ import LocationSelect from './LocationSelect';
 
 import styles from './orderLocation.module.scss';
 
-const initialOrderConditionsData = [
-  {
-    title: 'Пункт выдачи',
-    description: 'Ульяновск',
-    doubleDescription: 'Нариманова 42',
-  },
-];
+// const initialOrderConditionsData = [
+//   {
+//     title: 'Пункт выдачи',
+//     description: 'Ульяновск',
+//     doubleDescription: 'Нариманова 42',
+//   },
+// ];
 
 const price = 'Цена: от 8 000 до 12 000 ₽';
 const buttonTitle = 'Выбрать модель';
 const buttonLink = '/order/model';
 const buttonType = 'order';
 
-const OrderLocation = ({ setIsBreadCrumbs }) => {
+const OrderLocation = ({ setIsBreadCrumbs, data }) => {
   const dispatch = useDispatch();
 
   const state = useSelector((state) => state);
@@ -33,9 +33,12 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
     orderPage: {
       orderForm: {
         cityId: { name },
+        pointId: { address },
       },
     },
   } = state;
+
+  const pointAddress = `${name} ${address}`;
 
   useEffect(() => {
     dispatch(fetchAsyncGetCities());
@@ -46,8 +49,8 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchAsyncGetCityCoordinates(name));
-  }, [dispatch, name]);
+    dispatch(fetchAsyncGetCityCoordinates(pointAddress));
+  }, [dispatch, pointAddress]);
 
   return (
     <div className={styles.wrapper}>
@@ -58,7 +61,7 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
       </div>
       <div className={styles.colRight}>
         <OrderConditions
-          data={initialOrderConditionsData}
+          data={data}
           price={price}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}

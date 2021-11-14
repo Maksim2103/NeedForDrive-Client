@@ -3,11 +3,13 @@ import {
   fetchAsyncGetCities,
   fetchAsyncGetCityCoordinates,
   fetchAsyncGetPoints,
+  fetchAsyncGetPointsCoordinates,
 } from '../thunks';
 
 export const orderSlice = createSlice({
   name: 'orderSlice',
   initialState: {
+    filteredPoints: [],
     orderForm: {
       orderStatusId: {},
       cityId: {
@@ -35,6 +37,9 @@ export const orderSlice = createSlice({
     },
     setPoint: (state, action) => {
       state.orderForm.pointId.address = action.payload;
+    },
+    setFilteredPoints: (state, action) => {
+      state.filteredPoints = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -79,6 +84,28 @@ export const orderSlice = createSlice({
       state.loadingResponseCoordinates = 'failed';
       state.errorResponseCoordinates = action.error.message;
     });
+
+    builder.addCase(fetchAsyncGetPointsCoordinates.pending, (state) => {
+      state.dataResponsePointsCoordinates = [];
+      state.loadingResponsePointsCoordinates = 'pending';
+    });
+    builder.addCase(
+      fetchAsyncGetPointsCoordinates.fulfilled,
+      (state, payload) => {
+        state.dataResponsePointsCoordinates = [
+          ...state.dataResponsePointsCoordinates,
+          payload.payload,
+        ];
+        state.loadingResponsePointsCoordinates = 'succeeded';
+      },
+    );
+    builder.addCase(
+      fetchAsyncGetPointsCoordinates.rejected,
+      (state, action) => {
+        state.loadingResponsePointsCoordinates = 'failed';
+        state.errorResponsePointsCoordinates = action.error.message;
+      },
+    );
   },
 });
 
@@ -90,7 +117,10 @@ export const selectResponsePoints = (state = []) =>
 export const selectOrderForm = (state) => state.orderPage.orderForm;
 export const selectCityCoordinate = (state = []) =>
   state.orderPage.dataResponseCoordinates;
+export const selectFilteredPoints = (state) => state.orderPage.filteredPoints;
+export const selectPointsCoordinates = (state) =>
+  state.orderPage.dataResponsePointsCoordinates;
 
-export const { setCityName, setPoint } = orderSlice.actions;
+export const { setCityName, setPoint, setFilteredPoints } = orderSlice.actions;
 
 export default orderSlice.reducer;

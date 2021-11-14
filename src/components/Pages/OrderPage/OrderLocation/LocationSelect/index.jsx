@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectResponseCities,
   selectResponsePoints,
   setPoint,
   setCityName,
+  setFilteredPoints,
 } from '../../../../../redux/reducers/orderSlice';
+import { fetchAsyncGetPointsCoordinates } from '../../../../../redux/thunks';
 
 import styles from './locationSelect.module.scss';
 
@@ -20,6 +22,7 @@ const LocationSelect = () => {
 
   const handleChangeCityName = (e) => {
     const value = e.target.value;
+    console.log(`value name change`, value);
     setCityNameLocation(value);
     dispatch(setCityName(value));
   };
@@ -41,11 +44,30 @@ const LocationSelect = () => {
     dispatch(setPoint(''));
   };
 
-  const filteredPointsData = pointsData?.filter((el) => {
-    if (el.cityId?.name === cityNameLocation) {
-      return el;
-    }
-  });
+  const filteredPointsData = useMemo(
+    () =>
+      pointsData?.filter((el) => {
+        if (el.cityId?.name === cityNameLocation) {
+          return el;
+        }
+      }),
+    [pointsData, cityNameLocation],
+  );
+
+  useEffect(() => {
+    dispatch(setFilteredPoints(filteredPointsData));
+  }, [dispatch, filteredPointsData]);
+
+  const foo = useMemo(
+    () =>
+      filteredPointsData?.map((el) => {
+        const address = `${el.cityId.name} ${el.address}`;
+        dispatch(fetchAsyncGetPointsCoordinates(address));
+      }),
+    [filteredPointsData],
+  );
+
+  console.log(`cityNameLocation`, cityNameLocation);
 
   return (
     <div className={styles.container}>

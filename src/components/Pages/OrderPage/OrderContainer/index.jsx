@@ -14,9 +14,14 @@ import styles from './orderContainer.module.scss';
 import OrderTotal from '../OrderTotal';
 import OrderConfirm from '../OrderConfirm';
 import OrderCompleted from '../OrderCompleted';
+import { useSelector } from 'react-redux';
+import { selectOrderForm } from '../../../../redux/reducers/orderSlice';
 
 const OrderContainer = () => {
+  const orderFormData = useSelector(selectOrderForm);
   const [isBreadCrumbs, setIsBreadCrumbs] = useState(true);
+
+  console.log(`orderFormData`, orderFormData);
 
   return (
     <div className={styles.orderContainer}>
@@ -33,34 +38,60 @@ const OrderContainer = () => {
           exact
           path="/order/location"
           component={() => (
-            <OrderLocation setIsBreadCrumbs={setIsBreadCrumbs} />
+            <OrderLocation
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              data={orderFormData}
+            />
           )}
         />
         <Route
           exact
           path="/order/model"
-          component={() => <OrderModel setIsBreadCrumbs={setIsBreadCrumbs} />}
+          component={() => (
+            <OrderModel
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              data={orderFormData}
+            />
+          )}
         />
         <Route
           exact
           path="/order/options"
-          component={() => <OrderOptions setIsBreadCrumbs={setIsBreadCrumbs} />}
+          component={() => (
+            <OrderOptions
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              data={orderFormData}
+            />
+          )}
         />
         <Route
           exact
           path="/order/total"
-          component={() => <OrderTotal setIsBreadCrumbs={setIsBreadCrumbs} />}
+          component={() => (
+            <OrderTotal
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              data={orderFormData}
+            />
+          )}
         />
         <Route
           exact
           path="/order/confirm"
-          component={() => <OrderConfirm setIsBreadCrumbs={setIsBreadCrumbs} />}
+          component={() => (
+            <OrderConfirm
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              data={orderFormData}
+            />
+          )}
         />
         <Route
           exact
           path="/order/completed"
           component={() => (
-            <OrderCompleted setIsBreadCrumbs={setIsBreadCrumbs} />
+            <OrderCompleted
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              data={orderFormData}
+            />
           )}
         />
         <Route exact path="*" component={NotFoundPage} />

@@ -32,8 +32,21 @@ const fetchAsyncGetCityCoordinates = createAsyncThunk(
   },
 );
 
+const fetchAsyncGetPointsCoordinates = createAsyncThunk(
+  '/fetchAsyncGetPointsCoordinates',
+  async (points) => {
+    const response = await mapApiAxiosInstance.get(
+      `/?apikey=${mapApiKey}&format=json&geocode=${points}`,
+    );
+    return response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+      .split(' ')
+      .reverse();
+  },
+);
+
 export {
   fetchAsyncGetCities,
   fetchAsyncGetPoints,
   fetchAsyncGetCityCoordinates,
+  fetchAsyncGetPointsCoordinates,
 };
