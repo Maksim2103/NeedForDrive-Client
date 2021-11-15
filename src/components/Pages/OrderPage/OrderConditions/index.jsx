@@ -5,7 +5,6 @@ import {
   selectColor,
   selectIsFullTank,
   selectModel,
-  selectOrderForm,
   selectPoint,
   selectRate,
 } from '../../../../redux/reducers/orderSlice';

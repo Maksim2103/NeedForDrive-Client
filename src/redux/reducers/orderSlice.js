@@ -129,7 +129,7 @@ export const orderSlice = createSlice({
 export const selectResponseCities = (state = []) =>
   state.orderPage.dataResponseCities;
 export const selectCity = (state) => state.orderPage.orderForm.cityId.name;
-export const selectPoint = (state) => state.orderPage.orderForm.pointId.name;
+export const selectPoint = (state) => state.orderPage.orderForm.pointId.address;
 export const selectPriceMin = (state) =>
   state.orderPage.orderForm.carId.priceMin;
 export const selectPriceMax = (state) =>
