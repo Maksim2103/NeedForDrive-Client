@@ -7,8 +7,6 @@ import styles from './headerContent.module.scss';
 const HeaderContent = () => {
   const city = useSelector(selectCity);
 
-  useEffect(() => {}, [city]);
-
   return (
     <div className={styles.wrapper}>
       <p className={styles.title}>Need for drive</p>

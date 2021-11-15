@@ -5,7 +5,9 @@ import {
   selectResponsePoints,
   setPoint,
   setCityName,
-  setResetPointsCoordinates,
+  setResetCityAndPointValues,
+  selectPoint,
+  selectCity,
 } from '../../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetPointsCoordinates } from '../../../../../redux/thunks';
 
@@ -17,19 +19,11 @@ const LocationSelect = () => {
   const citiesData = useSelector(selectResponseCities);
   const pointsData = useSelector(selectResponsePoints);
 
-  const state = useSelector((state) => state);
+  const cityName = useSelector(selectCity);
+  const pointName = useSelector(selectPoint);
 
-  const {
-    orderPage: {
-      orderForm: {
-        cityId: { name },
-        pointId: { address },
-      },
-    },
-  } = state;
-
-  const [cityNameLocation, setCityNameLocation] = useState(name);
-  const [pointLocation, setPointLocation] = useState(address);
+  const [cityNameLocation, setCityNameLocation] = useState(cityName);
+  const [pointLocation, setPointLocation] = useState(pointName);
 
   const handleChangeCityName = (e) => {
     const value = e.target.value;
@@ -45,9 +39,8 @@ const LocationSelect = () => {
 
   const handleResetCityValue = () => {
     setCityNameLocation('');
-    dispatch(setCityName(''));
     handleResetPoint();
-    dispatch(setResetPointsCoordinates([]));
+    dispatch(setResetCityAndPointValues());
   };
 
   const handleResetPoint = () => {
@@ -68,6 +61,8 @@ const LocationSelect = () => {
       }),
     [dispatch, filteredPointsData],
   );
+
+  const isPoints = filteredPointsData?.length !== 0;
 
   return (
     <div className={styles.container}>
@@ -97,9 +92,12 @@ const LocationSelect = () => {
         <input
           type="text"
           list="points"
-          placeholder="Начните вводить пункт..."
+          placeholder={
+            isPoints ? 'Начните вводить пункт...' : 'Нет доступных точек'
+          }
           value={pointLocation}
           onChange={handleChangePoint}
+          disabled={!isPoints}
         />
         <datalist id="points">
           {filteredPointsData?.map((el) => {

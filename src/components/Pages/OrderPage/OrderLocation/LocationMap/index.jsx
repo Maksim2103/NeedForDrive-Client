@@ -42,7 +42,7 @@ const LocationMap = () => {
           }}
         >
           {pointsCoordinates?.map((el, i) => (
-            <Placemark key={i} geometry={el} />
+            <Placemark key={i} geometry={el} options={{ cursor: 'none' }} />
           ))}
           <FullscreenControl options={{ float: 'right' }} />
           <ZoomControl options={{ position: 'top' }} />

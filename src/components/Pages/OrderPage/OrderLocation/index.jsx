@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectCity, selectPoint } from '../../../../redux/reducers/orderSlice';
 import {
   fetchAsyncGetCities,
   fetchAsyncGetCityCoordinates,
@@ -18,18 +19,10 @@ const buttonType = 'order';
 const OrderLocation = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state);
+  const cityName = useSelector(selectCity);
+  const pointName = useSelector(selectPoint);
 
-  const {
-    orderPage: {
-      orderForm: {
-        cityId: { name },
-        pointId: { address },
-      },
-    },
-  } = state;
-
-  const pointAddress = `${name} ${address}`;
+  const pointAddress = `${cityName} ${pointName}`;
 
   useEffect(() => {
     dispatch(fetchAsyncGetCities());
@@ -47,8 +40,11 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
         <LocationSelect />
-        <p className={styles.text}>Выбрать на карте:</p>
-        <LocationMap />
+        {cityName && (
+          <>
+            <p className={styles.text}>Выбрать на карте:</p> <LocationMap />
+          </>
+        )}
       </div>
       <div className={styles.colRight}>
         <OrderConditions

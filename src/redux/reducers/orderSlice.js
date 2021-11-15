@@ -13,22 +13,32 @@ export const orderSlice = createSlice({
     orderForm: {
       orderStatusId: {},
       cityId: {
-        name: 'Казань',
+        name: '',
       },
       pointId: {
         name: '',
         cityId: {},
         address: '',
       },
-      carId: {},
+      carId: {
+        priceMax: 0,
+        priceMin: 0,
+        name: '',
+        thumbnail: {},
+        description: '',
+        categoryId: {},
+        colors: [''],
+      },
       color: '',
       dateFrom: '',
       dateTo: 0,
-      rateId: {},
+      rateId: {
+        name: '',
+      },
       price: 0,
-      isFullTank: true,
-      isNeedChildChair: true,
-      isRightWheel: true,
+      isFullTank: false,
+      isNeedChildChair: false,
+      isRightWheel: false,
     },
   },
   reducers: {
@@ -43,6 +53,10 @@ export const orderSlice = createSlice({
     },
     setResetPointsCoordinates: (state) => {
       state.dataResponsePointsCoordinates = [];
+    },
+    setResetCityAndPointValues: (state) => {
+      state.dataResponsePointsCoordinates = [];
+      state.orderForm.cityId.name = '';
     },
   },
   extraReducers: (builder) => {
@@ -115,6 +129,22 @@ export const orderSlice = createSlice({
 export const selectResponseCities = (state = []) =>
   state.orderPage.dataResponseCities;
 export const selectCity = (state) => state.orderPage.orderForm.cityId.name;
+export const selectPoint = (state) => state.orderPage.orderForm.pointId.name;
+export const selectPriceMin = (state) =>
+  state.orderPage.orderForm.carId.priceMin;
+export const selectPriceMax = (state) =>
+  state.orderPage.orderForm.carId.priceMax;
+export const selectModel = (state) => state.orderPage.orderForm.carId.name;
+export const selectColor = (state) => state.orderPage.orderForm.color;
+export const selectDateFrom = (state) => state.orderPage.orderForm.dateFrom;
+export const selectDateTo = (state) => state.orderPage.orderForm.dateTo;
+export const selectRate = (state) => state.orderPage.orderForm.rateId.name;
+export const selectPrice = (state) => state.orderPage.orderForm.price;
+export const selectIsFullTank = (state) => state.orderPage.orderForm.isFullTank;
+export const selectIsNeedChildChair = (state) =>
+  state.orderPage.orderForm.isNeedChildChair;
+export const selectIsRightWheel = (state) =>
+  state.orderPage.orderForm.isRightWheel;
 export const selectResponsePoints = (state = []) =>
   state.orderPage.dataResponsePoints;
 export const selectOrderForm = (state) => state.orderPage.orderForm;
@@ -129,6 +159,7 @@ export const {
   setPoint,
   setFilteredPoints,
   setResetPointsCoordinates,
+  setResetCityAndPointValues,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

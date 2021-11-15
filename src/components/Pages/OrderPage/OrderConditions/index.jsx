@@ -1,6 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectOrderForm } from '../../../../redux/reducers/orderSlice';
+import {
+  selectCity,
+  selectColor,
+  selectIsFullTank,
+  selectModel,
+  selectOrderForm,
+  selectPoint,
+  selectRate,
+} from '../../../../redux/reducers/orderSlice';
 import MainButton from '../../../MainButton';
 import ItemList from './ItemList';
 
@@ -12,19 +20,15 @@ const OrderConditions = ({
   type,
   setIsBreadCrumbs,
 }) => {
-
-  const data = useSelector(selectOrderForm);
-
-  const cityName = data.cityId?.name;
-  const pointName = data.pointId?.address;
-  const model = data.carId?.name;
-  const color = data.carId?.color;
+  const cityName = useSelector(selectCity);
+  const pointName = useSelector(selectPoint);
+  const model = useSelector(selectModel);
+  const color = useSelector(selectColor);
+  const rate = useSelector(selectRate);
   const rentTime = '';
-  const rate = data?.rateId.name;
-  const fullTank = data?.isFillTank;
+  const fullTank = useSelector(selectIsFullTank);
   const priceMin = '';
   const priceMax = '';
-
 
   return (
     <div>
