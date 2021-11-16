@@ -16,7 +16,6 @@ const OrderOptions = ({ data, setIsBreadCrumbs }) => {
       </div>
       <div className={styles.colRight}>
         <OrderConditions
-          // data={data}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
           type={buttonType}

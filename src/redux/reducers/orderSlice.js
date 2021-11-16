@@ -57,6 +57,7 @@ export const orderSlice = createSlice({
     setResetCityAndPointValues: (state) => {
       state.dataResponsePointsCoordinates = [];
       state.orderForm.cityId.name = '';
+      state.orderForm.pointId.address = '';
     },
   },
   extraReducers: (builder) => {

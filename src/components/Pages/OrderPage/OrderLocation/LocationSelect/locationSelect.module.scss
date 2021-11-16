@@ -2,105 +2,55 @@ $grey-color-dark: #999999;
 $main-color-black: #121212;
 
 .container {
-  margin-bottom: 40px;
+  margin-bottom: 90px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  width: 310px;
-  input {
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-    flex: 1;
-    padding-left: 5px;
+  width: 42%;
+  height: 20px;
+  &__input {
+    margin-bottom: 8px;
+    align-items: center;
+    display: flex;
+  }
+  &__text {
+    margin-right: 3px;
+    text-align: right;
+    width: 95px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
     font-size: 14px;
     line-height: 16px;
-    color: $grey-color-dark;
-  }
-  &__button,
-  &__button_points {
-    border: none;
-    content: '';
-    position: absolute;
-    background-color: white;
-    background-image: url('../../../../../assets/images/CloseIcon.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 10px;
-    height: 10px;
-    right: 6px;
-    top: 5px;
-    z-index: 99999;
-    cursor: pointer;
-  }
-  &__button_points {
-    right: 6px;
-    top: 31px;
-  }
-  &__input {
-    margin-bottom: 8px;
-    span {
-      margin-right: 10px;
-      text-align: right;
-      width: 95px;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: 300;
-      font-size: 14px;
-      line-height: 16px;
-      color: $main-color-black;
-    }
-    display: flex;
+    color: $main-color-black;
+    height: 20px;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
   .container {
-    input {
-      font-size: 12px;
-    }
-    &__input {
-      span {
-        font-size: 12px;
-      }
-    }
+    width: 70%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .container {
-    input {
-      font-size: 12px;
-    }
-    &__input {
-      span {
-        font-size: 12px;
-      }
-    }
+    width: 90%;
   }
 }
 
 @media (max-width: 767px) {
   .container {
     width: 100%;
-    margin-bottom: 40px;
-
-    input {
-      font-size: 12px;
-    }
-    &__input {
-      span {
-        font-size: 12px;
-        width: 80px;
-      }
-    }
+    margin-bottom: 60px;
   }
 }
 
-@media screen and (max-height: 600px) {
+@media (max-width: 320px) {
   .container {
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 60px;
+    &__text {
+      font-size: 12px;
+    }
   }
 }

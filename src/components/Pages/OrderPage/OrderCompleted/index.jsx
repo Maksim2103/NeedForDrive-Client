@@ -17,8 +17,6 @@ const OrderCompleted = ({ setIsBreadCrumbs }) => {
       </div>
       <div className={styles.colRight}>
         <OrderConditions
-          // data={initialOrderConditionsData}
-          // price={price}
           buttonTitle={buttonTitle}
           buttonLink={buttonLink}
           type={buttonType}
