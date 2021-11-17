@@ -2,19 +2,24 @@ import React from 'react';
 
 import styles from './modelItem.module.scss';
 
-import classNames from 'classnames/bind';
+const ModelItem = ({ model, img, minPrice, maxPrice, onClick }) => {
+  const price = `${minPrice} - ${maxPrice} ₽`;
 
-const cx = classNames.bind(styles);
-
-const ModelItem = ({ model, img, price, active }) => {
   return (
-    <div className={cx('itemContainer', active ? 'active' : null)}>
+    <div className={styles.itemContainer} onClick={onClick}>
       <div className={styles.itemDescription}>
         <h3 className={styles.model}>{model}</h3>
         <h3 className={styles.price}>{price}</h3>
       </div>
       <div className={styles.itemImage}>
-        <img src={img} alt="car" />
+        <img
+          alt="Car_Photo "
+          src={img}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://pixy.org/src/38/386334.png';
+          }}
+        />
       </div>
     </div>
   );

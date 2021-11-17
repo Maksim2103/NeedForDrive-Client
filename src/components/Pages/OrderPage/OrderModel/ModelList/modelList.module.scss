@@ -2,8 +2,10 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-  max-height: 576px;
-  overflow: hidden;
+}
+
+.active {
+  border: 1px solid green;
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {

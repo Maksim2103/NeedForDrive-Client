@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  fetchAsyncGetCars,
   fetchAsyncGetCities,
   fetchAsyncGetCityCoordinates,
   fetchAsyncGetPoints,
@@ -10,6 +11,9 @@ export const orderSlice = createSlice({
   name: 'orderSlice',
   initialState: {
     filteredPoints: [],
+    filterParams: {
+      category: '',
+    },
     orderForm: {
       orderStatusId: {},
       cityId: {
@@ -21,12 +25,14 @@ export const orderSlice = createSlice({
         address: '',
       },
       carId: {
-        priceMax: 0,
-        priceMin: 0,
+        priceMax: '',
+        priceMin: '',
         name: '',
         thumbnail: {},
         description: '',
-        categoryId: {},
+        categoryId: {
+          name: '',
+        },
         colors: [''],
       },
       color: '',
@@ -58,6 +64,12 @@ export const orderSlice = createSlice({
       state.dataResponsePointsCoordinates = [];
       state.orderForm.cityId.name = '';
       state.orderForm.pointId.address = '';
+    },
+    setCategory: (state, action) => {
+      state.filterParams.category = action.payload;
+    },
+    setFilteredCar: (state, action) => {
+      state.orderForm.carId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -124,6 +136,19 @@ export const orderSlice = createSlice({
         state.errorResponsePointsCoordinates = action.error.message;
       },
     );
+
+    builder.addCase(fetchAsyncGetCars.pending, (state) => {
+      state.dataResponseCars = [];
+      state.loadingResponseCars = 'pending';
+    });
+    builder.addCase(fetchAsyncGetCars.fulfilled, (state, { payload }) => {
+      state.dataResponseCars = payload;
+      state.loadingResponseCars = 'succeeded';
+    });
+    builder.addCase(fetchAsyncGetCars.rejected, (state, action) => {
+      state.loadingResponseCars = 'failed';
+      state.errorResponseCars = action.error.message;
+    });
   },
 });
 
@@ -136,6 +161,7 @@ export const selectPriceMin = (state) =>
 export const selectPriceMax = (state) =>
   state.orderPage.orderForm.carId.priceMax;
 export const selectModel = (state) => state.orderPage.orderForm.carId.name;
+export const selectCategory = (state) => state.orderPage.filterParams.category;
 export const selectColor = (state) => state.orderPage.orderForm.color;
 export const selectDateFrom = (state) => state.orderPage.orderForm.dateFrom;
 export const selectDateTo = (state) => state.orderPage.orderForm.dateTo;
@@ -154,6 +180,10 @@ export const selectCityCoordinate = (state = []) =>
 export const selectFilteredPoints = (state) => state.orderPage.filteredPoints;
 export const selectPointsCoordinates = (state = []) =>
   state.orderPage.dataResponsePointsCoordinates;
+export const selectResponseCars = (state = []) =>
+  state.orderPage.dataResponseCars;
+export const selectResponseCarsStatus = (state = []) =>
+  state.orderPage.loadingResponseCars;
 
 export const {
   setCityName,
@@ -161,6 +191,8 @@ export const {
   setFilteredPoints,
   setResetPointsCoordinates,
   setResetCityAndPointValues,
+  setCategory,
+  setFilteredCar,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;
