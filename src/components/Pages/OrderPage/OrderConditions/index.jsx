@@ -6,6 +6,8 @@ import {
   selectIsFullTank,
   selectModel,
   selectPoint,
+  selectPriceMax,
+  selectPriceMin,
   selectRate,
 } from '../../../../redux/reducers/orderSlice';
 import MainButton from '../../../MainButton';
@@ -26,8 +28,8 @@ const OrderConditions = ({
   const rate = useSelector(selectRate);
   const rentTime = '';
   const fullTank = useSelector(selectIsFullTank);
-  const priceMin = '';
-  const priceMax = '';
+  const priceMin = useSelector(selectPriceMin);
+  const priceMax = useSelector(selectPriceMax);
 
   return (
     <div>

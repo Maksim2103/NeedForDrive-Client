@@ -23,6 +23,10 @@ $grey-color-dark: #999999;
 .itemImage {
   display: flex;
   justify-content: flex-end;
+  img {
+    width: 256px;
+    height: 116px;
+  }
 }
 
 .model {

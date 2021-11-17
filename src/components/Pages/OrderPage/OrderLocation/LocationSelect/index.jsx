@@ -82,9 +82,9 @@ const LocationSelect = () => {
   };
 
   const handleChangeCityName = (val, { action }) => {
+    inputPointRef.current.clearValue();
     if (action === 'clear') {
       handleResetCityAndPointValue();
-      inputPointRef.current.clearValue();
       return;
     }
     const value = val.value;
@@ -133,6 +133,7 @@ const LocationSelect = () => {
         <span className={styles.container__text}>Город</span>
         <Select
           styles={customStyles}
+          defaultInputValue={cityNameLocation}
           onChange={handleChangeCityName}
           options={optionsCities}
           isClearable
