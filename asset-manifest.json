@@ -1,32 +1,29 @@
 {
   "files": {
-    "main.css": "/gh-pages-start/static/css/main.84d132f8.chunk.css",
-    "main.js": "/gh-pages-start/static/js/main.b22cd8ec.chunk.js",
-    "main.js.map": "/gh-pages-start/static/js/main.b22cd8ec.chunk.js.map",
+    "main.css": "/gh-pages-start/static/css/main.6be0a3c9.chunk.css",
+    "main.js": "/gh-pages-start/static/js/main.7e66a7ee.chunk.js",
+    "main.js.map": "/gh-pages-start/static/js/main.7e66a7ee.chunk.js.map",
     "runtime-main.js": "/gh-pages-start/static/js/runtime-main.e3856f37.js",
     "runtime-main.js.map": "/gh-pages-start/static/js/runtime-main.e3856f37.js.map",
     "static/css/2.1c5cea00.chunk.css": "/gh-pages-start/static/css/2.1c5cea00.chunk.css",
-    "static/js/2.23413f6d.chunk.js": "/gh-pages-start/static/js/2.23413f6d.chunk.js",
-    "static/js/2.23413f6d.chunk.js.map": "/gh-pages-start/static/js/2.23413f6d.chunk.js.map",
+    "static/js/2.d3c94f3d.chunk.js": "/gh-pages-start/static/js/2.d3c94f3d.chunk.js",
+    "static/js/2.d3c94f3d.chunk.js.map": "/gh-pages-start/static/js/2.d3c94f3d.chunk.js.map",
     "index.html": "/gh-pages-start/index.html",
     "static/css/2.1c5cea00.chunk.css.map": "/gh-pages-start/static/css/2.1c5cea00.chunk.css.map",
-    "static/css/main.84d132f8.chunk.css.map": "/gh-pages-start/static/css/main.84d132f8.chunk.css.map",
-    "static/js/2.23413f6d.chunk.js.LICENSE.txt": "/gh-pages-start/static/js/2.23413f6d.chunk.js.LICENSE.txt",
+    "static/css/main.6be0a3c9.chunk.css.map": "/gh-pages-start/static/css/main.6be0a3c9.chunk.css.map",
+    "static/js/2.d3c94f3d.chunk.js.LICENSE.txt": "/gh-pages-start/static/js/2.d3c94f3d.chunk.js.LICENSE.txt",
     "static/media/sliderItem.module.scss": "/gh-pages-start/static/media/BackgroundSlider4.028aadac.png",
     "static/media/headerContent.module.scss": "/gh-pages-start/static/media/Group.dd9d4bed.svg",
     "static/media/App.module.scss": "/gh-pages-start/static/media/Roboto-Regular.a8d6ac03.ttf",
     "static/media/orderBreadCrumbs.module.scss": "/gh-pages-start/static/media/TriangularSeparator.ce81e742.svg",
-    "static/media/car1.7e813c65.png": "/gh-pages-start/static/media/car1.7e813c65.png",
     "static/media/car2.1d3c5aa9.png": "/gh-pages-start/static/media/car2.1d3c5aa9.png",
-    "static/media/car3.7a2c0518.png": "/gh-pages-start/static/media/car3.7a2c0518.png",
-    "static/media/car4.0c90fca2.png": "/gh-pages-start/static/media/car4.0c90fca2.png",
     "static/media/selectAdditionalServices.module.scss": "/gh-pages-start/static/media/check.17659989.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.e3856f37.js",
     "static/css/2.1c5cea00.chunk.css",
-    "static/js/2.23413f6d.chunk.js",
-    "static/css/main.84d132f8.chunk.css",
-    "static/js/main.b22cd8ec.chunk.js"
+    "static/js/2.d3c94f3d.chunk.js",
+    "static/css/main.6be0a3c9.chunk.css",
+    "static/js/main.7e66a7ee.chunk.js"
   ]
 }
