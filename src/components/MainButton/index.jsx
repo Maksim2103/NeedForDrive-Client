@@ -10,8 +10,17 @@ const cx = classNames.bind(styles);
 
 const MainButton = ({ buttonWidth, buttonTitle, type, link, onClick }) => {
   return (
-    <div className={cx('mainButton', `${type}`, `${buttonWidth}`)}>
-      <NavLink to={link} className={styles.applicationBtn} onClick={onClick}>
+    <div>
+      <NavLink
+        className={cx(
+          'mainButton',
+          'applicationBtn',
+          `${type}`,
+          `${buttonWidth}`,
+        )}
+        to={link}
+        onClick={onClick}
+      >
         {buttonTitle}
       </NavLink>
     </div>

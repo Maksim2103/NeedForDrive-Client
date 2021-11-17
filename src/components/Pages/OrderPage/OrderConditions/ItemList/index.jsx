@@ -8,10 +8,16 @@ const ItemList = ({ title, description, doubleDescription }) => {
       <ul className={styles.ingredients}>
         <li>
           <p className={styles.title}> {title}</p>
-          <div className={styles.value}>
-            <p className={styles.description}> {description} </p>
-            <p className={styles.description}> {doubleDescription} </p>
-          </div>
+          {doubleDescription ? (
+            <div className={styles.value}>
+              <p className={styles.description}> {description}, </p>
+              <p className={styles.description}> {doubleDescription} </p>
+            </div>
+          ) : (
+            <div className={styles.value}>
+              <p className={styles.description}> {description} </p>
+            </div>
+          )}
         </li>
       </ul>
     </div>
