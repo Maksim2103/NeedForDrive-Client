@@ -162,7 +162,7 @@ const LocationSelect = () => {
         <span className={styles.container__text}>Город</span>
         <Select
           styles={customStyles}
-          value={optionsCities.filter(function (option) {
+          value={optionsCities?.filter(function (option) {
             return option.value === cityNameLocation;
           })}
           onChange={handleChangeCityName}
@@ -177,7 +177,7 @@ const LocationSelect = () => {
         <span className={styles.container__text}>Пункт выдачи</span>
         <Select
           styles={customStyles}
-          value={optionsPoints.filter(function (option) {
+          value={optionsPoints?.filter(function (option) {
             return option.value === pointLocation;
           })}
           onChange={handleChangePoint}
