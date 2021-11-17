@@ -16,30 +16,33 @@ import styles from './locationSelect.module.scss';
 
 const LocationSelect = () => {
   const customStyles = {
-    menu: (provided, state) => ({
+    menu: (provided) => ({
       ...provided,
       width: 205,
       padding: 5,
     }),
-    control: (provided, state) => ({
+    control: (provided) => ({
       ...provided,
       width: 205,
       border: 'none',
       borderRadius: 'none',
       borderBottom: '1px solid #e0e0e0',
-      borderColor: 'red',
       height: '20px',
       boxShadow: '0 0 0 1px white',
+      ':hover': {
+        ...styles[':hover'],
+        borderColor: '#0ec261',
+      },
     }),
-    indicatorSeparator: (provided, state) => ({
+    indicatorSeparator: (provided) => ({
       ...provided,
       display: 'none',
     }),
-    dropdownIndicator: (provided, state) => ({
+    dropdownIndicator: (provided) => ({
       ...provided,
       display: 'none',
     }),
-    valueContainer: (provided, state) => ({
+    valueContainer: (provided) => ({
       ...provided,
       fontFamily: 'Roboto',
       fontStyle: 'normal',
@@ -48,7 +51,7 @@ const LocationSelect = () => {
       lineHeight: '16px',
       padding: '0 8px',
     }),
-    placeholder: (provided, state) => ({
+    placeholder: (provided) => ({
       ...provided,
       fontFamily: 'Roboto',
       fontStyle: 'normal',
@@ -79,7 +82,7 @@ const LocationSelect = () => {
           ...styles[':active'],
           backgroundColor: !isDisabled
             ? isSelected
-              ? data.color
+              ? '#56d490'
               : '#56d490'
             : undefined,
         },
@@ -159,7 +162,9 @@ const LocationSelect = () => {
         <span className={styles.container__text}>Город</span>
         <Select
           styles={customStyles}
-          defaultInputValue={cityNameLocation}
+          value={optionsCities.filter(function (option) {
+            return option.value === cityNameLocation;
+          })}
           onChange={handleChangeCityName}
           options={optionsCities}
           isClearable
@@ -172,7 +177,9 @@ const LocationSelect = () => {
         <span className={styles.container__text}>Пункт выдачи</span>
         <Select
           styles={customStyles}
-          defaultInputValue={pointLocation}
+          value={optionsPoints.filter(function (option) {
+            return option.value === pointLocation;
+          })}
           onChange={handleChangePoint}
           options={optionsPoints}
           isClearable
