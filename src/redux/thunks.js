@@ -52,10 +52,19 @@ const fetchAsyncGetCars = createAsyncThunk(
   },
 );
 
+const fetchAsyncGetRate = createAsyncThunk(
+  '/db/rate/fetchAsyncGetRate',
+  async () => {
+    const response = await axiosInstance.get(`/db/rate`);
+    return response.data.data;
+  },
+);
+
 export {
   fetchAsyncGetCities,
   fetchAsyncGetPoints,
   fetchAsyncGetCityCoordinates,
   fetchAsyncGetPointsCoordinates,
   fetchAsyncGetCars,
+  fetchAsyncGetRate,
 };

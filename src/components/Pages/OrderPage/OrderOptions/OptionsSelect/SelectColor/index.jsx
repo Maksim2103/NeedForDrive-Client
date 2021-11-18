@@ -41,7 +41,7 @@ const SelectColor = () => {
         </label>
 
         {availableColorsData?.map((el) => (
-          <label className={styles.container}>
+          <label key={el} className={styles.container}>
             <input
               className={styles.radioInputButton}
               type="radio"

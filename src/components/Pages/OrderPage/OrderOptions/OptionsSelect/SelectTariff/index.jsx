@@ -1,49 +1,52 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import styles from './selectTariff.module.scss';
 
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
+import {
+  selectResponseRateData,
+  setRate,
+} from '../../../../../../redux/reducers/orderSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SelectTariff = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const colorCar = useSelector(selectColor);
-  // const availableColorsData = useSelector(selectAvailableColorsCar);
+  const rateData = useSelector(selectResponseRateData);
 
-  // const [value, setValue] = useState(colorCar);
+  const [value, setValue] = useState('5fd91571935d4e0be16a3c44');
 
-  // const handleChangeValue = (e) => {
-  //   const value = e.target.value;
-  //   setValue(value);
-  //   dispatch(setColorCar(value));
-  // };
+  const handleChangeValue = (e) => {
+    const value = e.target.value;
+    setValue(value);
+  };
+
+  const filteredRateData = useMemo(
+    () => rateData?.filter((el) => el.id === value),
+    [rateData, value],
+  );
+
+  useEffect(() => {
+    dispatch(setRate(filteredRateData));
+  }, [dispatch, filteredRateData]);
 
   return (
     <div className={styles.wrapper}>
       <h4 className={styles.title}>Тариф</h4>
       <div className={styles.inputsWrapper}>
-        <label className={styles.container}>
-          <input
-            className={styles.radioInputButton}
-            type="radio"
-            name="TariffSelect"
-          />
-          <span className={styles.radioSpan}></span>
-          Поминутно, 7₽/мин
-        </label>
-
-        <label className={cx('container', 'label-active')}>
-          <input
-            className={styles.radioInputButton}
-            type="radio"
-            name="TariffSelect"
-            checked
-          />
-          <span className={styles.radioSpan}></span>
-          На сутки, 1999 ₽/сутки
-        </label>
+        {rateData?.map((el) => (
+          <label className={styles.container} key={el.id}>
+            <input
+              className={styles.radioInputButton}
+              type="radio"
+              name="RateSelect"
+              value={el.id}
+              checked={value === el.id ? true : false}
+              onChange={handleChangeValue}
+            />
+            <span className={styles.radioSpan}></span>
+            {`${el.rateTypeId?.name}, ${el.price}₽/${el.rateTypeId?.unit}`}
+          </label>
+        ))}
       </div>
     </div>
   );

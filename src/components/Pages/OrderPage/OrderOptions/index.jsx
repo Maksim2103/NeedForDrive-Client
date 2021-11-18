@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchAsyncGetRate } from '../../../../redux/thunks';
 import OrderConditions from '../OrderConditions';
 import OptionsSelect from './OptionsSelect';
 
@@ -9,6 +11,12 @@ const buttonLink = '/order/total';
 const buttonType = 'order';
 
 const OrderOptions = ({ setIsBreadCrumbs }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAsyncGetRate());
+  }, [dispatch]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>

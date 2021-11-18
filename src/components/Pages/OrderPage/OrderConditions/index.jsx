@@ -8,7 +8,7 @@ import {
   selectPoint,
   selectPriceMax,
   selectPriceMin,
-  selectRate,
+  // selectRate,
 } from '../../../../redux/reducers/orderSlice';
 import MainButton from '../../../MainButton';
 import ItemList from './ItemList';
@@ -25,7 +25,7 @@ const OrderConditions = ({
   const pointName = useSelector(selectPoint);
   const model = useSelector(selectModel);
   const color = useSelector(selectColor);
-  const rate = useSelector(selectRate);
+  // const rate = useSelector(selectRate);
   const rentTime = '';
   const fullTank = useSelector(selectIsFullTank);
   const priceMin = useSelector(selectPriceMin);
@@ -47,7 +47,7 @@ const OrderConditions = ({
         {rentTime && (
           <ItemList title="Длительность аренды" description={rentTime} />
         )}
-        {rate && <ItemList title="Тариф" description={rate} />}
+        {/* {rate && <ItemList title="Тариф" description={rate} />} */}
         {fullTank && <ItemList title="Полный бак" description={'да'} />}
       </div>
       {priceMin && priceMax && (

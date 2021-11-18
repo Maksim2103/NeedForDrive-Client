@@ -25,7 +25,7 @@ const ModelList = () => {
     [carsData, category],
   );
 
-  const handleModelItem = (e, el) => {
+  const handleModelItem = (_, el) => {
     dispatch(setFilteredCar(el));
   };
 

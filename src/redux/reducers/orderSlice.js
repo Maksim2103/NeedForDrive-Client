@@ -5,6 +5,7 @@ import {
   fetchAsyncGetCityCoordinates,
   fetchAsyncGetPoints,
   fetchAsyncGetPointsCoordinates,
+  fetchAsyncGetRate,
 } from '../thunks';
 
 export const orderSlice = createSlice({
@@ -39,7 +40,7 @@ export const orderSlice = createSlice({
       dateFrom: '',
       dateTo: 0,
       rateId: {
-        name: '',
+        // name: '',
       },
       price: 0,
       isFullTank: false,
@@ -73,6 +74,18 @@ export const orderSlice = createSlice({
     },
     setColorCar: (state, action) => {
       state.orderForm.color = action.payload;
+    },
+    setRate: (state, action) => {
+      state.orderForm.rateId = action.payload;
+    },
+    setIsFullTank: (state, action) => {
+      state.orderForm.isFullTank = action.payload;
+    },
+    setIsChildChair: (state, action) => {
+      state.orderForm.isNeedChildChair = action.payload;
+    },
+    setIsRightWheel: (state, action) => {
+      state.orderForm.isRightWheel = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -152,6 +165,19 @@ export const orderSlice = createSlice({
       state.loadingResponseCars = 'failed';
       state.errorResponseCars = action.error.message;
     });
+
+    builder.addCase(fetchAsyncGetRate.pending, (state) => {
+      state.dataResponseRate = [];
+      state.loadingResponseRate = 'pending';
+    });
+    builder.addCase(fetchAsyncGetRate.fulfilled, (state, { payload }) => {
+      state.dataResponseRate = payload;
+      state.loadingResponseRate = 'succeeded';
+    });
+    builder.addCase(fetchAsyncGetRate.rejected, (state, action) => {
+      state.loadingResponseRate = 'failed';
+      state.errorResponseRate = action.error.message;
+    });
   },
 });
 
@@ -168,7 +194,7 @@ export const selectCategory = (state) => state.orderPage.filterParams.category;
 export const selectColor = (state) => state.orderPage.orderForm.color;
 export const selectDateFrom = (state) => state.orderPage.orderForm.dateFrom;
 export const selectDateTo = (state) => state.orderPage.orderForm.dateTo;
-export const selectRate = (state) => state.orderPage.orderForm.rateId.name;
+// export const selectRate = (state) => state.orderPage.orderForm.rateId.name;
 export const selectPrice = (state) => state.orderPage.orderForm.price;
 export const selectIsFullTank = (state) => state.orderPage.orderForm.isFullTank;
 export const selectIsNeedChildChair = (state) =>
@@ -191,6 +217,8 @@ export const selectCurrentId = (state = []) =>
   state.orderPage.orderForm.carId?.id;
 export const selectAvailableColorsCar = (state = []) =>
   state.orderPage.orderForm.carId?.colors;
+export const selectResponseRateData = (state = []) =>
+  state.orderPage.dataResponseRate;
 
 export const {
   setCityName,
@@ -201,6 +229,10 @@ export const {
   setCategory,
   setFilteredCar,
   setColorCar,
+  setRate,
+  setIsFullTank,
+  setIsChildChair,
+  setIsRightWheel,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;
