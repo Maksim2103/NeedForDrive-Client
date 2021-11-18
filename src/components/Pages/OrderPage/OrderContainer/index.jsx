@@ -21,7 +21,7 @@ const OrderContainer = () => {
   return (
     <div className={styles.orderContainer}>
       <div className={styles.headerContainer}>
-        <HeaderContent />
+        <HeaderContent wrapperClassName={'wrapper'} />
       </div>
       {isBreadCrumbs && (
         <div className={styles.orderBreadCrumbs}>

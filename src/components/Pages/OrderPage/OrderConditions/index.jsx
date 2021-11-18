@@ -34,7 +34,7 @@ const OrderConditions = ({
   return (
     <div>
       <h3 className={styles.title}>Ваш заказ:</h3>
-      <div>
+      <div className={styles.conditionsWrapper}>
         {cityName && pointName && (
           <ItemList
             title="Пункт выдачи"
