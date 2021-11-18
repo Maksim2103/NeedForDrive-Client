@@ -111,7 +111,8 @@ const LocationSelect = () => {
   };
 
   const handleChangeCityName = (val, { action }) => {
-    inputPointRef.current.clearValue();
+    // inputPointRef.current.clearValue();
+    setPointLocation('');
     if (action === 'clear') {
       handleResetCityAndPointValue();
       return;

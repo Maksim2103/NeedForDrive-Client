@@ -71,6 +71,9 @@ export const orderSlice = createSlice({
     setFilteredCar: (state, action) => {
       state.orderForm.carId = action.payload;
     },
+    setColorCar: (state, action) => {
+      state.orderForm.color = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGetCities.pending, (state) => {
@@ -186,6 +189,8 @@ export const selectResponseCarsStatus = (state = []) =>
   state.orderPage.loadingResponseCars;
 export const selectCurrentId = (state = []) =>
   state.orderPage.orderForm.carId?.id;
+export const selectAvailableColorsCar = (state = []) =>
+  state.orderPage.orderForm.carId?.colors;
 
 export const {
   setCityName,
@@ -195,6 +200,7 @@ export const {
   setResetCityAndPointValues,
   setCategory,
   setFilteredCar,
+  setColorCar,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

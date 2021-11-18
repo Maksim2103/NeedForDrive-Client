@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './selectColor.module.scss';
 
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectAvailableColorsCar,
+  selectColor,
+  setColorCar,
+} from '../../../../../../redux/reducers/orderSlice';
 
 const SelectColor = () => {
+  const dispatch = useDispatch();
+
+  const colorCar = useSelector(selectColor);
+  const availableColorsData = useSelector(selectAvailableColorsCar);
+
+  const [value, setValue] = useState(colorCar);
+
+  const handleChangeValue = (e) => {
+    const value = e.target.value;
+    setValue(value);
+    dispatch(setColorCar(value));
+  };
+
   return (
     <div className={styles.wrapper}>
       <h4 className={styles.title}>Цвет</h4>
@@ -16,31 +32,28 @@ const SelectColor = () => {
             className={styles.radioInputButton}
             type="radio"
             name="ColorSelect"
+            value=""
+            checked={value === '' ? true : false}
+            onChange={handleChangeValue}
           />
           <span className={styles.radioSpan}></span>
           Любой
         </label>
 
-        <label className={styles.container}>
-          <input
-            className={styles.radioInputButton}
-            type="radio"
-            name="ColorSelect"
-          />
-          <span className={styles.radioSpan}></span>
-          Красный
-        </label>
-
-        <label className={cx('container', 'label-active')}>
-          <input
-            className={styles.radioInputButton}
-            type="radio"
-            name="ColorSelect"
-            checked
-          />
-          <span className={styles.radioSpan}></span>
-          Голубой
-        </label>
+        {availableColorsData?.map((el) => (
+          <label className={styles.container}>
+            <input
+              className={styles.radioInputButton}
+              type="radio"
+              name="ColorSelect"
+              value={el}
+              checked={value === `${el}` ? true : false}
+              onChange={handleChangeValue}
+            />
+            <span className={styles.radioSpan}></span>
+            {el}
+          </label>
+        ))}
       </div>
     </div>
   );
