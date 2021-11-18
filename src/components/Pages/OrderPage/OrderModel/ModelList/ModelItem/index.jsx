@@ -1,12 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectCurrentId } from '../../../../../../redux/reducers/orderSlice';
+
+import classNames from 'classnames/bind';
 
 import styles from './modelItem.module.scss';
 
-const ModelItem = ({ model, img, minPrice, maxPrice, onClick }) => {
+const cx = classNames.bind(styles);
+
+const ModelItem = ({ model, img, minPrice, maxPrice, onClick, elementId }) => {
+  const currentId = useSelector(selectCurrentId);
+
   const price = `${minPrice} - ${maxPrice} ₽`;
 
   return (
-    <div className={styles.itemContainer} onClick={onClick}>
+    <div
+      className={cx('itemContainer', elementId === currentId ? 'active' : null)}
+      onClick={onClick}
+    >
       <div className={styles.itemDescription}>
         <h3 className={styles.model}>{model}</h3>
         <h3 className={styles.price}>{price}</h3>

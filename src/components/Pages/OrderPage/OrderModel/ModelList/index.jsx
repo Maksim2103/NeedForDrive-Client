@@ -15,7 +15,6 @@ const ModelList = () => {
   const dispatch = useDispatch();
   const carsData = useSelector(selectResponseCars);
   const category = useSelector(selectCategory);
-  const currentId = useSelector((state) => state.orderPage.orderForm.carId?.id);
 
   const filteredCarsData = useMemo(
     () =>
@@ -34,16 +33,14 @@ const ModelList = () => {
     <div className={styles.wrapper} id="list">
       {filteredCarsData?.map((el) => {
         return (
-          <div
-            className={el.id === currentId ? styles.active : null}
-            key={el.id}
-          >
+          <div key={el.id}>
             <ModelItem
               img={el.thumbnail.path}
               minPrice={el.priceMin}
               maxPrice={el.priceMax}
               model={el.name}
               onClick={(e) => handleModelItem(e, el)}
+              elementId={el.id}
             />
           </div>
         );

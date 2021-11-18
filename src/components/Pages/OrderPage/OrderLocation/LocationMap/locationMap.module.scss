@@ -23,3 +23,24 @@
     height: 150px;
   }
 }
+
+@media (max-width: 426px) {
+  .mapContainer {
+    width: 390px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 376px) {
+  .mapContainer {
+    width: 343px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 320px) {
+  .mapContainer {
+    width: 288px;
+    height: 150px;
+  }
+}

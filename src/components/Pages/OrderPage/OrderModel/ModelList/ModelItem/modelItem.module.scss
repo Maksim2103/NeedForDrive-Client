@@ -9,6 +9,11 @@ $grey-color-dark: #999999;
   flex-direction: column;
   justify-content: space-between;
   padding: 16px;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #999999;
+  }
 }
 
 .active {

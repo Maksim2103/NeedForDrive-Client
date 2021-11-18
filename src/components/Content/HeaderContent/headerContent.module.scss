@@ -4,6 +4,9 @@ $grey-color-dark: #999999;
 .wrapper {
   display: flex;
   justify-content: space-between;
+  padding: 32px;
+  margin: 0 auto;
+  width: 1376px;
 }
 .title {
   font-family: Roboto;
@@ -36,23 +39,55 @@ $grey-color-dark: #999999;
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .wrapper {
+    width: 960px;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    width: 704px;
+    padding: 16px;
+  }
+}
+
 @media (max-width: 767px) {
   .wrapper {
+    width: 767px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     padding: 16px 16px 0 0;
+    margin: 0;
   }
   .title {
     margin-bottom: 10px;
-    // padding-right: 16px;
   }
   .text {
     display: flex;
     align-items: center;
-    // padding-right: 16px;
     &::before {
       top: 0;
     }
+  }
+}
+
+@media (max-width: 426px) {
+  .wrapper {
+    width: 426px;
+  }
+}
+
+@media (max-width: 376px) {
+  .wrapper {
+    width: 376px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper {
+    width: 320px;
   }
 }

@@ -1,32 +1,18 @@
 .orderContainer {
   display: flex;
   flex-direction: column;
-  padding: 32px 64px 0;
-  max-width: 1440px;
-  margin: 0 auto;
 }
 
 .headerContainer {
-  margin-bottom: 24px;
   width: 100%;
+  border-bottom: 1px solid #999999;
+  margin: 0 auto;
 }
 
 .orderBreadCrumbs {
-  margin-bottom: 40px;
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .orderContainer {
-    padding: 32px 32px 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .orderContainer {
-    padding: 0px 0px;
-    width: 100%;
-  }
-  .orderBreadCrumbs {
-    padding: 16px 16px;
-  }
+  width: 100%;
+  border-bottom: 1px solid #999999;
+  height: 32px;
+  display: flex;
+  margin: 0 auto;
 }

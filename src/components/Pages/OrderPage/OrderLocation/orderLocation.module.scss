@@ -3,13 +3,21 @@ $main-color-black: #121212;
 .wrapper {
   display: flex;
   justify-content: space-between;
+  width: 1312px;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .colLeft {
   display: flex;
   flex-direction: column;
-  margin-right: 220px;
-  min-width: 736px;
+  margin-right: 192px;
+  padding-top: 32px;
+}
+
+.colRight {
+  border-left: 1px solid #999999;
+  padding: 32px 0 0 28px;
 }
 
 .text {
@@ -23,16 +31,31 @@ $main-color-black: #121212;
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
+  .wrapper {
+    width: 896px;
+  }
   .colLeft {
     margin-right: 90px;
     min-width: 480px;
   }
+  .colRight {
+    border-left: 1px solid #999999;
+    padding: 32px 0 0 20px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    width: 672px;
+  }
+
   .colLeft {
     margin-right: 40px;
-    min-width: 360px;
+    width: 360px;
+  }
+  .colRight {
+    border-left: 1px solid #999999;
+    padding: 32px 0 0 20px;
   }
 }
 
@@ -40,8 +63,11 @@ $main-color-black: #121212;
   .wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 0 16px;
+    margin: 0;
+    width: 376px;
+    width: 100%;
   }
 
   .colLeft {
@@ -49,21 +75,42 @@ $main-color-black: #121212;
     flex-direction: column;
     margin-right: 0px;
     margin-bottom: 20px;
-    min-width: 240px;
+    width: 393px;
   }
 
-  .text {
-    display: none;
+  .colRight {
+    border-left: none;
+    width: 393px;
+    padding: 0;
   }
 }
+
+@media (max-width: 426px) {
+  .colLeft {
+    width: 393px;
+  }
+  .colRight {
+    border-left: none;
+    width: 393px;
+  }
+}
+
 @media (max-width: 376px) {
   .colLeft {
     max-width: 343px;
+  }
+  .colRight {
+    border-left: none;
+    width: 343px;
   }
 }
 
 @media (max-width: 320px) {
   .colLeft {
     max-width: 288px;
+  }
+  .colRight {
+    border-left: none;
+    width: 288px;
   }
 }

@@ -6,7 +6,6 @@
   .container {
     display: flex;
     justify-content: space-between;
-    width: 100px;
     margin-right: 16px;
     padding-left: 20px;
   }
@@ -43,9 +42,9 @@
 
 @media (max-width: 767px) {
   .wrapper {
+    justify-content: center;
     .container {
-      width: 90px;
-      margin-right: 6px;
+      margin-right: 16px;
       padding-left: 20px;
     }
     label {

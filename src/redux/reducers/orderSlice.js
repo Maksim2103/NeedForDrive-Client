@@ -184,6 +184,8 @@ export const selectResponseCars = (state = []) =>
   state.orderPage.dataResponseCars;
 export const selectResponseCarsStatus = (state = []) =>
   state.orderPage.loadingResponseCars;
+export const selectCurrentId = (state = []) =>
+  state.orderPage.orderForm.carId?.id;
 
 export const {
   setCityName,
