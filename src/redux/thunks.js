@@ -5,7 +5,7 @@ import axiosInstance from './services/rootApi';
 const mapApiKey = process.env.REACT_APP_MAP_API_KEY;
 
 const fetchAsyncGetCities = createAsyncThunk(
-  '/db/city/fetchAsyncGetCities',
+  'fetchAsyncGetCities',
   async () => {
     const response = await axiosInstance.get(`/db/city`);
     return response.data.data;
@@ -13,7 +13,7 @@ const fetchAsyncGetCities = createAsyncThunk(
 );
 
 const fetchAsyncGetPoints = createAsyncThunk(
-  '/db/city/fetchAsyncGetPoints',
+  'fetchAsyncGetPoints',
   async () => {
     const response = await axiosInstance.get(`/db/point`);
     return response.data.data;
@@ -21,7 +21,7 @@ const fetchAsyncGetPoints = createAsyncThunk(
 );
 
 const fetchAsyncGetCityCoordinates = createAsyncThunk(
-  '/fetchAsyncGetCityCoordinates',
+  'fetchAsyncGetCityCoordinates',
   async (city) => {
     const response = await mapApiAxiosInstance.get(
       `/?apikey=${mapApiKey}&format=json&geocode=${city}`,
@@ -33,7 +33,7 @@ const fetchAsyncGetCityCoordinates = createAsyncThunk(
 );
 
 const fetchAsyncGetPointsCoordinates = createAsyncThunk(
-  '/fetchAsyncGetPointsCoordinates',
+  'fetchAsyncGetPointsCoordinates',
   async (points) => {
     const response = await mapApiAxiosInstance.get(
       `/?apikey=${mapApiKey}&format=json&geocode=${points}`,
@@ -44,13 +44,10 @@ const fetchAsyncGetPointsCoordinates = createAsyncThunk(
   },
 );
 
-const fetchAsyncGetCars = createAsyncThunk(
-  '/db/car/fetchAsyncGetCars',
-  async () => {
-    const response = await axiosInstance.get(`/db/car/?limit=10`);
-    return response.data.data;
-  },
-);
+const fetchAsyncGetCars = createAsyncThunk('fetchAsyncGetCars', async () => {
+  const response = await axiosInstance.get(`/db/car/?limit=20`);
+  return response.data.data;
+});
 
 export {
   fetchAsyncGetCities,

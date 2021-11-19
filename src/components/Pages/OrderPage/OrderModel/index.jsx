@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResponseCarsStatus } from '../../../../redux/reducers/orderSlice';
+import {
+  selectResponseCars,
+  selectResponseCarsStatus,
+} from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetCars } from '../../../../redux/thunks';
 import OrderConditions from '../OrderConditions';
 import ModelList from './ModelList';
@@ -17,9 +20,11 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
 
   const isLoading = useSelector(selectResponseCarsStatus);
 
+  const carsResponseData = useSelector(selectResponseCars);
+
   useEffect(() => {
-    dispatch(fetchAsyncGetCars());
-  }, [dispatch]);
+    if (!carsResponseData) dispatch(fetchAsyncGetCars());
+  }, [dispatch, carsResponseData]);
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +44,9 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
           </div>
         </>
       ) : (
-        'Пожалуйста, подождите, данные загружаются...'
+        <div className={styles.loader}>
+          Данные загружаются, пожалуйста, подождите...
+        </div>
       )}
     </div>
   );

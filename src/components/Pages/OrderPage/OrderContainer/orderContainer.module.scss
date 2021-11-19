@@ -19,3 +19,21 @@
   display: flex;
   margin: 0 auto;
 }
+
+@media (max-width: 767px) {
+  .headerContainer {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 9;
+    background-color: white;
+  }
+
+  .orderBreadCrumbs {
+    position: fixed;
+    top: 93px;
+    left: 0;
+    z-index: 9;
+    background-color: white;
+  }
+}

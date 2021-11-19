@@ -18,10 +18,12 @@ const ModelList = () => {
 
   const filteredCarsData = useMemo(
     () =>
-      carsData?.filter((el) => {
-        if (category === '') return el;
-        if (el.categoryId.name === category) return el;
-      }),
+      carsData
+        ?.filter((el) => el.categoryId !== null)
+        .filter((el) => {
+          if (category === '') return el;
+          if (el.categoryId.name === category) return el;
+        }),
     [carsData, category],
   );
 

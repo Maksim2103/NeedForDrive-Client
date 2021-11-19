@@ -24,6 +24,7 @@ const LocationSelect = () => {
     control: (provided) => ({
       ...provided,
       width: 205,
+      cursor: 'pointer',
       border: 'none',
       borderRadius: 'none',
       borderBottom: '1px solid #e0e0e0',
@@ -169,7 +170,7 @@ const LocationSelect = () => {
           options={optionsCities}
           isClearable
           placeholder="Начните вводить город..."
-          blurInputOnSelect
+          // blurInputOnSelect
           controlShouldRenderValue
         />
       </div>

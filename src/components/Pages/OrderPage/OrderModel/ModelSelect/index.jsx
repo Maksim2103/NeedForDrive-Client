@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import {
   selectCategory,
+  selectResponseCars,
   setCategory,
 } from '../../../../../redux/reducers/orderSlice';
 
@@ -12,6 +13,21 @@ const ModelSelect = () => {
   const dispatch = useDispatch();
 
   const category = useSelector(selectCategory);
+  const carsData = useSelector(selectResponseCars);
+
+  const categoriesData = useMemo(
+    () => [
+      ...new Set(
+        carsData
+          ?.filter((el) => el.categoryId !== null)
+          .map((el) => {
+            if (el.categoryId === null) return '';
+            return el.categoryId?.name;
+          }),
+      ),
+    ],
+    [carsData],
+  );
 
   const [value, setValue] = useState(category);
 
@@ -23,44 +39,20 @@ const ModelSelect = () => {
 
   return (
     <div className={styles.wrapper}>
-      <label className={styles.container}>
-        <input
-          className={styles.radioInputButton}
-          type="radio"
-          name="ModelSelect"
-          value=""
-          checked={value === '' ? true : false}
-          onChange={handleChangeValue}
-        />
-        <span className={styles.radioSpan}></span>
-        Все модели
-      </label>
-
-      <label className={styles.container}>
-        <input
-          className={styles.radioInputButton}
-          type="radio"
-          name="ModelSelect"
-          value="Спорт"
-          checked={value === 'Спорт' ? true : false}
-          onChange={handleChangeValue}
-        />
-        <span className={styles.radioSpan}></span>
-        Спорт
-      </label>
-
-      <label className={styles.container}>
-        <input
-          className={styles.radioInputButton}
-          type="radio"
-          name="ModelSelect"
-          value="Люкс"
-          checked={value === 'Люкс' ? true : false}
-          onChange={handleChangeValue}
-        />
-        <span className={styles.radioSpan}></span>
-        Люкс
-      </label>
+      {categoriesData.map((el) => (
+        <label className={styles.container}>
+          <input
+            className={styles.radioInputButton}
+            type="radio"
+            name="ModelSelect"
+            value={el}
+            checked={value === el ? true : false}
+            onChange={handleChangeValue}
+          />
+          <span className={styles.radioSpan}></span>
+          {el}
+        </label>
+      ))}
     </div>
   );
 };
