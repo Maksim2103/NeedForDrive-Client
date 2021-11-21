@@ -7,6 +7,9 @@ import {
   selectIsFullTank,
   selectIsNeedChildChair,
   selectIsRightWheel,
+  setIsChildChair,
+  setIsFullTank,
+  setIsRightWheel,
 } from '../../../../../../redux/reducers/orderSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,26 +18,30 @@ const cx = classNames.bind(styles);
 const SelectAdditionalServices = () => {
   const dispatch = useDispatch();
 
-  const isFulTank = useSelector(selectIsFullTank);
-  const isChildChair = useSelector(selectIsNeedChildChair);
-  const isRightWheel = useSelector(selectIsRightWheel);
+  const isFulTankDefault = useSelector(selectIsFullTank);
+  const isChildChairDefault = useSelector(selectIsNeedChildChair);
+  const isRightWheelDefault = useSelector(selectIsRightWheel);
 
-  const [isTankValue, setIsTankValue] = useState(isFulTank);
-  const [isChildChairValue, setIsChildChairValue] = useState(isFulTank);
-  const [isRightWheelValue, setIsRightWheelValue] = useState(isRightWheel);
+  const [isTankValue, setIsTankValue] = useState(isFulTankDefault);
+  const [isChildChairValue, setIsChildChairValue] =
+    useState(isChildChairDefault);
+  const [isRightWheelValue, setIsRightWheelValue] =
+    useState(isRightWheelDefault);
 
-  const handleChangeIsTankValue = (e) => {
-    // const value = e.target.value;
-    // console.log(`value`, value);
+  const handleChangeIsTankValue = () => {
+    dispatch(setIsFullTank(!isTankValue));
     setIsTankValue(!isTankValue);
-    // dispatch(setIsTankValue(!isTankValue));
   };
 
-  console.log(`isTankValue`, isTankValue);
+  const handleChangeIsChildChairValue = (e) => {
+    setIsChildChairValue(!isChildChairValue);
+    dispatch(setIsChildChair(!isChildChairValue));
+  };
 
-  // useEffect(() => {
-  //   dispatch(setIsTankValue(isTankValue));
-  // }, [isTankValue]);
+  const handleChangeIsRightWheelValue = (e) => {
+    setIsRightWheelValue(!isRightWheelValue);
+    dispatch(setIsRightWheel(!isRightWheelValue));
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -53,13 +60,25 @@ const SelectAdditionalServices = () => {
         </label>
 
         <label className={styles.container}>
-          <input className={styles.checkInputButton} type="checkbox" />
+          <input
+            className={styles.checkInputButton}
+            type="checkbox"
+            value={isChildChairValue}
+            checked={isChildChairValue}
+            onChange={handleChangeIsChildChairValue}
+          />
           <span className={styles.checkSpan}></span>
           Детское кресло, 200р
         </label>
 
         <label className={styles.container}>
-          <input className={styles.checkInputButton} type="checkbox" />
+          <input
+            className={styles.checkInputButton}
+            type="checkbox"
+            value={isRightWheelValue}
+            checked={isRightWheelValue}
+            onChange={handleChangeIsRightWheelValue}
+          />
           <span className={styles.checkSpan}></span>
           Правый руль, 1600р
         </label>

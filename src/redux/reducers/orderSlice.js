@@ -38,9 +38,11 @@ export const orderSlice = createSlice({
       },
       color: '',
       dateFrom: '',
-      dateTo: 0,
+      dateTo: '',
       rateId: {
-        // name: '',
+        rateTypeId: {
+          name: '',
+        },
       },
       price: 0,
       isFullTank: false,
@@ -87,8 +89,15 @@ export const orderSlice = createSlice({
     setIsRightWheel: (state, action) => {
       state.orderForm.isRightWheel = action.payload;
     },
+    setDateFrom: (state, action) => {
+      state.orderForm.dateFrom = action.payload;
+    },
+    setDateTo: (state, action) => {
+      state.orderForm.dateTo = action.payload;
+    },
   },
   extraReducers: (builder) => {
+    // Fetch list of cities
     builder.addCase(fetchAsyncGetCities.pending, (state) => {
       state.dataResponseCities = [];
       state.loadingResponseCities = 'pending';
@@ -102,6 +111,7 @@ export const orderSlice = createSlice({
       state.errorResponseCities = action.error.message;
     });
 
+    // Fetch list of points
     builder.addCase(fetchAsyncGetPoints.pending, (state) => {
       state.dataResponsePoints = [];
       state.loadingResponsePoints = 'pending';
@@ -115,6 +125,7 @@ export const orderSlice = createSlice({
       state.errorResponsePoints = action.error.message;
     });
 
+    // Fetch City coordinates
     builder.addCase(fetchAsyncGetCityCoordinates.pending, (state) => {
       state.dataResponseCoordinates = [];
       state.loadingResponseCoordinates = 'pending';
@@ -131,6 +142,7 @@ export const orderSlice = createSlice({
       state.errorResponseCoordinates = action.error.message;
     });
 
+    // Fetch City and point coordinates
     builder.addCase(fetchAsyncGetPointsCoordinates.pending, (state) => {
       state.dataResponsePointsCoordinates = [];
       state.loadingResponsePointsCoordinates = 'pending';
@@ -153,6 +165,7 @@ export const orderSlice = createSlice({
       },
     );
 
+    // Fetch List of Cars
     builder.addCase(fetchAsyncGetCars.pending, (state) => {
       state.dataResponseCars = [];
       state.loadingResponseCars = 'pending';
@@ -166,6 +179,7 @@ export const orderSlice = createSlice({
       state.errorResponseCars = action.error.message;
     });
 
+    // Fetch Rate of car
     builder.addCase(fetchAsyncGetRate.pending, (state) => {
       state.dataResponseRate = [];
       state.loadingResponseRate = 'pending';
@@ -181,8 +195,26 @@ export const orderSlice = createSlice({
   },
 });
 
+// data Response from Fetch
 export const selectResponseCities = (state = []) =>
   state.orderPage.dataResponseCities;
+export const selectResponsePoints = (state = []) =>
+  state.orderPage.dataResponsePoints;
+export const selectResponseCityCoordinate = (state = []) =>
+  state.orderPage.dataResponseCoordinates;
+export const selectResponsePointsCoordinates = (state = []) =>
+  state.orderPage.dataResponsePointsCoordinates;
+export const selectResponseCars = (state = []) =>
+  state.orderPage.dataResponseCars;
+export const selectResponseRateData = (state = []) =>
+  state.orderPage.dataResponseRate;
+
+// data Response Status
+export const selectResponseCarsStatus = (state = []) =>
+  state.orderPage.loadingResponseCars;
+
+// orderForm
+export const selectOrderForm = (state) => state.orderPage.orderForm;
 export const selectCity = (state) => state.orderPage.orderForm.cityId.name;
 export const selectPoint = (state) => state.orderPage.orderForm.pointId.address;
 export const selectPriceMin = (state) =>
@@ -190,35 +222,25 @@ export const selectPriceMin = (state) =>
 export const selectPriceMax = (state) =>
   state.orderPage.orderForm.carId.priceMax;
 export const selectModel = (state) => state.orderPage.orderForm.carId.name;
-export const selectCategory = (state) => state.orderPage.filterParams.category;
 export const selectColor = (state) => state.orderPage.orderForm.color;
 export const selectDateFrom = (state) => state.orderPage.orderForm.dateFrom;
 export const selectDateTo = (state) => state.orderPage.orderForm.dateTo;
-// export const selectRate = (state) => state.orderPage.orderForm.rateId.name;
+export const selectRate = (state) =>
+  state.orderPage.orderForm.rateId?.rateTypeId.name;
 export const selectPrice = (state) => state.orderPage.orderForm.price;
 export const selectIsFullTank = (state) => state.orderPage.orderForm.isFullTank;
 export const selectIsNeedChildChair = (state) =>
   state.orderPage.orderForm.isNeedChildChair;
 export const selectIsRightWheel = (state) =>
   state.orderPage.orderForm.isRightWheel;
-export const selectResponsePoints = (state = []) =>
-  state.orderPage.dataResponsePoints;
-export const selectOrderForm = (state) => state.orderPage.orderForm;
-export const selectCityCoordinate = (state = []) =>
-  state.orderPage.dataResponseCoordinates;
-export const selectFilteredPoints = (state) => state.orderPage.filteredPoints;
-export const selectPointsCoordinates = (state = []) =>
-  state.orderPage.dataResponsePointsCoordinates;
-export const selectResponseCars = (state = []) =>
-  state.orderPage.dataResponseCars;
-export const selectResponseCarsStatus = (state = []) =>
-  state.orderPage.loadingResponseCars;
 export const selectCurrentId = (state = []) =>
   state.orderPage.orderForm.carId?.id;
 export const selectAvailableColorsCar = (state = []) =>
   state.orderPage.orderForm.carId?.colors;
-export const selectResponseRateData = (state = []) =>
-  state.orderPage.dataResponseRate;
+
+// orderPage
+export const selectCategory = (state) => state.orderPage.filterParams.category;
+export const selectFilteredPoints = (state) => state.orderPage.filteredPoints;
 
 export const {
   setCityName,
@@ -233,6 +255,8 @@ export const {
   setIsFullTank,
   setIsChildChair,
   setIsRightWheel,
+  setDateFrom,
+  setDateTo,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

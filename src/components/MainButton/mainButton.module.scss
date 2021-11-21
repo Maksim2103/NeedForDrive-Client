@@ -15,13 +15,13 @@ $grey-color-light: #eeeeee;
   padding: 16px 19px;
   transition: all 0.5s;
   display: inline-block;
+  color: $grey-color-light;
+
   &:hover {
-    color: $grey-color-light;
-    filter: brightness(90%);
+    background: linear-gradient(90deg, #367c6f 0%, #248832 100%);
   }
   &:active {
     color: $grey-color-light;
-    filter: brightness(80%);
   }
 }
 

@@ -26,7 +26,7 @@ const SelectTariff = () => {
   );
 
   useEffect(() => {
-    dispatch(setRate(filteredRateData));
+    if (filteredRateData) dispatch(setRate(filteredRateData[0]));
   }, [dispatch, filteredRateData]);
 
   return (
