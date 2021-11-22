@@ -28,43 +28,49 @@ const OrderContainer = () => {
           <OrderBreadCrumbs />
         </div>
       )}
-      <Switch>
-        <Route
-          exact
-          path="/order/location"
-          component={() => (
-            <OrderLocation setIsBreadCrumbs={setIsBreadCrumbs} />
-          )}
-        />
-        <Route
-          exact
-          path="/order/model"
-          component={() => <OrderModel setIsBreadCrumbs={setIsBreadCrumbs} />}
-        />
-        <Route
-          exact
-          path="/order/options"
-          component={() => <OrderOptions setIsBreadCrumbs={setIsBreadCrumbs} />}
-        />
-        <Route
-          exact
-          path="/order/total"
-          component={() => <OrderTotal setIsBreadCrumbs={setIsBreadCrumbs} />}
-        />
-        <Route
-          exact
-          path="/order/confirm"
-          component={() => <OrderConfirm setIsBreadCrumbs={setIsBreadCrumbs} />}
-        />
-        <Route
-          exact
-          path="/order/completed"
-          component={() => (
-            <OrderCompleted setIsBreadCrumbs={setIsBreadCrumbs} />
-          )}
-        />
-        <Route exact path="*" component={NotFoundPage} />
-      </Switch>
+      <div className={styles.orderContent}>
+        <Switch>
+          <Route
+            exact
+            path="/order/location"
+            component={() => (
+              <OrderLocation setIsBreadCrumbs={setIsBreadCrumbs} />
+            )}
+          />
+          <Route
+            exact
+            path="/order/model"
+            component={() => <OrderModel setIsBreadCrumbs={setIsBreadCrumbs} />}
+          />
+          <Route
+            exact
+            path="/order/options"
+            component={() => (
+              <OrderOptions setIsBreadCrumbs={setIsBreadCrumbs} />
+            )}
+          />
+          <Route
+            exact
+            path="/order/total"
+            component={() => <OrderTotal setIsBreadCrumbs={setIsBreadCrumbs} />}
+          />
+          <Route
+            exact
+            path="/order/confirm"
+            component={() => (
+              <OrderConfirm setIsBreadCrumbs={setIsBreadCrumbs} />
+            )}
+          />
+          <Route
+            exact
+            path="/order/completed"
+            component={() => (
+              <OrderCompleted setIsBreadCrumbs={setIsBreadCrumbs} />
+            )}
+          />
+          <Route exact path="*" component={NotFoundPage} />
+        </Switch>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ $main-color-black: #121212;
 .wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 1312px;
   margin: 0 auto;
   height: 100%;
@@ -83,7 +84,6 @@ $main-color-black: #121212;
     margin-right: 0px;
     margin-bottom: 20px;
     width: 393px;
-    padding-top: 140px;
   }
 
   .colRight {

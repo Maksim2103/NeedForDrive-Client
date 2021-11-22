@@ -39,6 +39,19 @@ const ModelSelect = () => {
 
   return (
     <div className={styles.wrapper}>
+      <label className={styles.container}>
+        <input
+          className={styles.radioInputButton}
+          type="radio"
+          name="ModelSelect"
+          value=""
+          checked={value === '' ? true : false}
+          onChange={handleChangeValue}
+        />
+        <span className={styles.radioSpan}></span>
+        Все
+      </label>
+
       {categoriesData.map((el) => (
         <label className={styles.container}>
           <input

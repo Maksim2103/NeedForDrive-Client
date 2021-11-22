@@ -5,7 +5,7 @@ $grey-color-dark: #999999;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  width: 1312px;
+  width: 1248px;
 }
 
 .wrapperMainPage {
@@ -47,8 +47,8 @@ $grey-color-dark: #999999;
 
 @media (min-width: 1024px) and (max-width: 1439px) {
   .wrapper {
-    width: 960px;
-    padding: 32px;
+    width: 896px;
+    // padding: 32px;
   }
 
   .wrapperMainPage {
