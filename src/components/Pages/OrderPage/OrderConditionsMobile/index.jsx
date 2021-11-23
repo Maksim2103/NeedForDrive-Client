@@ -35,19 +35,6 @@ const OrderConditionsMobile = ({
 
   const displayIndications = cityName && pointName;
 
-  const onKeydown = ({ key }) => {
-    switch (key) {
-      case 'Escape':
-        onClose();
-        break;
-    }
-  };
-
-  React.useEffect(() => {
-    document.addEventListener('keydown', onKeydown);
-    return () => document.removeEventListener('keydown', onKeydown);
-  });
-
   if (!visible) return null;
 
   return (

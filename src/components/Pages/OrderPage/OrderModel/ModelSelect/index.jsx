@@ -45,21 +45,21 @@ const ModelSelect = () => {
           type="radio"
           name="ModelSelect"
           value=""
-          checked={value === '' ? true : false}
+          checked={value === ''}
           onChange={handleChangeValue}
         />
         <span className={styles.radioSpan}></span>
         Все
       </label>
 
-      {categoriesData.map((el) => (
-        <label className={styles.container}>
+      {categoriesData.map((el, i) => (
+        <label className={styles.container} key={i}>
           <input
             className={styles.radioInputButton}
             type="radio"
             name="ModelSelect"
             value={el}
-            checked={value === el ? true : false}
+            checked={value === el}
             onChange={handleChangeValue}
           />
           <span className={styles.radioSpan}></span>
