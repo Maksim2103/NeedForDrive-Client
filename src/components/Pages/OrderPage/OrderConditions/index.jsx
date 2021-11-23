@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   selectCity,
@@ -12,7 +12,8 @@ import {
   selectPoint,
   selectPriceMax,
   selectPriceMin,
-  selectRate,
+  selectRateName,
+  selectRatePrice,
 } from '../../../../redux/reducers/orderSlice';
 import MainButton from '../../../MainButton';
 import ItemList from './ItemList';
@@ -29,7 +30,8 @@ const OrderConditions = ({
   const pointName = useSelector(selectPoint);
   const model = useSelector(selectModel);
   const color = useSelector(selectColor);
-  const rate = useSelector(selectRate);
+  const rateName = useSelector(selectRateName);
+  const ratePrice = useSelector(selectRatePrice);
   const dateFrom = useSelector(selectDateFrom);
   const dateTo = useSelector(selectDateTo);
   const isFullTank = useSelector(selectIsFullTank);
@@ -38,13 +40,21 @@ const OrderConditions = ({
   const priceMin = useSelector(selectPriceMin);
   const priceMax = useSelector(selectPriceMax);
 
-  const [monthValue, setMonthValue] = useState('');
-  const [weeksValue, setWeekValue] = useState('');
-  const [daysValue, setDayValue] = useState('');
-  const [hoursValue, setHoursValue] = useState('');
-  const [minutesValue, setMinutesValue] = useState('');
+  const [dateValue, setDateValue] = useState({});
 
-  const time = (duration) => {
+  const {
+    monthValue,
+    weeksValue,
+    daysValue,
+    hoursValue,
+    minutesValue,
+    totalMinutes,
+  } = dateValue;
+
+  useEffect(() => {
+    const duration = dateTo - dateFrom;
+
+    const totalMinutes = Math.floor(duration / (1000 * 60));
     const minutes = Math.floor((duration / (1000 * 60)) % 60);
     const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
     const days = Math.floor(duration / (1000 * 60 * 60 * 24));
@@ -57,23 +67,36 @@ const OrderConditions = ({
     const hoursValue = hours < 10 ? '0' + hours : hours;
     const minutesValue = minutes < 10 ? '0' + minutes : minutes;
 
-    setMonthValue(monthValue);
-    setWeekValue(weeksValue);
-    setDayValue(daysValue);
-    setHoursValue(hoursValue);
-    setMinutesValue(minutesValue);
+    setDateValue({
+      monthValue,
+      weeksValue,
+      daysValue,
+      hoursValue,
+      minutesValue,
+      totalMinutes,
+    });
+  }, [dateTo, dateFrom]);
 
-    return `${monthValue}м ${weeksValue}д ${daysValue}д ${hoursValue}ч ${minutesValue}м`;
-  };
-  console.log(`monthValue`, monthValue);
-  console.log(`monthValue`, weeksValue);
-  console.log(`monthValue`, daysValue);
-  console.log(`monthValue`, hoursValue);
-  console.log(`monthValue`, minutesValue);
+  const rentTime = useMemo(
+    () =>
+      `${monthValue}м ${weeksValue}д ${daysValue}д ${hoursValue}ч ${minutesValue}м`,
+    [monthValue, weeksValue, daysValue, hoursValue, minutesValue],
+  );
 
-  const rentTime = useMemo(() => time(dateTo - dateFrom), [dateTo, dateFrom]);
-
-  // const price =
+  const price = useMemo(() => {
+    switch (rateName) {
+      case 'Поминутно':
+        return totalMinutes * ratePrice;
+      case 'Суточный':
+        return Math.ceil(totalMinutes / 60 / 24) * ratePrice;
+      case 'Недельный (Акция!)':
+        return Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice;
+      case 'Месячный':
+        return Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice;
+      default:
+        break;
+    }
+  }, [rateName, totalMinutes]);
 
   return (
     <div>
@@ -88,18 +111,23 @@ const OrderConditions = ({
         )}
         {model && <ItemList title="Модель" description={model} />}
         {color && <ItemList title="Цвет" description={color} />}
-        {rentTime && (
+        {rentTime && dateTo && dateFrom && (
           <ItemList title="Длительность аренды" description={rentTime} />
         )}
-        {rate && <ItemList title="Тариф" description={rate} />}
+        {rateName && <ItemList title="Тариф" description={rateName} />}
         {isFullTank && <ItemList title="Полный бак" description={'да'} />}
         {isChildChair && <ItemList title="Детское кресло" description={'да'} />}
         {isRightWheel && <ItemList title="Правый руль" description={'да'} />}
       </div>
-      {priceMin && priceMax && (
-        <h3
-          className={styles.price}
-        >{`Цена: от ${priceMin} до ${priceMax} ₽`}</h3>
+      {price ? (
+        <h3 className={styles.price}>{`Цена: ${price} ₽`}</h3>
+      ) : (
+        priceMin &&
+        priceMax && (
+          <h3
+            className={styles.price}
+          >{`Цена: от ${priceMin} до ${priceMax} ₽`}</h3>
+        )
       )}
       <MainButton
         buttonWidth="orderWidth"

@@ -225,7 +225,9 @@ export const selectModel = (state) => state.orderPage.orderForm.carId.name;
 export const selectColor = (state) => state.orderPage.orderForm.color;
 export const selectDateFrom = (state) => state.orderPage.orderForm.dateFrom;
 export const selectDateTo = (state) => state.orderPage.orderForm.dateTo;
-export const selectRate = (state) =>
+export const selectRatePrice = (state) =>
+  state.orderPage.orderForm.rateId?.price;
+export const selectRateName = (state) =>
   state.orderPage.orderForm.rateId?.rateTypeId.name;
 export const selectPrice = (state) => state.orderPage.orderForm.price;
 export const selectIsFullTank = (state) => state.orderPage.orderForm.isFullTank;

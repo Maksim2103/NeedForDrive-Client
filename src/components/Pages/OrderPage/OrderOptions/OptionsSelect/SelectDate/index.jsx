@@ -27,6 +27,11 @@ const SelectDate = () => {
   };
 
   const handleBlurTo = () => {
+    if (valueDateTo < valueDateFrom) {
+      return alert(
+        'Введите корректое время (время "По" не  ожет быть меньше времени "С")',
+      );
+    }
     dispatch(setDateTo(Date.parse(valueDateTo)));
   };
 
