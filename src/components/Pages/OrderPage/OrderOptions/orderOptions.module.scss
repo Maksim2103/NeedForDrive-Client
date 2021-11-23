@@ -3,16 +3,21 @@ $main-color-black: #121212;
 .wrapper {
   display: flex;
   justify-content: space-between;
-  width: 1312px;
+  width: 1248px;
   margin: 0 auto;
-  height: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .colLeft {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   margin-right: 192px;
   padding-top: 32px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .colRight {

@@ -45,7 +45,7 @@ const fetchAsyncGetPointsCoordinates = createAsyncThunk(
 );
 
 const fetchAsyncGetCars = createAsyncThunk('fetchAsyncGetCars', async () => {
-  const response = await axiosInstance.get(`/db/car/?limit=20`);
+  const response = await axiosInstance.get(`/db/car`);
   return response.data.data;
 });
 

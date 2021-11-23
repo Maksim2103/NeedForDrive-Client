@@ -32,8 +32,8 @@ const SelectColor = () => {
             className={styles.radioInputButton}
             type="radio"
             name="ColorSelect"
-            value=""
-            checked={value === '' ? true : false}
+            value="Любой"
+            checked={value === 'Любой'}
             onChange={handleChangeValue}
           />
           <span className={styles.radioSpan}></span>
@@ -47,7 +47,7 @@ const SelectColor = () => {
               type="radio"
               name="ColorSelect"
               value={el}
-              checked={value === `${el}` ? true : false}
+              checked={value === `${el}`}
               onChange={handleChangeValue}
             />
             <span className={styles.radioSpan}></span>

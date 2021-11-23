@@ -21,6 +21,11 @@ const SelectDate = () => {
     dispatch(setDateFrom(Date.parse(valueDateFrom)));
   };
 
+  const handleClearDateFromValue = () => {
+    setValueDateFrom('');
+    dispatch(setDateFrom(''));
+  };
+
   const handleDateTo = (e) => {
     const value = e.target.value;
     setValueDateTo(value);
@@ -29,11 +34,18 @@ const SelectDate = () => {
   const handleBlurTo = () => {
     if (valueDateTo < valueDateFrom) {
       return alert(
-        'Введите корректое время (время "По" не  ожет быть меньше времени "С")',
+        'Введите корректное время (время "По" не  может быть меньше времени "С")',
       );
     }
     dispatch(setDateTo(Date.parse(valueDateTo)));
   };
+
+  const handleClearDateToValue = () => {
+    setValueDateTo('');
+    dispatch(setDateTo(''));
+  };
+
+  const minDate = new Date().toISOString().split('.')[0];
 
   return (
     <div className={styles.container}>
@@ -46,10 +58,11 @@ const SelectDate = () => {
           value={valueDateFrom}
           onChange={handleDateFrom}
           onBlur={handleBlurFrom}
+          min={minDate}
         />
         <button
           className={styles.buttonFrom}
-          onClick={() => setValueDateFrom('')}
+          onClick={handleClearDateFromValue}
         >
           X
         </button>
@@ -64,10 +77,7 @@ const SelectDate = () => {
           onBlur={handleBlurTo}
           min={valueDateFrom}
         />
-        <button
-          className={styles.buttonFrom}
-          onClick={() => setValueDateTo('')}
-        >
+        <button className={styles.buttonFrom} onClick={handleClearDateToValue}>
           X
         </button>
       </div>

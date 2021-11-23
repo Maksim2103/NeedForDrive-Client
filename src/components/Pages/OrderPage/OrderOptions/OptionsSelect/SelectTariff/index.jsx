@@ -40,7 +40,7 @@ const SelectTariff = () => {
               type="radio"
               name="RateSelect"
               value={el.id}
-              checked={value === el.id ? true : false}
+              checked={value === el.id}
               onChange={handleChangeValue}
             />
             <span className={styles.radioSpan}></span>

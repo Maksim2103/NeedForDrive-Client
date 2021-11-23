@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCity,
-  selectCityCoordinate,
   selectPoint,
   selectResponseCities,
   selectResponsePoints,

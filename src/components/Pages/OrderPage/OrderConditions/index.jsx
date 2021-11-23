@@ -53,7 +53,6 @@ const OrderConditions = ({
 
   useEffect(() => {
     const duration = dateTo - dateFrom;
-
     const totalMinutes = Math.floor(duration / (1000 * 60));
     const minutes = Math.floor((duration / (1000 * 60)) % 60);
     const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
@@ -84,19 +83,22 @@ const OrderConditions = ({
   );
 
   const price = useMemo(() => {
-    switch (rateName) {
-      case 'Поминутно':
-        return totalMinutes * ratePrice;
-      case 'Суточный':
-        return Math.ceil(totalMinutes / 60 / 24) * ratePrice;
-      case 'Недельный (Акция!)':
-        return Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice;
-      case 'Месячный':
-        return Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice;
-      default:
-        break;
-    }
-  }, [rateName, totalMinutes]);
+    if (dateTo && dateFrom)
+      switch (rateName) {
+        case 'Поминутно':
+          return totalMinutes * ratePrice;
+        case 'Суточный':
+          return Math.ceil(totalMinutes / 60 / 24) * ratePrice;
+        case 'Недельный (Акция!)':
+          return Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice;
+        case 'Месячный':
+          return Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice;
+        default:
+          break;
+      }
+  }, [rateName, ratePrice, totalMinutes, dateTo, dateFrom]);
+
+  const displayIndications = cityName && pointName;
 
   return (
     <div>
