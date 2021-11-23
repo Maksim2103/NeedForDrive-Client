@@ -56,6 +56,10 @@ $grey-color-light: #eeeeee;
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
+  .item {
+    padding: 0;
+  }
+
   .inner {
     margin-bottom: -20px;
     padding-left: 32px;

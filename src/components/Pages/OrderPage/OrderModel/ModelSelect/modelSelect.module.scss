@@ -2,7 +2,6 @@
   display: flex;
   margin-bottom: 45px;
   align-items: center;
-  position: relative;
   .container {
     display: flex;
     justify-content: space-between;
@@ -16,6 +15,7 @@
     font-size: 14px;
     line-height: 16px;
     color: #999999;
+    cursor: pointer;
   }
 
   .radioInputButton {

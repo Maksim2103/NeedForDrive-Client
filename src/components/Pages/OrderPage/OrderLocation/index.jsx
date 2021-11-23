@@ -1,6 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCity, selectPoint } from '../../../../redux/reducers/orderSlice';
+import {
+  selectCity,
+  selectCityCoordinate,
+  selectPoint,
+  selectResponseCities,
+  selectResponsePoints,
+} from '../../../../redux/reducers/orderSlice';
 import {
   fetchAsyncGetCities,
   fetchAsyncGetCityCoordinates,
@@ -22,15 +28,18 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
   const cityName = useSelector(selectCity);
   const pointName = useSelector(selectPoint);
 
+  const cityResponseData = useSelector(selectResponseCities);
+  const pointsResponseData = useSelector(selectResponsePoints);
+
   const pointAddress = `${cityName} ${pointName}`;
 
   useEffect(() => {
-    dispatch(fetchAsyncGetCities());
-  }, [dispatch]);
+    if (!cityResponseData) dispatch(fetchAsyncGetCities());
+  }, [dispatch, cityResponseData]);
 
   useEffect(() => {
-    dispatch(fetchAsyncGetPoints());
-  }, [dispatch]);
+    if (!pointsResponseData) dispatch(fetchAsyncGetPoints());
+  }, [dispatch, pointsResponseData]);
 
   useEffect(() => {
     dispatch(fetchAsyncGetCityCoordinates(pointAddress));

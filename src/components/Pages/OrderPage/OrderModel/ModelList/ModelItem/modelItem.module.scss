@@ -14,6 +14,9 @@ $grey-color-dark: #999999;
   &:hover {
     border: 1px solid #999999;
   }
+  &:active {
+    border: 1px solid $main-color-accent;
+  }
 }
 
 .active {
@@ -31,6 +34,7 @@ $grey-color-dark: #999999;
   img {
     width: 256px;
     height: 116px;
+    object-fit: contain;
   }
 }
 

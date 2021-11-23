@@ -100,42 +100,50 @@ const OrderConditions = ({
 
   return (
     <div>
-      <h3 className={styles.title}>Ваш заказ:</h3>
-      <div>
-        {cityName && pointName && (
-          <ItemList
-            title="Пункт выдачи"
-            description={cityName}
-            doubleDescription={pointName}
+      {displayIndications && (
+        <>
+          <h3 className={styles.title}>Ваш заказ:</h3>
+          <div className={styles.conditionsWrapper}>
+            {cityName && pointName && (
+              <ItemList
+                title="Пункт выдачи"
+                description={cityName}
+                doubleDescription={pointName}
+              />
+            )}
+            {model && <ItemList title="Модель" description={model} />}
+            {color && <ItemList title="Цвет" description={color} />}
+            {rentTime && dateTo && dateFrom && (
+              <ItemList title="Длительность аренды" description={rentTime} />
+            )}
+            {rateName && <ItemList title="Тариф" description={rateName} />}
+            {isFullTank && <ItemList title="Полный бак" description={'да'} />}
+            {isChildChair && (
+              <ItemList title="Детское кресло" description={'да'} />
+            )}
+            {isRightWheel && (
+              <ItemList title="Правый руль" description={'да'} />
+            )}
+          </div>
+          {price ? (
+            <h3 className={styles.price}>{`Цена: ${price} ₽`}</h3>
+          ) : (
+            priceMin &&
+            priceMax && (
+              <h3
+                className={styles.price}
+              >{`Цена: от ${priceMin} до ${priceMax} ₽`}</h3>
+            )
+          )}
+          <MainButton
+            buttonWidth="orderWidth"
+            type={type}
+            link={buttonLink}
+            buttonTitle={buttonTitle}
+            onClick={() => setIsBreadCrumbs(true)}
           />
-        )}
-        {model && <ItemList title="Модель" description={model} />}
-        {color && <ItemList title="Цвет" description={color} />}
-        {rentTime && dateTo && dateFrom && (
-          <ItemList title="Длительность аренды" description={rentTime} />
-        )}
-        {rateName && <ItemList title="Тариф" description={rateName} />}
-        {isFullTank && <ItemList title="Полный бак" description={'да'} />}
-        {isChildChair && <ItemList title="Детское кресло" description={'да'} />}
-        {isRightWheel && <ItemList title="Правый руль" description={'да'} />}
-      </div>
-      {price ? (
-        <h3 className={styles.price}>{`Цена: ${price} ₽`}</h3>
-      ) : (
-        priceMin &&
-        priceMax && (
-          <h3
-            className={styles.price}
-          >{`Цена: от ${priceMin} до ${priceMax} ₽`}</h3>
-        )
+        </>
       )}
-      <MainButton
-        buttonWidth="orderWidth"
-        type={type}
-        link={buttonLink}
-        buttonTitle={buttonTitle}
-        onClick={() => setIsBreadCrumbs(true)}
-      />
     </div>
   );
 };

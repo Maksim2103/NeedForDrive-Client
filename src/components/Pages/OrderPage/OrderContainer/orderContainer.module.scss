@@ -1,18 +1,88 @@
 .orderContainer {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .headerContainer {
-  width: 100%;
-  border-bottom: 1px solid #999999;
+  width: 1386px;
+  border-bottom: 1px solid #eeeeee;
   margin: 0 auto;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 64px;
+  background-color: white;
+  z-index: 999;
+  overflow: hidden;
 }
 
 .orderBreadCrumbs {
-  width: 100%;
-  border-bottom: 1px solid #999999;
+  width: 1386px;
+  border-bottom: 1px solid #eeeeee;
   height: 32px;
   display: flex;
   margin: 0 auto;
+  position: fixed;
+  top: 100px;
+  left: 64px;
+  background-color: white;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.orderContent {
+  width: 1386px;
+  display: flex;
+  margin: 0 auto;
+  position: fixed;
+  top: 132px;
+  left: 64px;
+  background-color: white;
+  z-index: 999;
+  height: 100%;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .headerContainer {
+    width: 960px;
+  }
+  .orderBreadCrumbs {
+    width: 960px;
+  }
+  .orderContent {
+    width: 960px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .headerContainer {
+    width: 704px;
+  }
+  .orderBreadCrumbs {
+    width: 704px;
+  }
+  .orderContent {
+    width: 704px;
+  }
+}
+
+@media (max-width: 767px) {
+  .headerContainer {
+    left: 0;
+  }
+
+  .orderBreadCrumbs {
+    top: 96px;
+    left: 0;
+    width: 360px;
+  }
+  .orderContent {
+    width: 320px;
+    left: 0;
+    position: relative;
+    z-index: 99;
+  }
 }

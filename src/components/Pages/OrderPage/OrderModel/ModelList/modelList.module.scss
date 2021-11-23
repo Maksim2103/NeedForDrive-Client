@@ -2,6 +2,8 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
+  overflow-x: hidden;
+  margin-bottom: 150px;
 }
 
 .active {
@@ -23,5 +25,6 @@
 @media (max-width: 767px) {
   .wrapper {
     grid-template-columns: 1fr;
+    margin-bottom: 50px;
   }
 }
