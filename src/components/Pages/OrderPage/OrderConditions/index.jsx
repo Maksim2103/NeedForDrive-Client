@@ -76,27 +76,40 @@ const OrderConditions = ({
     });
   }, [dateTo, dateFrom]);
 
-  const rentTime = useMemo(
-    () =>
-      `${monthValue}м ${weeksValue}д ${daysValue}д ${hoursValue}ч ${minutesValue}м`,
-    [monthValue, weeksValue, daysValue, hoursValue, minutesValue],
+  const rentTime = useMemo(() => {
+    const months = monthValue ? monthValue + 'м ' : '';
+    const week = weeksValue ? weeksValue + 'н ' : '';
+    const days = daysValue ? daysValue + 'д ' : '';
+    const hours = hoursValue ? hoursValue + 'ч ' : '';
+    const minutes = minutesValue ? minutesValue + 'м' : '';
+
+    return `${months}${week}${days}${hours}${minutes}`;
+  }, [monthValue, weeksValue, daysValue, hoursValue, minutesValue]);
+
+  const optionsPrice = useMemo(
+    () => (isFullTank && 500) + (isChildChair && 200) + (isRightWheel && 1600),
+    [isFullTank, isChildChair, isRightWheel],
   );
 
   const price = useMemo(() => {
     if (dateTo && dateFrom)
       switch (rateName) {
         case 'Поминутно':
-          return totalMinutes * ratePrice;
+          return totalMinutes * ratePrice + optionsPrice;
         case 'Суточный':
-          return Math.ceil(totalMinutes / 60 / 24) * ratePrice;
+          return Math.ceil(totalMinutes / 60 / 24) * ratePrice + optionsPrice;
         case 'Недельный (Акция!)':
-          return Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice;
+          return (
+            Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice + optionsPrice
+          );
         case 'Месячный':
-          return Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice;
+          return (
+            Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice + optionsPrice
+          );
         default:
           break;
       }
-  }, [rateName, ratePrice, totalMinutes, dateTo, dateFrom]);
+  }, [rateName, ratePrice, totalMinutes, dateTo, dateFrom, optionsPrice]);
 
   const displayIndications = cityName && pointName;
 

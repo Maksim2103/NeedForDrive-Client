@@ -5,39 +5,46 @@ import {
   setDateTo,
 } from '../../../../../../redux/reducers/orderSlice';
 
+import DatePicker, { registerLocale } from 'react-datepicker';
+import ru from 'date-fns/locale/ru';
+
 import styles from './selectDate.module.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const SelectDate = () => {
   const dispatch = useDispatch();
   const [valueDateFrom, setValueDateFrom] = useState('');
   const [valueDateTo, setValueDateTo] = useState('');
 
-  const handleDateFrom = (e) => {
-    const value = e.target.value;
-    setValueDateFrom(value);
+  const handleDateFrom = (date) => {
+    setValueDateFrom(date);
+    dispatch(setDateFrom(Date.parse(date)));
   };
 
-  const handleBlurFrom = () => {
-    dispatch(setDateFrom(Date.parse(valueDateFrom)));
+  const filterPassedTimeFrom = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+
+    return currentDate.getTime() < selectedDate.getTime();
+  };
+
+  const filterPassedTimeTo = (time) => {
+    const currentDate = valueDateFrom || new Date();
+    const selectedDate = new Date(time);
+
+    return currentDate.getTime() < selectedDate.getTime();
   };
 
   const handleClearDateFromValue = () => {
     setValueDateFrom('');
     dispatch(setDateFrom(''));
+    setValueDateTo('');
+    dispatch(setDateTo(''));
   };
 
-  const handleDateTo = (e) => {
-    const value = e.target.value;
-    setValueDateTo(value);
-  };
-
-  const handleBlurTo = () => {
-    if (valueDateTo < valueDateFrom) {
-      return alert(
-        'Введите корректное время (время "По" не  может быть меньше времени "С")',
-      );
-    }
-    dispatch(setDateTo(Date.parse(valueDateTo)));
+  const handleDateTo = (date) => {
+    setValueDateTo(date);
+    dispatch(setDateTo(Date.parse(date)));
   };
 
   const handleClearDateToValue = () => {
@@ -45,20 +52,26 @@ const SelectDate = () => {
     dispatch(setDateTo(''));
   };
 
-  const minDate = new Date().toISOString().split('.')[0];
+  registerLocale('ru', ru);
 
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>Дата аренды</h4>
       <div className={styles.container__input}>
         <span>С</span>
-        <input
-          type="datetime-local"
-          placeholder="Введите дату и время"
-          value={valueDateFrom}
+        <DatePicker
+          locale="ru"
+          selected={valueDateFrom}
           onChange={handleDateFrom}
-          onBlur={handleBlurFrom}
-          min={minDate}
+          placeholderText="Введите дату и время"
+          showTimeSelect
+          timeFormat="HH:mm"
+          timeIntervals={15}
+          timeCaption="time"
+          dateFormat="MMMM d, yyyy h:mm aa"
+          minDate={new Date()}
+          filterTime={filterPassedTimeFrom}
+          dateFormat="dd MMMM , yyyy hh:mm"
         />
         <button
           className={styles.buttonFrom}
@@ -69,13 +82,19 @@ const SelectDate = () => {
       </div>
       <div className={styles.container__input}>
         <span>По</span>
-        <input
-          type="datetime-local"
-          placeholder="Введите дату и время"
-          value={valueDateTo}
+        <DatePicker
+          locale="ru"
+          selected={valueDateTo}
           onChange={handleDateTo}
-          onBlur={handleBlurTo}
-          min={valueDateFrom}
+          placeholderText="Введите дату и время"
+          showTimeSelect
+          timeFormat="HH:mm"
+          timeIntervals={15}
+          timeCaption="time"
+          dateFormat="MMMM d, yyyy h:mm aa"
+          minDate={valueDateFrom}
+          filterTime={filterPassedTimeTo}
+          dateFormat="dd MMMM , yyyy hh:mm"
         />
         <button className={styles.buttonFrom} onClick={handleClearDateToValue}>
           X

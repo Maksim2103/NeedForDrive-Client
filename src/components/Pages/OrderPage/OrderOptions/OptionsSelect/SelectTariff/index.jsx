@@ -13,7 +13,9 @@ const SelectTariff = () => {
 
   const rateData = useSelector(selectResponseRateData);
 
-  const [value, setValue] = useState('5fd91571935d4e0be16a3c44');
+  const [value, setValue] = useState('');
+
+  // 5fd91571935d4e0be16a3c44
 
   const handleChangeValue = (e) => {
     const value = e.target.value;

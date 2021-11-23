@@ -5,17 +5,15 @@ import styles from './selectColor.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAvailableColorsCar,
-  selectColor,
   setColorCar,
 } from '../../../../../../redux/reducers/orderSlice';
 
 const SelectColor = () => {
   const dispatch = useDispatch();
 
-  const colorCar = useSelector(selectColor);
   const availableColorsData = useSelector(selectAvailableColorsCar);
 
-  const [value, setValue] = useState(colorCar);
+  const [value, setValue] = useState('');
 
   const handleChangeValue = (e) => {
     const value = e.target.value;
@@ -35,6 +33,7 @@ const SelectColor = () => {
             value="Любой"
             checked={value === 'Любой'}
             onChange={handleChangeValue}
+            required
           />
           <span className={styles.radioSpan}></span>
           Любой
@@ -49,6 +48,7 @@ const SelectColor = () => {
               value={el}
               checked={value === `${el}`}
               onChange={handleChangeValue}
+              required
             />
             <span className={styles.radioSpan}></span>
             {el}

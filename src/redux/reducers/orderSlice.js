@@ -36,7 +36,7 @@ export const orderSlice = createSlice({
         },
         colors: [''],
       },
-      color: 'Любой',
+      color: '',
       dateFrom: '',
       dateTo: '',
       rateId: {
