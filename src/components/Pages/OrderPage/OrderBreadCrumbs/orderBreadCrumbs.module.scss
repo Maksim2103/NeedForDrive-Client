@@ -4,7 +4,9 @@ $grey-color-dark: #999999;
 .orderBreadCrumbs {
   display: flex;
   align-items: center;
-  flex: 1;
+  width: 1248px;
+  margin: 0 auto;
+
   a {
     position: relative;
     text-decoration: none;
@@ -38,8 +40,22 @@ $grey-color-dark: #999999;
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .orderBreadCrumbs {
+    width: 896px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .orderBreadCrumbs {
+    width: 672px;
+  }
+}
+
 @media (max-width: 767px) {
   .orderBreadCrumbs {
+    padding: 0 16px;
+
     a {
       font-size: 12px;
       line-height: 12px;

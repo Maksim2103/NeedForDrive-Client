@@ -2,8 +2,12 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr;
-  max-height: 576px;
-  overflow: hidden;
+  overflow-x: hidden;
+  margin-bottom: 150px;
+}
+
+.active {
+  border: 1px solid green;
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
@@ -21,5 +25,6 @@
 @media (max-width: 767px) {
   .wrapper {
     grid-template-columns: 1fr;
+    margin-bottom: 50px;
   }
 }

@@ -8,7 +8,7 @@ const buttonTitle = 'Итого';
 const buttonLink = '/order/total';
 const buttonType = 'order';
 
-const OrderOptions = ({ data, setIsBreadCrumbs }) => {
+const OrderOptions = ({ setIsBreadCrumbs }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>

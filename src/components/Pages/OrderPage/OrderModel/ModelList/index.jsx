@@ -1,63 +1,48 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ModelItem from './ModelItem';
 
 import styles from './modelList.module.scss';
 
-import image1 from '../../../../../assets/images/car1.png';
-import image2 from '../../../../../assets/images/car2.png';
-import image3 from '../../../../../assets/images/car3.png';
-import image4 from '../../../../../assets/images/car4.png';
-
-const initialItemListData = [
-  {
-    model: 'ELANTRA',
-    price: '12 000 - 25 000 ₽',
-    img: image1,
-    active: false,
-  },
-  {
-    model: 'i30 N',
-    price: '10 000 - 32 000 ₽',
-    img: image2,
-    active: true,
-  },
-  {
-    model: 'CRETA',
-    price: '12 000 - 25 000 ₽',
-    img: image3,
-    active: false,
-  },
-  {
-    model: 'SONATA',
-    price: '10 000 - 32 000 ₽',
-    img: image4,
-    active: false,
-  },
-  {
-    model: 'ELANTRA',
-    price: '12 000 - 25 000 ₽',
-    img: image1,
-    active: false,
-  },
-  {
-    model: 'i30 N',
-    price: '10 000 - 32 000 ₽',
-    img: image2,
-    active: false,
-  },
-];
+import { useSelector } from 'react-redux';
+import {
+  selectCategory,
+  selectResponseCars,
+  setFilteredCar,
+} from '../../../../../redux/reducers/orderSlice';
+import { useDispatch } from 'react-redux';
 
 const ModelList = () => {
+  const dispatch = useDispatch();
+  const carsData = useSelector(selectResponseCars);
+  const category = useSelector(selectCategory);
+
+  const filteredCarsData = useMemo(
+    () =>
+      carsData
+        ?.filter((el) => el.categoryId !== null)
+        .filter((el) => {
+          if (category === '') return el;
+          if (el.categoryId.name === category) return el;
+        }),
+    [carsData, category],
+  );
+
+  const handleModelItem = (e, el) => {
+    dispatch(setFilteredCar(el));
+  };
+
   return (
-    <div className={styles.wrapper}>
-      {initialItemListData.map((el, index) => {
+    <div className={styles.wrapper} id="list">
+      {filteredCarsData?.map((el) => {
         return (
-          <div key={index}>
+          <div key={el.id}>
             <ModelItem
-              img={el.img}
-              price={el.price}
-              model={el.model}
-              active={el.active}
+              img={el.thumbnail.path}
+              minPrice={el.priceMin}
+              maxPrice={el.priceMax}
+              model={el.name}
+              onClick={(e) => handleModelItem(e, el)}
+              elementId={el.id}
             />
           </div>
         );

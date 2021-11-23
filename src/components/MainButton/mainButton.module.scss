@@ -2,6 +2,7 @@ $main-color-accent: #0ec261;
 $grey-color-light: #eeeeee;
 
 .mainButton {
+  margin-bottom: 20px;
   cursor: pointer;
   font-family: Roboto;
   font-style: normal;
@@ -16,12 +17,10 @@ $grey-color-light: #eeeeee;
   transition: all 0.5s;
   display: inline-block;
   &:hover {
-    color: $grey-color-light;
-    filter: brightness(90%);
+    background: linear-gradient(90deg, #367c6f 0%, #248832 100%);
   }
   &:active {
     color: $grey-color-light;
-    filter: brightness(80%);
   }
 }
 
