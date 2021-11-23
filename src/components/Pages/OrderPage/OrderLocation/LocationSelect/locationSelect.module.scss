@@ -41,16 +41,19 @@ $main-color-black: #121212;
 @media (max-width: 767px) {
   .container {
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 90px;
+    align-items: center;
   }
 }
 
 @media (max-width: 320px) {
   .container {
+    align-items: flex-start;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 90px;
     &__text {
       font-size: 12px;
+      width: 80px;
     }
   }
 }
