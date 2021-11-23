@@ -20,6 +20,7 @@ const SliderItem = ({ title, description, type, link }) => {
           buttonTitle={buttonTitle}
           type={type}
           link={link}
+          disabled={true}
         />
       </div>
     </div>

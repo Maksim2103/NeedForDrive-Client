@@ -4,7 +4,7 @@ import MainButton from '../../../../MainButton';
 
 import styles from './orderModalConfirm.module.scss';
 
-const OrderModalConfirm = ({ setIsBreadCrumbs }) => {
+const OrderModalConfirm = ({ setIsBreadCrumbs, isRoute }) => {
   const hiddenBreadCrumbsFunc = () => {
     setIsBreadCrumbs(false);
   };
@@ -20,12 +20,14 @@ const OrderModalConfirm = ({ setIsBreadCrumbs }) => {
             type="order"
             link="/order/completed"
             onClick={hiddenBreadCrumbsFunc}
+            disabled={isRoute}
           />
           <MainButton
             buttonWidth="orderConfirmWidth"
             buttonTitle="Вернуться"
             type="fuel"
             link="/order/total"
+            disabled={isRoute}
           />
         </div>
       </div>

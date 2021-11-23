@@ -9,7 +9,7 @@ const buttonTitle = 'Отменить';
 const buttonLink = '/order/total';
 const buttonType = 'fuel';
 
-const OrderCompleted = ({ setIsBreadCrumbs }) => {
+const OrderCompleted = ({ setIsBreadCrumbs, isRoute }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -21,6 +21,7 @@ const OrderCompleted = ({ setIsBreadCrumbs }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
+          isRoute={isRoute}
         />
       </div>
     </div>

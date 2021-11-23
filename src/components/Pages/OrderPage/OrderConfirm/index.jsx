@@ -11,7 +11,7 @@ const buttonTitle = 'Заказать';
 const buttonLink = '/order/confirm';
 const buttonType = 'order';
 
-const OrderConfirm = ({ setIsBreadCrumbs }) => {
+const OrderConfirm = ({ setIsBreadCrumbs, isRoute }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -23,9 +23,13 @@ const OrderConfirm = ({ setIsBreadCrumbs }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
+          isRoute={isRoute}
         />
       </div>
-      <OrderModalConfirm setIsBreadCrumbs={setIsBreadCrumbs} />
+      <OrderModalConfirm
+        setIsBreadCrumbs={setIsBreadCrumbs}
+        isRoute={isRoute}
+      />
     </div>
   );
 };

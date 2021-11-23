@@ -9,7 +9,7 @@ const buttonTitle = 'Заказать';
 const buttonLink = '/order/confirm';
 const buttonType = 'order';
 
-const OrderTotal = ({ setIsBreadCrumbs }) => {
+const OrderTotal = ({ setIsBreadCrumbs, isRoute }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.colLeft}>
@@ -21,6 +21,7 @@ const OrderTotal = ({ setIsBreadCrumbs }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
+          isRoute={isRoute}
         />
       </div>
     </div>

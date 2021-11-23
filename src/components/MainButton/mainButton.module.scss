@@ -1,5 +1,6 @@
 $main-color-accent: #0ec261;
 $grey-color-light: #eeeeee;
+$grey-color-dark: #999999;
 
 .mainButton {
   margin-bottom: 20px;
@@ -65,6 +66,11 @@ $grey-color-light: #eeeeee;
 .applicationBtn {
   text-decoration: none;
   color: #ffffff;
+}
+
+.disabledLink {
+  pointer-events: none;
+  background-color: $grey-color-dark;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {

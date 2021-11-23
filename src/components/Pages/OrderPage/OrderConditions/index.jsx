@@ -25,6 +25,7 @@ const OrderConditions = ({
   buttonLink,
   type,
   setIsBreadCrumbs,
+  isRoute,
 }) => {
   const cityName = useSelector(selectCity);
   const pointName = useSelector(selectPoint);
@@ -156,6 +157,7 @@ const OrderConditions = ({
             link={buttonLink}
             buttonTitle={buttonTitle}
             onClick={() => setIsBreadCrumbs(true)}
+            disabled={isRoute}
           />
         </>
       )}

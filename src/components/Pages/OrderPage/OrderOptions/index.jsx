@@ -12,7 +12,7 @@ const buttonTitle = 'Итого';
 const buttonLink = '/order/total';
 const buttonType = 'order';
 
-const OrderOptions = ({ setIsBreadCrumbs }) => {
+const OrderOptions = ({ setIsBreadCrumbs, isRoute }) => {
   const dispatch = useDispatch();
 
   const rateResponse = useSelector(selectResponseRateData);
@@ -32,6 +32,7 @@ const OrderOptions = ({ setIsBreadCrumbs }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
+          isRoute={isRoute}
         />
       </div>
     </div>

@@ -21,7 +21,7 @@ const buttonTitle = 'Выбрать модель';
 const buttonLink = '/order/model';
 const buttonType = 'order';
 
-const OrderLocation = ({ setIsBreadCrumbs }) => {
+const OrderLocation = ({ setIsBreadCrumbs, isRoute }) => {
   const dispatch = useDispatch();
 
   const cityName = useSelector(selectCity);
@@ -60,6 +60,7 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
+          isRoute={isRoute}
         />
       </div>
     </div>

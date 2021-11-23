@@ -16,7 +16,7 @@ const buttonTitle = 'Дополнительно';
 const buttonLink = '/order/options';
 const buttonType = 'order';
 
-const OrderModel = ({ setIsBreadCrumbs }) => {
+const OrderModel = ({ setIsBreadCrumbs, isRoute }) => {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(selectResponseCarsStatus);
@@ -62,6 +62,7 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
                 buttonLink={buttonLink}
                 type={buttonType}
                 setIsBreadCrumbs={setIsBreadCrumbs}
+                isRoute={isRoute}
               />
             </div>
           </div>
@@ -71,6 +72,7 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
               buttonLink={buttonLink}
               type={buttonType}
               setIsBreadCrumbs={setIsBreadCrumbs}
+              isRoute={isRoute}
             />
           </div>
         </>
