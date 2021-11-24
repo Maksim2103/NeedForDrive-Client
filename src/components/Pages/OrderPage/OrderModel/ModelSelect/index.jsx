@@ -45,7 +45,7 @@ const ModelSelect = () => {
           type="radio"
           name="ModelSelect"
           value=""
-          checked={value === ''}
+          checked={!value}
           onChange={handleChangeValue}
         />
         <span className={styles.radioSpan}></span>
