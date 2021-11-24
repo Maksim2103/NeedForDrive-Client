@@ -68,9 +68,8 @@ const OrderConditions = ({
     const monthValue = month > 11 ? '0' : month;
     const weeksValue = weeks > 4 ? '0' : weeks;
     const daysValue = days > 29 ? '0' : days;
-    const hoursValue = hours < 10 ? '0' + hours : hours;
-    const minutesValue = minutes < 10 ? '0' + minutes : minutes;
-
+    const hoursValue = hours;
+    const minutesValue = minutes;
     setDateValue({
       monthValue,
       weeksValue,
@@ -100,27 +99,77 @@ const OrderConditions = ({
     if (dateTo && dateFrom)
       switch (rateName) {
         case 'Поминутно':
-          return totalMinutes * ratePrice + optionsPrice;
+          const totalPrice = totalMinutes * ratePrice + optionsPrice;
+          if (totalPrice > priceMin && totalPrice < priceMax) {
+            return totalPrice;
+          }
+          if (totalPrice > priceMax) {
+            return priceMax;
+          }
+          if (totalPrice < priceMin) {
+            return priceMin;
+          }
+          break;
         case 'Суточный':
-          return Math.ceil(totalMinutes / 60 / 24) * ratePrice + optionsPrice;
+          const totalPriceDays =
+            Math.ceil(totalMinutes / 60 / 24) * ratePrice + optionsPrice;
+          if (totalPriceDays > priceMin && totalPriceDays < priceMax) {
+            return totalPriceDays;
+          }
+          if (totalPriceDays > priceMax) {
+            return priceMax;
+          }
+          if (totalPriceDays < priceMin) {
+            return priceMin;
+          }
+          break;
         case 'Недельный (Акция!)':
-          return (
-            Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice + optionsPrice
-          );
+          const totalPriceWeeks =
+            Math.ceil(totalMinutes / 60 / 24 / 7) * ratePrice + optionsPrice;
+          if (totalPriceWeeks > priceMin && totalPriceWeeks < priceMax) {
+            return totalPriceWeeks;
+          }
+          if (totalPriceWeeks > priceMax) {
+            return priceMax;
+          }
+          if (totalPriceWeeks < priceMin) {
+            return priceMin;
+          }
+          break;
         case 'Месячный':
-          return (
-            Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice + optionsPrice
-          );
+          const totalPriceMonth =
+            Math.ceil(totalMinutes / 60 / 24 / 30) * ratePrice + optionsPrice;
+          if (totalPriceMonth > priceMin && totalPriceMonth < priceMax) {
+            return totalPriceMonth;
+          }
+          if (totalPriceMonth > priceMax) {
+            return priceMax;
+          }
+          if (totalPriceMonth < priceMin) {
+            return priceMin;
+          }
+          break;
         default:
           break;
       }
-  }, [rateName, ratePrice, totalMinutes, dateTo, dateFrom, optionsPrice]);
+  }, [
+    rateName,
+    ratePrice,
+    totalMinutes,
+    dateTo,
+    dateFrom,
+    optionsPrice,
+    priceMax,
+    priceMin,
+  ]);
 
   useEffect(() => {
     dispatch(setPrice(price));
   }, [dispatch, price]);
 
   const displayIndications = cityName && pointName;
+
+  console.log(`price`, price);
 
   return (
     <div>

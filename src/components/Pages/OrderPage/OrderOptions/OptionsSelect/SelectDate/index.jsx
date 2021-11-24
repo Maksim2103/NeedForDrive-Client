@@ -70,7 +70,7 @@ const SelectDate = () => {
           timeCaption="time"
           minDate={new Date()}
           filterTime={filterPassedTimeFrom}
-          dateFormat="dd MMMM , yyyy hh:mm"
+          dateFormat="dd MMMM , yyyy HH:mm"
         />
         <button
           className={styles.buttonFrom}
@@ -92,7 +92,7 @@ const SelectDate = () => {
           timeCaption="time"
           minDate={valueDateFrom}
           filterTime={filterPassedTimeTo}
-          dateFormat="dd MMMM , yyyy hh:mm"
+          dateFormat="dd MMMM , yyyy HH:mm"
         />
         <button className={styles.buttonFrom} onClick={handleClearDateToValue}>
           X
