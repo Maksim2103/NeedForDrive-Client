@@ -35,12 +35,14 @@ $grey-color-dark: #999999;
       display: none;
     }
   }
-  .selected {
-    color: $main-color-accent;
-  }
 
   .disabledLink {
     pointer-events: none;
+    color: lightgray;
+  }
+
+  .selected {
+    color: $main-color-accent;
   }
 }
 
