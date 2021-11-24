@@ -10,15 +10,15 @@ import {
 } from 'react-yandex-maps';
 
 import {
-  selectCityCoordinate,
-  selectPointsCoordinates,
+  selectResponseCityCoordinate,
+  selectResponsePointsCoordinates,
 } from '../../../../../redux/reducers/orderSlice';
 
 import styles from './locationMap.module.scss';
 
 const LocationMap = () => {
-  const cityCoordinatesData = useSelector(selectCityCoordinate);
-  const pointsCoordinatesData = useSelector(selectPointsCoordinates);
+  const cityCoordinatesData = useSelector(selectResponseCityCoordinate);
+  const pointsCoordinatesData = useSelector(selectResponsePointsCoordinates);
 
   const cityCoordinates = useMemo(
     () => cityCoordinatesData?.map((el) => Number(el)),

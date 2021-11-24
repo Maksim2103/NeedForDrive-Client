@@ -23,11 +23,12 @@ const ModelList = () => {
         .filter((el) => {
           if (category === '') return el;
           if (el.categoryId.name === category) return el;
+          return false;
         }),
     [carsData, category],
   );
 
-  const handleModelItem = (e, el) => {
+  const handleModelItem = (_, el) => {
     dispatch(setFilteredCar(el));
   };
 
