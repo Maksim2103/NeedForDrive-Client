@@ -1,17 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { NavLink } from 'react-router-dom';
+import { selectRoutingSteps } from '../../../../redux/reducers/orderSlice';
 
 import styles from './orderBreadCrumbs.module.scss';
 
-const OrderBreadCrumbs = ({ step1, step2, step3, step4 }) => {
+const OrderBreadCrumbs = () => {
+  const { stepOne, stepTwo, stepThree } = useSelector(selectRoutingSteps);
+  const location = useLocation();
+
+  const getUrl = (url) => {
+    const id = location.pathname.match(/(\d|\w)*$/)[0];
+    if (id) return url + '/' + id;
+
+    return id;
+  };
+
   return (
     <div className={styles.orderBreadCrumbs}>
-      <NavLink to="/order/location" activeClassName={styles.selected}>
+      <NavLink to={getUrl('/order/location')} activeClassName={styles.selected}>
         Местоположение
       </NavLink>
-      {step1 ? (
-        <NavLink to="/order/model" activeClassName={styles.selected}>
+      {stepOne ? (
+        <NavLink to={getUrl('/order/model')} activeClassName={styles.selected}>
           Модель
         </NavLink>
       ) : (
@@ -19,8 +32,11 @@ const OrderBreadCrumbs = ({ step1, step2, step3, step4 }) => {
           Модель
         </NavLink>
       )}
-      {step2 ? (
-        <NavLink to="/order/options" activeClassName={styles.selected}>
+      {stepTwo ? (
+        <NavLink
+          to={getUrl('/order/options')}
+          activeClassName={styles.selected}
+        >
           Дополнительно
         </NavLink>
       ) : (
@@ -28,8 +44,8 @@ const OrderBreadCrumbs = ({ step1, step2, step3, step4 }) => {
           Дополнительно
         </NavLink>
       )}
-      {step3 ? (
-        <NavLink to="/order/total" activeClassName={styles.selected}>
+      {stepThree ? (
+        <NavLink to={getUrl('/order/total')} activeClassName={styles.selected}>
           Итого
         </NavLink>
       ) : (

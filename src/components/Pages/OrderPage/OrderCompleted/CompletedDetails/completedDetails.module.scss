@@ -84,6 +84,9 @@ $grey-color-dark: #999999;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 256px;
+    height: 116px;
+    object-fit: contain;
   }
 }
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectCarImage } from '../../../../../redux/reducers/orderSlice';
 
 import styles from './completedDetails.module.scss';
 
-import image from '../../../../../assets/images/car2.png';
-
 const CompletedDetails = () => {
+  const img = useSelector(selectCarImage);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.textWrapper}>
@@ -20,7 +22,15 @@ const CompletedDetails = () => {
         </h3>
       </div>
       <div className={styles.image}>
-        <img src={image} alt="car" />
+        <img
+          className={styles.image}
+          alt="Car_Photo "
+          src={img}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://pixy.org/src/38/386334.png';
+          }}
+        />
       </div>
     </div>
   );

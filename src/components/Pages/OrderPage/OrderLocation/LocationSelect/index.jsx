@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useRef } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Select from 'react-select';
@@ -95,8 +95,6 @@ const LocationSelect = () => {
 
   const dispatch = useDispatch();
 
-  const inputPointRef = useRef(null);
-
   const citiesData = useSelector(selectResponseCities);
   const pointsData = useSelector(selectResponsePoints);
 
@@ -109,20 +107,18 @@ const LocationSelect = () => {
   const handleResetCityAndPointValue = () => {
     setCityNameLocation('');
     setPointLocation('');
-    dispatch(setPoint(''));
+    dispatch(setPoint({ value: '' }));
     dispatch(setResetCityAndPointValues());
   };
 
   const handleChangeCityName = (val, { action }) => {
-    inputPointRef.current.clearValue();
-    setPointLocation('');
     if (action === 'clear') {
       handleResetCityAndPointValue();
       return;
     }
     const value = val.value;
     setCityNameLocation(value);
-    dispatch(setCityName({ value: val.value, id: val.id }));
+    dispatch(setCityName({ name: val.value, id: val.id }));
   };
 
   const handleChangePoint = (val, { action }) => {
@@ -191,7 +187,6 @@ const LocationSelect = () => {
           }
           isDisabled={!isPoints}
           blurInputOnSelect
-          ref={inputPointRef}
           controlShouldRenderValue
         />
       </div>

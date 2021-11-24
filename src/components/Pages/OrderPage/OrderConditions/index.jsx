@@ -25,9 +25,8 @@ const OrderConditions = ({
   buttonTitle,
   buttonLink,
   type,
-  setIsBreadCrumbs,
-  isRoute,
   handleClick,
+  visibleStep,
 }) => {
   const dispatch = useDispatch();
 
@@ -169,8 +168,6 @@ const OrderConditions = ({
 
   const displayIndications = cityName && pointName;
 
-  console.log(`price`, price);
-
   return (
     <div>
       {displayIndications && (
@@ -214,7 +211,7 @@ const OrderConditions = ({
             link={buttonLink}
             buttonTitle={buttonTitle}
             onClick={handleClick}
-            disabled={isRoute}
+            visibleStep={visibleStep}
           />
         </>
       )}

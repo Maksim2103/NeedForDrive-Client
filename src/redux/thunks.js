@@ -69,6 +69,24 @@ const fetchAsyncPostOrder = createAsyncThunk(
   '/db/order/fetchAsyncPostOrder',
   async (json) => {
     const response = await axiosInstance.post(`/db/order`, json);
+    const href = window.location.href;
+    const regExp = new RegExp('/(w|d)+$');
+    const id = href.match(regExp);
+
+    if (id && id[0]) {
+      window.location.href.replace(regExp, id);
+    } else {
+      window.location.href = window.location.href + '/' + response.data.data.id;
+    }
+    return response.data.data;
+  },
+);
+
+const fetchAsyncGetOrderById = createAsyncThunk(
+  '/db/order/fetchAsyncGetOrderById',
+  async (id) => {
+    const response = await axiosInstance.get(`/db/order/${id}`);
+    console.log(`response`, response);
     return response.data.data;
   },
 );
@@ -82,4 +100,5 @@ export {
   fetchAsyncGetRate,
   fetchAsyncGetOrderStatus,
   fetchAsyncPostOrder,
+  fetchAsyncGetOrderById,
 };

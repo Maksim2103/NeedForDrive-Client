@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectResponseCars,
   selectResponseCarsStatus,
+  selectRoutingSteps,
 } from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetCars } from '../../../../redux/thunks';
 import OrderConditions from '../OrderConditions';
@@ -16,12 +17,13 @@ const buttonTitle = 'Дополнительно';
 const buttonLink = '/order/options';
 const buttonType = 'order';
 
-const OrderModel = ({ setIsBreadCrumbs, isRoute }) => {
+const OrderModel = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(selectResponseCarsStatus);
-
   const carsResponseData = useSelector(selectResponseCars);
+
+  const { stepTwo } = useSelector(selectRoutingSteps);
 
   useEffect(() => {
     if (!carsResponseData) dispatch(fetchAsyncGetCars());
@@ -62,7 +64,7 @@ const OrderModel = ({ setIsBreadCrumbs, isRoute }) => {
                 buttonLink={buttonLink}
                 type={buttonType}
                 setIsBreadCrumbs={setIsBreadCrumbs}
-                isRoute={isRoute}
+                visibleStep={stepTwo}
               />
             </div>
           </div>
@@ -72,7 +74,7 @@ const OrderModel = ({ setIsBreadCrumbs, isRoute }) => {
               buttonLink={buttonLink}
               type={buttonType}
               setIsBreadCrumbs={setIsBreadCrumbs}
-              isRoute={isRoute}
+              visibleStep={stepTwo}
             />
           </div>
         </>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
+  selectDateFrom,
+  selectDateTo,
   setDateFrom,
   setDateTo,
 } from '../../../../../../redux/reducers/orderSlice';
@@ -10,14 +12,21 @@ import ru from 'date-fns/locale/ru';
 
 import styles from './selectDate.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector } from 'react-redux';
+
+registerLocale('ru', ru);
 
 const SelectDate = () => {
   const dispatch = useDispatch();
-  const [valueDateFrom, setValueDateFrom] = useState('');
-  const [valueDateTo, setValueDateTo] = useState('');
+
+  const selectedDateFrom = useSelector(selectDateFrom);
+  const selectedDateTo = useSelector(selectDateTo);
+
+  const [valueDateFrom, setValueDateFrom] = useState(selectedDateFrom);
+  const [valueDateTo, setValueDateTo] = useState(selectedDateTo);
 
   const handleDateFrom = (date) => {
-    setValueDateFrom(date);
+    setValueDateFrom(Date.parse(date));
     dispatch(setDateFrom(Date.parse(date)));
   };
 
@@ -29,9 +38,8 @@ const SelectDate = () => {
   };
 
   const filterPassedTimeTo = (time) => {
-    const currentDate = valueDateFrom || new Date();
+    const currentDate = new Date();
     const selectedDate = new Date(time);
-
     return currentDate.getTime() < selectedDate.getTime();
   };
 
@@ -43,7 +51,7 @@ const SelectDate = () => {
   };
 
   const handleDateTo = (date) => {
-    setValueDateTo(date);
+    setValueDateTo(Date.parse(date));
     dispatch(setDateTo(Date.parse(date)));
   };
 
@@ -51,8 +59,6 @@ const SelectDate = () => {
     setValueDateTo('');
     dispatch(setDateTo(''));
   };
-
-  registerLocale('ru', ru);
 
   return (
     <div className={styles.container}>

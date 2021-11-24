@@ -14,11 +14,11 @@ const MainButton = ({
   type,
   link,
   onClick,
-  disabled,
+  visibleStep,
 }) => {
   return (
     <div>
-      {disabled ? (
+      {visibleStep ? (
         <NavLink
           className={cx(
             'mainButton',

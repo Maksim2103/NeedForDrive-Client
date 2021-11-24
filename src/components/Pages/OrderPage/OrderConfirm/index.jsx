@@ -49,17 +49,13 @@ const OrderConfirm = ({ setIsBreadCrumbs, isRoute }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
-          isRoute={isRoute}
+          visibleStep={true}
         />
       </div>
       <OrderModalConfirm
         setIsBreadCrumbs={setIsBreadCrumbs}
-        isRoute={isRoute}
         handleFetchPostOrder={handleFetchPostOrder}
-        // orderStatusValue={orderStatusValue}
-        // orderForm={orderForm}
-        // handleFetchPostOrderConfirm={handleFetchPostOrderConfirm}
-        // handleFetchPostOrderCanceled={handleFetchPostOrderCanceled}
+        visibleStep={true}
       />
     </div>
   );

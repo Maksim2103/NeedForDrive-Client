@@ -5,6 +5,7 @@ import {
   selectPoint,
   selectResponseCities,
   selectResponsePoints,
+  selectRoutingSteps,
 } from '../../../../redux/reducers/orderSlice';
 import {
   fetchAsyncGetCities,
@@ -21,11 +22,13 @@ const buttonTitle = 'Выбрать модель';
 const buttonLink = '/order/model';
 const buttonType = 'order';
 
-const OrderLocation = ({ setIsBreadCrumbs, isRoute }) => {
+const OrderLocation = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const cityName = useSelector(selectCity);
   const pointName = useSelector(selectPoint);
+
+  const { stepOne } = useSelector(selectRoutingSteps);
 
   const cityResponseData = useSelector(selectResponseCities);
   const pointsResponseData = useSelector(selectResponsePoints);
@@ -60,7 +63,7 @@ const OrderLocation = ({ setIsBreadCrumbs, isRoute }) => {
           buttonLink={buttonLink}
           type={buttonType}
           setIsBreadCrumbs={setIsBreadCrumbs}
-          isRoute={isRoute}
+          visibleStep={stepOne}
         />
       </div>
     </div>
