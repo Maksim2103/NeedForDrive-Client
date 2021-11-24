@@ -4,11 +4,7 @@ import MainButton from '../../../../MainButton';
 
 import styles from './orderModalConfirm.module.scss';
 
-const OrderModalConfirm = ({ setIsBreadCrumbs, isRoute }) => {
-  const hiddenBreadCrumbsFunc = () => {
-    setIsBreadCrumbs(false);
-  };
-
+const OrderModalConfirm = ({ isRoute, handleFetchPostOrder }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.contentWrapper}>
@@ -19,7 +15,7 @@ const OrderModalConfirm = ({ setIsBreadCrumbs, isRoute }) => {
             buttonTitle="Подтвердить"
             type="order"
             link="/order/completed"
-            onClick={hiddenBreadCrumbsFunc}
+            onClick={handleFetchPostOrder}
             disabled={isRoute}
           />
           <MainButton

@@ -57,6 +57,22 @@ const fetchAsyncGetRate = createAsyncThunk(
   },
 );
 
+const fetchAsyncGetOrderStatus = createAsyncThunk(
+  '/db/orderStatus/fetchAsyncGetOrderStatus',
+  async () => {
+    const response = await axiosInstance.get(`/db/orderStatus`);
+    return response.data.data;
+  },
+);
+
+const fetchAsyncPostOrder = createAsyncThunk(
+  '/db/order/fetchAsyncPostOrder',
+  async (json) => {
+    const response = await axiosInstance.post(`/db/order`, json);
+    return response.data.data;
+  },
+);
+
 export {
   fetchAsyncGetCities,
   fetchAsyncGetPoints,
@@ -64,4 +80,6 @@ export {
   fetchAsyncGetPointsCoordinates,
   fetchAsyncGetCars,
   fetchAsyncGetRate,
+  fetchAsyncGetOrderStatus,
+  fetchAsyncPostOrder,
 };

@@ -3,9 +3,11 @@ import {
   fetchAsyncGetCars,
   fetchAsyncGetCities,
   fetchAsyncGetCityCoordinates,
+  fetchAsyncGetOrderStatus,
   fetchAsyncGetPoints,
   fetchAsyncGetPointsCoordinates,
   fetchAsyncGetRate,
+  fetchAsyncPostOrder,
 } from '../thunks';
 
 export const orderSlice = createSlice({
@@ -18,7 +20,8 @@ export const orderSlice = createSlice({
     orderForm: {
       orderStatusId: {},
       cityId: {
-        name: '',
+        id: '',
+        value: '',
       },
       pointId: {
         name: '',
@@ -52,10 +55,10 @@ export const orderSlice = createSlice({
   },
   reducers: {
     setCityName: (state, action) => {
-      state.orderForm.cityId.name = action.payload;
+      state.orderForm.cityId = action.payload;
     },
     setPoint: (state, action) => {
-      state.orderForm.pointId.address = action.payload;
+      state.orderForm.pointId = action.payload;
     },
     setFilteredPoints: (state, action) => {
       state.filteredPoints = action.payload;
@@ -94,6 +97,12 @@ export const orderSlice = createSlice({
     },
     setDateTo: (state, action) => {
       state.orderForm.dateTo = action.payload;
+    },
+    setPrice: (state, action) => {
+      state.orderForm.price = action.payload;
+    },
+    setOrderStatus: (state, action) => {
+      state.orderForm.orderStatusId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -192,6 +201,35 @@ export const orderSlice = createSlice({
       state.loadingResponseRate = 'failed';
       state.errorResponseRate = action.error.message;
     });
+
+    // Fetch Order Status
+    builder.addCase(fetchAsyncGetOrderStatus.pending, (state) => {
+      state.dataResponseOrderStatus = [];
+      state.loadingResponseOrderStatus = 'pending';
+    });
+    builder.addCase(
+      fetchAsyncGetOrderStatus.fulfilled,
+      (state, { payload }) => {
+        state.dataResponseOrderStatus = payload;
+        state.loadingResponseOrderStatus = 'succeeded';
+      },
+    );
+    builder.addCase(fetchAsyncGetOrderStatus.rejected, (state, action) => {
+      state.loadingResponseOrderStatus = 'failed';
+      state.errorResponseOrderStatus = action.error.message;
+    });
+
+    // Fetch Post Order
+    builder.addCase(fetchAsyncPostOrder.pending, (state) => {
+      state.loadingPostOrder = 'pending';
+    });
+    builder.addCase(fetchAsyncPostOrder.fulfilled, (state) => {
+      state.loadingPostOrder = 'succeeded';
+    });
+    builder.addCase(fetchAsyncPostOrder.rejected, (state, action) => {
+      state.loadingPostOrder = 'failed';
+      state.errorPostOrder = action.error.message;
+    });
   },
 });
 
@@ -208,6 +246,8 @@ export const selectResponseCars = (state = []) =>
   state.orderPage.dataResponseCars;
 export const selectResponseRateData = (state = []) =>
   state.orderPage.dataResponseRate;
+export const selectResponseOrderStatusData = (state = []) =>
+  state.orderPage.dataResponseOrderStatus;
 
 // data Response Status
 export const selectResponseCarsStatus = (state = []) =>
@@ -215,7 +255,7 @@ export const selectResponseCarsStatus = (state = []) =>
 
 // orderForm
 export const selectOrderForm = (state) => state.orderPage.orderForm;
-export const selectCity = (state) => state.orderPage.orderForm.cityId.name;
+export const selectCity = (state) => state.orderPage.orderForm.cityId.value;
 export const selectPoint = (state) => state.orderPage.orderForm.pointId.address;
 export const selectPriceMin = (state) =>
   state.orderPage.orderForm.carId.priceMin;
@@ -259,6 +299,8 @@ export const {
   setIsRightWheel,
   setDateFrom,
   setDateTo,
+  setPrice,
+  setOrderStatus,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

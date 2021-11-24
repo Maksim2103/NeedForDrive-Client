@@ -114,7 +114,7 @@ const LocationSelect = () => {
   };
 
   const handleChangeCityName = (val, { action }) => {
-    // inputPointRef.current.clearValue();
+    inputPointRef.current.clearValue();
     setPointLocation('');
     if (action === 'clear') {
       handleResetCityAndPointValue();
@@ -122,18 +122,18 @@ const LocationSelect = () => {
     }
     const value = val.value;
     setCityNameLocation(value);
-    dispatch(setCityName(value));
+    dispatch(setCityName({ value: val.value, id: val.id }));
   };
 
   const handleChangePoint = (val, { action }) => {
     if (action === 'clear') {
       setPointLocation('');
-      dispatch(setPoint(''));
+      dispatch(setPoint({ name: '' }));
       return;
     }
     const value = val.value;
     setPointLocation(value);
-    dispatch(setPoint(value));
+    dispatch(setPoint(val.el));
   };
 
   const filteredPointsData = useMemo(
@@ -153,11 +153,11 @@ const LocationSelect = () => {
   const isPoints = filteredPointsData?.length !== 0;
 
   const optionsCities = citiesData?.map((el) => {
-    return { value: el.name, label: el.name };
+    return { value: el.name, label: el.name, id: el.id };
   });
 
   const optionsPoints = filteredPointsData?.map((el) => {
-    return { value: el.address, label: el.address };
+    return { value: el.address, label: el.address, el };
   });
 
   return (
@@ -173,7 +173,6 @@ const LocationSelect = () => {
           options={optionsCities}
           isClearable
           placeholder="Начните вводить город..."
-          // blurInputOnSelect
           controlShouldRenderValue
         />
       </div>
