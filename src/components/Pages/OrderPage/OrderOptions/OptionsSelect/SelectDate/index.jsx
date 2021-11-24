@@ -68,10 +68,9 @@ const SelectDate = () => {
           timeFormat="HH:mm"
           timeIntervals={15}
           timeCaption="time"
-          dateFormat="MMMM d, yyyy h:mm aa"
           minDate={new Date()}
           filterTime={filterPassedTimeFrom}
-          dateFormat="dd MMMM , yyyy hh:mm"
+          dateFormat="dd MMMM , yyyy HH:mm"
         />
         <button
           className={styles.buttonFrom}
@@ -91,10 +90,9 @@ const SelectDate = () => {
           timeFormat="HH:mm"
           timeIntervals={15}
           timeCaption="time"
-          dateFormat="MMMM d, yyyy h:mm aa"
           minDate={valueDateFrom}
           filterTime={filterPassedTimeTo}
-          dateFormat="dd MMMM , yyyy hh:mm"
+          dateFormat="dd MMMM , yyyy HH:mm"
         />
         <button className={styles.buttonFrom} onClick={handleClearDateToValue}>
           X
