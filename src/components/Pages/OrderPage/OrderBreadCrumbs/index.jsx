@@ -13,9 +13,9 @@ const OrderBreadCrumbs = () => {
 
   const getUrl = (url) => {
     const id = location.pathname.match(/(\d|\w)*$/)[0];
-    if (id) return url + '/' + id;
+    if (id && !/[A-Za-z]+$/.test(id)) return url + '/' + id;
 
-    return id;
+    return url;
   };
 
   return (

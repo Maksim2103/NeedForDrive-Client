@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Switch, Route, useLocation } from 'react-router-dom';
@@ -17,25 +17,31 @@ import OrderConfirm from '../OrderConfirm';
 import OrderCompleted from '../OrderCompleted';
 import {
   selectDisplayStatus,
+  setDefaultInitialState,
   setStatusDisplayStatus,
 } from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetOrderById } from '../../../../redux/thunks';
 import { useSelector } from 'react-redux';
+import OrderCanceled from '../OrderCanceled';
 
 const OrderContainer = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
+  const location = useRef(useLocation());
   const [isBreadCrumbs, setIsBreadCrumbs] = useState(true);
 
   const displayStatus = useSelector(selectDisplayStatus);
 
   useEffect(() => {
-    const id = location.pathname.match(/(\d|\w)*$/)[0];
+    const id = location.current.pathname.match(/(\d|\w)*$/)[0];
     if (Boolean(id)) {
       dispatch(fetchAsyncGetOrderById(id));
     } else {
       dispatch(setStatusDisplayStatus('display'));
     }
+
+    return () => {
+      dispatch(setDefaultInitialState());
+    };
   }, [dispatch]);
 
   return (
@@ -87,6 +93,12 @@ const OrderContainer = () => {
               path="/order/completed/"
               component={() => (
                 <OrderCompleted setIsBreadCrumbs={setIsBreadCrumbs} />
+              )}
+            />
+            <Route
+              path="/order/canceled/"
+              component={() => (
+                <OrderCanceled setIsBreadCrumbs={setIsBreadCrumbs} />
               )}
             />
             <Route exact path="*" component={NotFoundPage} />

@@ -4,7 +4,9 @@ import {
   selectCity,
   selectPoint,
   selectResponseCities,
+  selectResponseCityLoadingStatus,
   selectResponsePoints,
+  selectResponsePointsLoadingStatus,
   selectRoutingSteps,
 } from '../../../../redux/reducers/orderSlice';
 import {
@@ -15,6 +17,7 @@ import {
 import OrderConditions from '../OrderConditions';
 import LocationMap from './LocationMap';
 import LocationSelect from './LocationSelect';
+import Loader from '../../../../components/Loader/Loader';
 
 import styles from './orderLocation.module.scss';
 
@@ -27,6 +30,9 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
 
   const cityName = useSelector(selectCity);
   const pointName = useSelector(selectPoint);
+
+  const cityLoadingStatus = useSelector(selectResponseCityLoadingStatus);
+  const pointsLoadingStatus = useSelector(selectResponsePointsLoadingStatus);
 
   const { stepOne } = useSelector(selectRoutingSteps);
 
@@ -49,23 +55,30 @@ const OrderLocation = ({ setIsBreadCrumbs }) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.colLeft}>
-        <LocationSelect />
-        {cityName && (
-          <>
-            <p className={styles.text}>Выбрать на карте:</p> <LocationMap />
-          </>
-        )}
-      </div>
-      <div className={styles.colRight}>
-        <OrderConditions
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          type={buttonType}
-          setIsBreadCrumbs={setIsBreadCrumbs}
-          visibleStep={stepOne}
-        />
-      </div>
+      {cityLoadingStatus === 'succeeded' &&
+      pointsLoadingStatus === 'succeeded' ? (
+        <>
+          <div className={styles.colLeft}>
+            <LocationSelect />
+            {cityName && (
+              <>
+                <p className={styles.text}>Выбрать на карте:</p> <LocationMap />
+              </>
+            )}
+          </div>
+          <div className={styles.colRight}>
+            <OrderConditions
+              buttonTitle={buttonTitle}
+              buttonLink={buttonLink}
+              type={buttonType}
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              visibleStep={stepOne}
+            />
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

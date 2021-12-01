@@ -18,34 +18,23 @@ const MainButton = ({
 }) => {
   return (
     <div>
-      {visibleStep ? (
-        <NavLink
-          className={cx(
-            'mainButton',
-            'applicationBtn',
-            `${type}`,
-            `${buttonWidth}`,
-          )}
-          to={link}
-          onClick={onClick}
-        >
-          {buttonTitle}
-        </NavLink>
-      ) : (
-        <NavLink
-          className={cx(
-            'mainButton',
-            'applicationBtn',
-            `${type}`,
-            `${buttonWidth}`,
-            'disabledLink',
-          )}
-          to={link}
-          onClick={onClick}
-        >
-          {buttonTitle}
-        </NavLink>
-      )}
+      <NavLink
+        className={
+          visibleStep
+            ? cx('mainButton', 'applicationBtn', `${type}`, `${buttonWidth}`)
+            : cx(
+                'mainButton',
+                'applicationBtn',
+                `${type}`,
+                `${buttonWidth}`,
+                'disabledLink',
+              )
+        }
+        to={link}
+        onClick={onClick}
+      >
+        {buttonTitle}
+      </NavLink>
     </div>
   );
 };

@@ -7,13 +7,15 @@ import CompletedDetails from './CompletedDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectOrderForm,
+  selectResponseIdStatus,
   selectResponseOrderStatusData,
   setOrderStatus,
 } from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncPostOrder } from '../../../../redux/thunks';
+import Loader from '../../../Loader/Loader';
 
 const buttonTitle = 'Отменить';
-const buttonLink = '/order/total';
+const buttonLink = '/order/canceled';
 const buttonType = 'fuel';
 
 const OrderCompleted = ({ setIsBreadCrumbs }) => {
@@ -28,7 +30,7 @@ const OrderCompleted = ({ setIsBreadCrumbs }) => {
   );
 
   const handleFetchPostOrderCanceled = () => {
-    setIsBreadCrumbs(true);
+    setIsBreadCrumbs(false);
     dispatch(setOrderStatus(canceledOrderStatus[0]));
     dispatch(
       fetchAsyncPostOrder({
@@ -38,21 +40,29 @@ const OrderCompleted = ({ setIsBreadCrumbs }) => {
     );
   };
 
+  const isLoading = useSelector(selectResponseIdStatus);
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.colLeft}>
-        <CompletedDetails />
-      </div>
-      <div className={styles.colRight}>
-        <OrderConditions
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          type={buttonType}
-          setIsBreadCrumbs={setIsBreadCrumbs}
-          handleClick={handleFetchPostOrderCanceled}
-          visibleStep={true}
-        />
-      </div>
+      {isLoading === 'succeeded' ? (
+        <>
+          <div className={styles.colLeft}>
+            <CompletedDetails />
+          </div>
+          <div className={styles.colRight}>
+            <OrderConditions
+              buttonTitle={buttonTitle}
+              buttonLink={buttonLink}
+              type={buttonType}
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              handleClick={handleFetchPostOrderCanceled}
+              visibleStep={true}
+            />
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

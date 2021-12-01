@@ -86,7 +86,6 @@ const fetchAsyncGetOrderById = createAsyncThunk(
   '/db/order/fetchAsyncGetOrderById',
   async (id) => {
     const response = await axiosInstance.get(`/db/order/${id}`);
-    console.log(`response`, response);
     return response.data.data;
   },
 );

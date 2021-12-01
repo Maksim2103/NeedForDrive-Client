@@ -9,8 +9,10 @@ import { useSelector } from 'react-redux';
 import { fetchAsyncGetOrderStatus } from '../../../../redux/thunks';
 import {
   selectResponseOrderStatusData,
+  selectResponseOrderStatusLoading,
   selectRoutingSteps,
 } from '../../../../redux/reducers/orderSlice';
+import Loader from '../../../Loader/Loader';
 
 const buttonTitle = 'Заказать';
 const buttonLink = '/order/confirm';
@@ -20,6 +22,7 @@ const OrderTotal = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const orderStatusResponseData = useSelector(selectResponseOrderStatusData);
+  const loadingOrderStatus = useSelector(selectResponseOrderStatusLoading);
 
   const { stepFour } = useSelector(selectRoutingSteps);
 
@@ -29,18 +32,24 @@ const OrderTotal = ({ setIsBreadCrumbs }) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.colLeft}>
-        <TotalDetails />
-      </div>
-      <div className={styles.colRight}>
-        <OrderConditions
-          buttonTitle={buttonTitle}
-          buttonLink={buttonLink}
-          type={buttonType}
-          setIsBreadCrumbs={setIsBreadCrumbs}
-          visibleStep={stepFour}
-        />
-      </div>
+      {loadingOrderStatus ? (
+        <>
+          <div className={styles.colLeft}>
+            <TotalDetails />
+          </div>
+          <div className={styles.colRight}>
+            <OrderConditions
+              buttonTitle={buttonTitle}
+              buttonLink={buttonLink}
+              type={buttonType}
+              setIsBreadCrumbs={setIsBreadCrumbs}
+              visibleStep={stepFour}
+            />
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

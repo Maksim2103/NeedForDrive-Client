@@ -6,6 +6,8 @@ import classNames from 'classnames/bind';
 
 import styles from './modelItem.module.scss';
 
+import image from '../../../../../../assets/images/car.png';
+
 const cx = classNames.bind(styles);
 
 const ModelItem = ({ model, img, minPrice, maxPrice, onClick, elementId }) => {
@@ -28,7 +30,7 @@ const ModelItem = ({ model, img, minPrice, maxPrice, onClick, elementId }) => {
           src={img}
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'https://pixy.org/src/38/386334.png';
+            e.target.src = image;
           }}
         />
       </div>

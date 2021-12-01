@@ -18,7 +18,7 @@ const buttonTitle = 'Заказать';
 const buttonLink = '/order/confirm';
 const buttonType = 'order';
 
-const OrderConfirm = ({ setIsBreadCrumbs, isRoute }) => {
+const OrderConfirm = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const orderForm = useSelector(selectOrderForm);

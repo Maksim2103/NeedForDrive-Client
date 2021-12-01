@@ -11,56 +11,62 @@ import {
   fetchAsyncPostOrder,
 } from '../thunks';
 
+const initialState = {
+  filteredPoints: [],
+  filterParams: {
+    category: '',
+  },
+  orderForm: {
+    orderStatusId: {},
+    cityId: {
+      id: '',
+      name: '',
+    },
+    pointId: {
+      name: '',
+      cityId: {},
+      address: '',
+    },
+    carId: {
+      priceMax: '',
+      priceMin: '',
+      name: '',
+      thumbnail: {},
+      description: '',
+      categoryId: {
+        name: '',
+      },
+      colors: [''],
+    },
+    color: '',
+    dateFrom: '',
+    dateTo: '',
+    rateId: {
+      id: '5fd91571935d4e0be16a3c44',
+      rateTypeId: {
+        name: '',
+      },
+    },
+    price: 0,
+    isFullTank: false,
+    isNeedChildChair: false,
+    isRightWheel: false,
+  },
+  routingSteps: {
+    stepOne: false,
+    stepTwo: false,
+    stepThree: false,
+    stepFour: true,
+  },
+};
+
+// const getInitialState = (initialState) => {
+//   return initialState;
+// };
+
 export const orderSlice = createSlice({
   name: 'orderSlice',
-  initialState: {
-    filteredPoints: [],
-    filterParams: {
-      category: '',
-    },
-    orderForm: {
-      orderStatusId: {},
-      cityId: {
-        id: '',
-        name: '',
-      },
-      pointId: {
-        name: '',
-        cityId: {},
-        address: '',
-      },
-      carId: {
-        priceMax: '',
-        priceMin: '',
-        name: '',
-        thumbnail: {},
-        description: '',
-        categoryId: {
-          name: '',
-        },
-        colors: [''],
-      },
-      color: '',
-      dateFrom: '',
-      dateTo: '',
-      rateId: {
-        id: '5fd91571935d4e0be16a3c44',
-        rateTypeId: {
-          name: '',
-        },
-      },
-      price: 0,
-      isFullTank: false,
-      isNeedChildChair: false,
-      isRightWheel: false,
-    },
-    routingSteps: {
-      stepOne: false,
-      stepTwo: false,
-      stepThree: false,
-      stepFour: true,
-    },
-  },
+  initialState,
   reducers: {
     setCityName: (state, action) => {
       state.orderForm.cityId = action.payload;
@@ -91,7 +97,18 @@ export const orderSlice = createSlice({
       state.filterParams.category = action.payload;
     },
     setFilteredCar: (state, action) => {
-      state.orderForm.carId = action.payload;
+      if (state.orderForm.carId.name === '') {
+        state.orderForm.carId = action.payload;
+        state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
+        return;
+      }
+      state.orderForm.color = '';
+      state.orderForm.dateFrom = '';
+      state.orderForm.dateTo = '';
+      state.orderForm.rateId = {};
+      state.orderForm.isFullTank = false;
+      state.orderForm.isNeedChildChair = false;
+      state.orderForm.isRightWheel = false;
       state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
     },
     setColorCar: (state, action) => {
@@ -104,14 +121,13 @@ export const orderSlice = createSlice({
         Boolean(action.payload);
     },
     setRate: (state, action) => {
-      console.log(`action`, action);
       state.orderForm.rateId = action.payload;
-      // state.routingSteps.stepThree =
-      //   Boolean(state.orderForm.color) &&
-      //   Boolean(state.orderForm.dateFrom) &&
-      //   Boolean(state.orderForm.dateTo) &&
-      //   Boolean(state.orderForm?.rateId.rateTypeId.name) &&
-      //   Boolean(action.payload);
+      state.routingSteps.stepThree =
+        Boolean(state.orderForm.color) &&
+        Boolean(state.orderForm.dateFrom) &&
+        Boolean(state.orderForm.dateTo) &&
+        Boolean(state.orderForm?.rateId.rateTypeId.name) &&
+        Boolean(action.payload);
     },
     setIsFullTank: (state, action) => {
       state.orderForm.isFullTank = action.payload;
@@ -128,7 +144,7 @@ export const orderSlice = createSlice({
         Boolean(state.orderForm.color) &&
         Boolean(state.orderForm.dateFrom) &&
         Boolean(state.orderForm.dateTo) &&
-        Boolean(state.orderForm?.rateId.rateTypeId.name) &&
+        Boolean(state.orderForm.rateId?.rateTypeId.name) &&
         Boolean(action.payload);
     },
     setDateTo: (state, action) => {
@@ -137,7 +153,7 @@ export const orderSlice = createSlice({
         Boolean(state.orderForm.color) &&
         Boolean(state.orderForm.dateFrom) &&
         Boolean(state.orderForm.dateTo) &&
-        Boolean(state.orderForm?.rateId.rateTypeId.name) &&
+        Boolean(state.orderForm.rateId?.rateTypeId.name) &&
         Boolean(action.payload);
     },
     setPrice: (state, action) => {
@@ -153,6 +169,9 @@ export const orderSlice = createSlice({
     setStatusDisplayStatus: (state, action) => {
       state.displayStatus = action.payload;
     },
+    setDefaultInitialState: (state) => {
+      return initialState;
+    },
   },
   extraReducers: (builder) => {
     // Fetch Order by Id
@@ -162,7 +181,6 @@ export const orderSlice = createSlice({
     });
     builder.addCase(fetchAsyncGetOrderById.fulfilled, (state, { payload }) => {
       state.displayStatus = 'display';
-      console.log(`payload`, payload);
       state.orderForm = payload;
       state.routingSteps.stepOne =
         Boolean(payload.pointId.address) && Boolean(payload.cityId.name);
@@ -328,6 +346,14 @@ export const selectResponseCarsStatus = (state = []) =>
   state.orderPage.loadingResponseCars;
 export const selectDisplayStatus = (state = []) =>
   state.orderPage.displayStatus;
+export const selectResponseIdStatus = (state = []) =>
+  state.orderPage.loadingPostOrder;
+export const selectResponseCityLoadingStatus = (state = []) =>
+  state.orderPage.loadingResponseCities;
+export const selectResponsePointsLoadingStatus = (state = []) =>
+  state.orderPage.loadingResponsePoints;
+export const selectResponseOrderStatusLoading = (state = []) =>
+  state.orderPage.loadingResponseOrderStatus;
 
 // orderForm
 export const selectOrderForm = (state) => state.orderPage.orderForm;
@@ -354,12 +380,18 @@ export const selectIsNeedChildChair = (state) =>
   state.orderPage.orderForm.isNeedChildChair;
 export const selectIsRightWheel = (state) =>
   state.orderPage.orderForm.isRightWheel;
-export const selectCurrentId = (state = []) =>
-  state.orderPage.orderForm.carId?.id;
-export const selectAvailableColorsCar = (state = []) =>
+export const selectCurrentId = (state) => state.orderPage.orderForm.carId?.id;
+export const selectAvailableColorsCar = (state) =>
   state.orderPage.orderForm.carId?.colors;
-export const selectOrderStatus = (state = []) =>
+export const selectOrderStatus = (state) =>
   state.orderPage.orderForm.orderStatusId.name;
+export const selectOrderId = (state) =>
+  state.orderPage.dataResponsePostOrder.id;
+export const selectCarNumber = (state) =>
+  state.orderPage.orderForm.carId?.number;
+export const selectCarTank = (state) => state.orderPage.orderForm.carId?.tank;
+export const selectUpdateDate = (state) =>
+  state.orderPage.orderForm.carId?.updatedAt;
 
 // orderPage
 export const selectCategory = (state) => state.orderPage.filterParams.category;
@@ -387,6 +419,7 @@ export const {
   setOrderStatus,
   setOrderForm,
   setStatusDisplayStatus,
+  setDefaultInitialState,
 } = orderSlice.actions;
 
 export default orderSlice.reducer;

@@ -3,20 +3,37 @@ import React from 'react';
 import styles from './totalDetails.module.scss';
 
 import { useSelector } from 'react-redux';
-import { selectCarImage } from '../../../../../redux/reducers/orderSlice';
+import {
+  selectCarImage,
+  selectCarNumber,
+  selectCarTank,
+  selectModel,
+  selectUpdateDate,
+} from '../../../../../redux/reducers/orderSlice';
+
+import image from '../../../../../assets/images/car.png';
 
 const TotalDetails = () => {
   const img = useSelector(selectCarImage);
+
+  const carModel = useSelector(selectModel);
+  const carNumber = useSelector(selectCarNumber);
+  const carTank = useSelector(selectCarTank);
+  const updateDate = useSelector(selectUpdateDate);
+
+  const availableDate = new Date(updateDate).toLocaleString();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.textWrapper}>
-        <h3 className={styles.model}>Hyndai, i30 N</h3>
-        <h3 className={styles.number}>K 761 HA 73</h3>
+        <h3 className={styles.model}> {carModel} </h3>
+        <h3 className={styles.number}>{carNumber} </h3>
         <h3 className={styles.fuel}>
-          <span>Топливо</span>100%
+          <span>Топливо</span>
+          {carTank ? `${carTank}%` : 'Нет данных'}
         </h3>
         <h3 className={styles.date}>
-          <span>Доступна с</span>12.06.2019 12:00
+          <span>Доступна с</span> {availableDate}
         </h3>
       </div>
       <div>
@@ -26,7 +43,7 @@ const TotalDetails = () => {
           src={img}
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'https://pixy.org/src/38/386334.png';
+            e.target.src = image;
           }}
         />
       </div>

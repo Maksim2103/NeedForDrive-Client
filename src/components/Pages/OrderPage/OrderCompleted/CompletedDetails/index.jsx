@@ -1,24 +1,43 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectCarImage } from '../../../../../redux/reducers/orderSlice';
+import {
+  selectCarImage,
+  selectCarNumber,
+  selectCarTank,
+  selectModel,
+  selectOrderId,
+  selectUpdateDate,
+} from '../../../../../redux/reducers/orderSlice';
 
 import styles from './completedDetails.module.scss';
+
+import images from '../../../../../assets/images/car.png';
 
 const CompletedDetails = () => {
   const img = useSelector(selectCarImage);
 
+  const orderId = useSelector(selectOrderId);
+  const carModel = useSelector(selectModel);
+  const carNumber = useSelector(selectCarNumber);
+  const carTank = useSelector(selectCarTank);
+  const updateDate = useSelector(selectUpdateDate);
+
+  const availableDate = new Date(updateDate).toLocaleString();
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.textWrapper}>
-        <h3 className={styles.orderNumber}>Заказ номер RU58491823</h3>
+        <h3 className={styles.orderNumber}>Заказ номер {orderId} </h3>
         <h3 className={styles.orderAccepted}>Ваш заказ подтверждён</h3>
-        <h3 className={styles.model}>Hyndai, i30 N</h3>
-        <h3 className={styles.number}>K 761 HA 73</h3>
+        <h3 className={styles.model}>{carModel} </h3>
+        <h3 className={styles.number}>{carNumber}</h3>
         <h3 className={styles.fuel}>
-          <span>Топливо</span>100%
+          <span>Топливо</span>
+          {carTank ? `${carTank}%` : 'Нет данных'}
         </h3>
         <h3 className={styles.date}>
-          <span>Доступна с</span>12.06.2019 12:00
+          <span>Доступна с</span>
+          {availableDate}
         </h3>
       </div>
       <div className={styles.image}>
@@ -28,7 +47,7 @@ const CompletedDetails = () => {
           src={img}
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'https://pixy.org/src/38/386334.png';
+            e.target.src = images;
           }}
         />
       </div>

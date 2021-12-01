@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import styles from './selectAdditionalServices.module.scss';
 
-import classNames from 'classnames/bind';
 import {
   selectIsFullTank,
   selectIsNeedChildChair,
@@ -12,8 +11,6 @@ import {
   setIsRightWheel,
 } from '../../../../../../redux/reducers/orderSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
-const cx = classNames.bind(styles);
 
 const SelectAdditionalServices = () => {
   const dispatch = useDispatch();
@@ -47,7 +44,7 @@ const SelectAdditionalServices = () => {
     <div className={styles.wrapper}>
       <h4 className={styles.title}>Доп услуги</h4>
       <div className={styles.inputsWrapper}>
-        <label className={cx('container', 'label-active')}>
+        <label className={styles.container}>
           <input
             className={styles.checkInputButton}
             type="checkbox"

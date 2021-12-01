@@ -6,6 +6,7 @@ import {
   selectRoutingSteps,
 } from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetCars } from '../../../../redux/thunks';
+import Loader from '../../../Loader/Loader';
 import OrderConditions from '../OrderConditions';
 import OrderConditionsMobile from '../OrderConditionsMobile';
 import ModelList from './ModelList';
@@ -79,9 +80,7 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
           </div>
         </>
       ) : (
-        <div className={styles.loader}>
-          Данные загружаются, пожалуйста, подождите...
-        </div>
+        <Loader />
       )}
     </div>
   );

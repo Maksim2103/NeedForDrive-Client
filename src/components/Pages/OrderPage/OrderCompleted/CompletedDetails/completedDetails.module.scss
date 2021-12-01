@@ -93,7 +93,11 @@ $grey-color-dark: #999999;
 @media (min-width: 1024px) and (max-width: 1439px) {
   .wrapper {
     .textWrapper {
-      margin-right: 50px;
+      margin-right: 10px;
+      .orderAccepted {
+        font-size: 20px;
+        line-height: 24px;
+      }
     }
   }
 }

@@ -16,9 +16,6 @@ const SelectTariff = () => {
 
   const rateId = useSelector(selectRateId);
 
-  console.log(`rateData`, rateData);
-  console.log(`rateId`, rateId);
-
   const [value, setValue] = useState(rateId);
 
   const handleChangeValue = (e) => {
