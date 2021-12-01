@@ -21,7 +21,7 @@ const TotalDetails = () => {
   const carTank = useSelector(selectCarTank);
   const updateDate = useSelector(selectUpdateDate);
 
-  const availableDate = new Date(updateDate).toLocaleString();
+  const availableDate = new Date(updateDate).toLocaleDateString();
 
   return (
     <div className={styles.wrapper}>

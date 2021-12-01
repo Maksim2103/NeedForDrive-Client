@@ -3,7 +3,7 @@ $main-color-black: #121212;
 .wrapper {
   display: flex;
   justify-content: space-between;
-  width: 1312px;
+  width: 1248px;
   margin: 0 auto;
   height: 100%;
 }
@@ -22,6 +22,8 @@ $main-color-black: #121212;
   flex-direction: column;
   margin-right: 192px;
   padding-top: 32px;
+  width: 100%;
+
   .title {
     font-family: Roboto;
     font-style: normal;

@@ -2,6 +2,8 @@ import { useSelector } from 'react-redux';
 import { selectResponseIdStatus } from '../../../../redux/reducers/orderSlice';
 import Loader from '../../../Loader/Loader';
 import OrderConditions from '../OrderConditions';
+import CanceledDetails from './CanceledDetails/index';
+// import CanceledDetails from './CanceledDetails/index';
 
 import styles from './orderCanceled.module.scss';
 
@@ -17,7 +19,7 @@ const OrderCanceled = () => {
       {isLoading === 'succeeded' ? (
         <>
           <div className={styles.colLeft}>
-            <h3 className={styles.title}>Ваш заказ отменён</h3>
+            <CanceledDetails />
           </div>
           <div className={styles.colRight}>
             <OrderConditions

@@ -60,10 +60,6 @@ const initialState = {
   },
 };
 
-// const getInitialState = (initialState) => {
-//   return initialState;
-// };
-
 export const orderSlice = createSlice({
   name: 'orderSlice',
   initialState,
@@ -102,14 +98,25 @@ export const orderSlice = createSlice({
         state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
         return;
       }
+      state.orderForm.carId = action.payload;
       state.orderForm.color = '';
       state.orderForm.dateFrom = '';
       state.orderForm.dateTo = '';
-      state.orderForm.rateId = {};
+      state.orderForm.rateId = {
+        id: '5fd91571935d4e0be16a3c44',
+        rateTypeId: {
+          name: '',
+        },
+      };
       state.orderForm.isFullTank = false;
       state.orderForm.isNeedChildChair = false;
       state.orderForm.isRightWheel = false;
       state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
+      state.routingSteps.stepThree =
+        Boolean(state.orderForm.color) &&
+        Boolean(state.orderForm.dateFrom) &&
+        Boolean(state.orderForm.dateTo) &&
+        Boolean(state.orderForm?.rateId.rateTypeId.name);
     },
     setColorCar: (state, action) => {
       state.orderForm.color = action.payload;
@@ -169,7 +176,7 @@ export const orderSlice = createSlice({
     setStatusDisplayStatus: (state, action) => {
       state.displayStatus = action.payload;
     },
-    setDefaultInitialState: (state) => {
+    setDefaultInitialState: () => {
       return initialState;
     },
   },
@@ -372,7 +379,7 @@ export const selectDateTo = (state) => state.orderPage.orderForm.dateTo;
 export const selectRatePrice = (state) =>
   state.orderPage.orderForm.rateId?.price;
 export const selectRateName = (state) =>
-  state.orderPage.orderForm.rateId?.rateTypeId.name;
+  state.orderPage.orderForm.rateId?.rateTypeId?.name;
 export const selectRateId = (state) => state.orderPage.orderForm.rateId?.id;
 export const selectPrice = (state) => state.orderPage.orderForm.price;
 export const selectIsFullTank = (state) => state.orderPage.orderForm.isFullTank;
