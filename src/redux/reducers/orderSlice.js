@@ -70,6 +70,7 @@ export const orderSlice = createSlice({
         Boolean(state.orderForm.pointId.address) &&
         Boolean(state.orderForm.cityId.name) &&
         Boolean(action.payload);
+      state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
     },
     setPoint: (state, action) => {
       state.orderForm.pointId = action.payload;
@@ -77,6 +78,7 @@ export const orderSlice = createSlice({
         Boolean(state.orderForm.pointId.address) &&
         Boolean(state.orderForm.cityId.name) &&
         Boolean(action.payload);
+      state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
     },
     setFilteredPoints: (state, action) => {
       state.filteredPoints = action.payload;
@@ -88,6 +90,22 @@ export const orderSlice = createSlice({
       state.dataResponsePointsCoordinates = [];
       state.orderForm.cityId.name = '';
       state.orderForm.pointId.address = '';
+      state.orderForm.carId.name = '';
+      state.orderForm.color = '';
+      state.orderForm.dateFrom = '';
+      state.orderForm.dateTo = '';
+      state.orderForm.rateId = {
+        id: '5fd91571935d4e0be16a3c44',
+        rateTypeId: {
+          name: '',
+        },
+      };
+      state.routingSteps.stepTwo = Boolean(state.orderForm.carId.name);
+      state.routingSteps.stepThree =
+        Boolean(state.orderForm.color) &&
+        Boolean(state.orderForm.dateFrom) &&
+        Boolean(state.orderForm.dateTo) &&
+        Boolean(state.orderForm?.rateId.rateTypeId.name);
     },
     setCategory: (state, action) => {
       state.filterParams.category = action.payload;
