@@ -1,6 +1,6 @@
 {
-  "homepage": "https://maksim2103.github.io/gh-pages-start/",
-  "name": "gh-pages-start",
+  "homepage": "https://maksim2103.github.io/NeedForDrive-Client/",
+  "name": "need-for-drive-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
