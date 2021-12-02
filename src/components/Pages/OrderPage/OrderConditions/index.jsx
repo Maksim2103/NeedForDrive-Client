@@ -163,7 +163,7 @@ const OrderConditions = ({
   ]);
 
   useEffect(() => {
-    dateTo && dateFrom && dispatch(setPrice(price));
+    if (dateTo && dateFrom) dispatch(setPrice(price));
   }, [dispatch, price, dateTo, dateFrom]);
 
   const displayIndications = cityName && pointName;

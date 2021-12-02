@@ -22,7 +22,6 @@ import {
 } from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetOrderById } from '../../../../redux/thunks';
 import { useSelector } from 'react-redux';
-import OrderCanceled from '../OrderCanceled';
 
 const OrderContainer = () => {
   const dispatch = useDispatch();
@@ -69,14 +68,7 @@ const OrderContainer = () => {
                 <OrderModel setIsBreadCrumbs={setIsBreadCrumbs} />
               )}
             />
-            <Route
-              path="/order/options/"
-              component={() => (
-                <OrderOptions
-                // setIsBreadCrumbs={setIsBreadCrumbs}
-                />
-              )}
-            />
+            <Route path="/order/options/" component={() => <OrderOptions />} />
             <Route
               path="/order/total/"
               component={() => (
@@ -93,12 +85,6 @@ const OrderContainer = () => {
               path="/order/completed/"
               component={() => (
                 <OrderCompleted setIsBreadCrumbs={setIsBreadCrumbs} />
-              )}
-            />
-            <Route
-              path="/order/canceled/"
-              component={() => (
-                <OrderCanceled setIsBreadCrumbs={setIsBreadCrumbs} />
               )}
             />
             <Route exact path="*" component={NotFoundPage} />

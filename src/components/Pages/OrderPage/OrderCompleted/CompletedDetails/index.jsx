@@ -13,7 +13,7 @@ import styles from './completedDetails.module.scss';
 
 import images from '../../../../../assets/images/car.png';
 
-const CompletedDetails = () => {
+const CompletedDetails = ({ orderStatusConfirmed }) => {
   const img = useSelector(selectCarImage);
 
   const orderId = useSelector(selectOrderId);
@@ -22,13 +22,15 @@ const CompletedDetails = () => {
   const carTank = useSelector(selectCarTank);
   const updateDate = useSelector(selectUpdateDate);
 
-  const availableDate = new Date(updateDate).toLocaleString();
+  const availableDate = new Date(updateDate).toLocaleDateString();
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.textWrapper}>
         <h3 className={styles.orderNumber}>Заказ номер {orderId} </h3>
-        <h3 className={styles.orderAccepted}>Ваш заказ подтверждён</h3>
+        <h3 className={styles.orderAccepted}>
+          {orderStatusConfirmed ? 'Ваш заказ подтверждён' : 'Ваш заказ отменен'}{' '}
+        </h3>
         <h3 className={styles.model}>{carModel} </h3>
         <h3 className={styles.number}>{carNumber}</h3>
         <h3 className={styles.fuel}>

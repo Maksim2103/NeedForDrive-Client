@@ -7,6 +7,7 @@ import CompletedDetails from './CompletedDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectOrderForm,
+  selectOrderStatusValue,
   selectResponseIdStatus,
   selectResponseOrderStatusData,
   setOrderStatus,
@@ -14,15 +15,16 @@ import {
 import { fetchAsyncPostOrder } from '../../../../redux/thunks';
 import Loader from '../../../Loader/Loader';
 
-const buttonTitle = 'Отменить';
-const buttonLink = '/order/canceled';
-const buttonType = 'fuel';
-
 const OrderCompleted = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const orderStatus = useSelector(selectResponseOrderStatusData);
   const orderForm = useSelector(selectOrderForm);
+
+  const isLoading = useSelector(selectResponseIdStatus);
+
+  const orderStatusValue = useSelector(selectOrderStatusValue);
+  const orderStatusConfirmed = orderStatusValue === 'Подтвержденные';
 
   const canceledOrderStatus = useMemo(
     () => orderStatus?.filter((el) => el.name === 'Отмененые'),
@@ -30,30 +32,31 @@ const OrderCompleted = ({ setIsBreadCrumbs }) => {
   );
 
   const handleFetchPostOrderCanceled = () => {
-    setIsBreadCrumbs(false);
-    dispatch(setOrderStatus(canceledOrderStatus[0]));
-    dispatch(
-      fetchAsyncPostOrder({
-        ...orderForm,
-        orderStatusId: canceledOrderStatus[0],
-      }),
-    );
+    if (orderStatusConfirmed) {
+      setIsBreadCrumbs(false);
+      dispatch(setOrderStatus(canceledOrderStatus[0]));
+      dispatch(
+        fetchAsyncPostOrder({
+          ...orderForm,
+          orderStatusId: canceledOrderStatus[0],
+        }),
+      );
+      return;
+    }
   };
-
-  const isLoading = useSelector(selectResponseIdStatus);
 
   return (
     <div className={styles.wrapper}>
       {isLoading === 'succeeded' ? (
         <>
           <div className={styles.colLeft}>
-            <CompletedDetails />
+            <CompletedDetails orderStatusConfirmed={orderStatusConfirmed} />
           </div>
           <div className={styles.colRight}>
             <OrderConditions
-              buttonTitle={buttonTitle}
-              buttonLink={buttonLink}
-              type={buttonType}
+              buttonTitle={orderStatusConfirmed ? 'Отменить' : 'На главную'}
+              buttonLink={orderStatusConfirmed ? '/order/completed' : '/'}
+              type={orderStatusConfirmed ? 'fuel' : 'order'}
               setIsBreadCrumbs={setIsBreadCrumbs}
               handleClick={handleFetchPostOrderCanceled}
               visibleStep={true}

@@ -379,6 +379,8 @@ export const selectResponsePointsLoadingStatus = (state = []) =>
   state.orderPage.loadingResponsePoints;
 export const selectResponseOrderStatusLoading = (state = []) =>
   state.orderPage.loadingResponseOrderStatus;
+export const selectOrderStatusValue = (state = []) =>
+  state.orderPage.orderForm.orderStatusId.name;
 
 // orderForm
 export const selectOrderForm = (state) => state.orderPage.orderForm;
