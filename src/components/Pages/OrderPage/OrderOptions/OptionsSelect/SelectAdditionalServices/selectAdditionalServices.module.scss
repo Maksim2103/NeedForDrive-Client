@@ -14,11 +14,16 @@ $grey-color-dark: #999999;
     color: #121212;
     margin-bottom: 16px;
   }
+
   .inputsWrapper {
     display: flex;
     flex-direction: column;
     margin-bottom: 45px;
     align-items: flex-start;
+    &:checked {
+      color: red;
+    }
+
     .container {
       display: flex;
       justify-content: space-between;

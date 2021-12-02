@@ -62,6 +62,12 @@ $grey-color-dark: #999999;
       }
     }
   }
+
+  .image {
+    width: 256px;
+    height: 116px;
+    object-fit: contain;
+  }
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {

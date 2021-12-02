@@ -1,0 +1,21 @@
+.loader {
+  position: absolute;
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+  color: #0ec261;
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .loader {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

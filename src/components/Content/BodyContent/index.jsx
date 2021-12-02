@@ -18,6 +18,7 @@ const BodyContent = () => {
         buttonTitle={buttonTitle}
         type="main"
         link="/order/location"
+        visibleStep={true}
       />
     </div>
   );
