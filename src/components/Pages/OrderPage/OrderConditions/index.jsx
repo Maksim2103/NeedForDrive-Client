@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCity,
   selectColor,
@@ -14,6 +14,7 @@ import {
   selectPriceMin,
   selectRateName,
   selectRatePrice,
+  setPrice,
 } from '../../../../redux/reducers/orderSlice';
 import MainButton from '../../../MainButton';
 import ItemList from './ItemList';
@@ -24,8 +25,11 @@ const OrderConditions = ({
   buttonTitle,
   buttonLink,
   type,
-  setIsBreadCrumbs,
+  handleClick,
+  visibleStep,
 }) => {
+  const dispatch = useDispatch();
+
   const cityName = useSelector(selectCity);
   const pointName = useSelector(selectPoint);
   const model = useSelector(selectModel);
@@ -158,9 +162,11 @@ const OrderConditions = ({
     priceMin,
   ]);
 
-  const displayIndications = cityName && pointName;
+  useEffect(() => {
+    if (dateTo && dateFrom) dispatch(setPrice(price));
+  }, [dispatch, price, dateTo, dateFrom]);
 
-  console.log(`price`, price);
+  const displayIndications = cityName && pointName;
 
   return (
     <div>
@@ -204,7 +210,8 @@ const OrderConditions = ({
             type={type}
             link={buttonLink}
             buttonTitle={buttonTitle}
-            onClick={() => setIsBreadCrumbs(true)}
+            onClick={handleClick}
+            visibleStep={visibleStep}
           />
         </>
       )}

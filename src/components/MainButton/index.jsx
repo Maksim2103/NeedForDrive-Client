@@ -8,7 +8,14 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const MainButton = ({ buttonWidth, buttonTitle, type, link, onClick }) => {
+const MainButton = ({
+  buttonWidth,
+  buttonTitle,
+  type,
+  link,
+  onClick,
+  visibleStep,
+}) => {
   return (
     <div>
       <NavLink
@@ -17,6 +24,7 @@ const MainButton = ({ buttonWidth, buttonTitle, type, link, onClick }) => {
           'applicationBtn',
           `${type}`,
           `${buttonWidth}`,
+          'disabledLink' && visibleStep,
         )}
         to={link}
         onClick={onClick}

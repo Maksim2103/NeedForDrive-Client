@@ -22,6 +22,7 @@ const OrderConditionsMobile = ({
   setIsBreadCrumbs,
   visible,
   onClose,
+  visibleStep,
 }) => {
   const cityName = useSelector(selectCity);
   const pointName = useSelector(selectPoint);
@@ -74,6 +75,7 @@ const OrderConditionsMobile = ({
                 link={buttonLink}
                 buttonTitle={buttonTitle}
                 onClick={() => setIsBreadCrumbs(true)}
+                visibleStep={visibleStep}
               />
             </>
           </div>

@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectResponseCars,
   selectResponseCarsStatus,
+  selectRoutingSteps,
 } from '../../../../redux/reducers/orderSlice';
 import { fetchAsyncGetCars } from '../../../../redux/thunks';
+import Loader from '../../../Loader/Loader';
 import OrderConditions from '../OrderConditions';
 import OrderConditionsMobile from '../OrderConditionsMobile';
 import ModelList from './ModelList';
@@ -20,8 +22,9 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(selectResponseCarsStatus);
-
   const carsResponseData = useSelector(selectResponseCars);
+
+  const { stepTwo } = useSelector(selectRoutingSteps);
 
   useEffect(() => {
     if (!carsResponseData) dispatch(fetchAsyncGetCars());
@@ -62,6 +65,7 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
                 buttonLink={buttonLink}
                 type={buttonType}
                 setIsBreadCrumbs={setIsBreadCrumbs}
+                visibleStep={stepTwo}
               />
             </div>
           </div>
@@ -71,13 +75,12 @@ const OrderModel = ({ setIsBreadCrumbs }) => {
               buttonLink={buttonLink}
               type={buttonType}
               setIsBreadCrumbs={setIsBreadCrumbs}
+              visibleStep={stepTwo}
             />
           </div>
         </>
       ) : (
-        <div className={styles.loader}>
-          Данные загружаются, пожалуйста, подождите...
-        </div>
+        <Loader />
       )}
     </div>
   );

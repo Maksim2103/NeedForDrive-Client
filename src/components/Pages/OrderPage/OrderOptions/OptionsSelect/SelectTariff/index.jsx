@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import styles from './selectTariff.module.scss';
 
 import {
+  selectRateId,
   selectResponseRateData,
   setRate,
 } from '../../../../../../redux/reducers/orderSlice';
@@ -13,9 +14,9 @@ const SelectTariff = () => {
 
   const rateData = useSelector(selectResponseRateData);
 
-  const [value, setValue] = useState('');
+  const rateId = useSelector(selectRateId);
 
-  // 5fd91571935d4e0be16a3c44
+  const [value, setValue] = useState(rateId);
 
   const handleChangeValue = (e) => {
     const value = e.target.value;

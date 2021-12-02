@@ -57,6 +57,39 @@ const fetchAsyncGetRate = createAsyncThunk(
   },
 );
 
+const fetchAsyncGetOrderStatus = createAsyncThunk(
+  '/db/orderStatus/fetchAsyncGetOrderStatus',
+  async () => {
+    const response = await axiosInstance.get(`/db/orderStatus`);
+    return response.data.data;
+  },
+);
+
+const fetchAsyncPostOrder = createAsyncThunk(
+  '/db/order/fetchAsyncPostOrder',
+  async (json) => {
+    const response = await axiosInstance.post(`/db/order`, json);
+    const href = window.location.href;
+    const regExp = new RegExp('/(w|d)+$');
+    const id = href.match(regExp);
+
+    if (id && id[0]) {
+      window.location.href.replace(regExp, id);
+    } else {
+      window.location.href = window.location.href + '/' + response.data.data.id;
+    }
+    return response.data.data;
+  },
+);
+
+const fetchAsyncGetOrderById = createAsyncThunk(
+  '/db/order/fetchAsyncGetOrderById',
+  async (id) => {
+    const response = await axiosInstance.get(`/db/order/${id}`);
+    return response.data.data;
+  },
+);
+
 export {
   fetchAsyncGetCities,
   fetchAsyncGetPoints,
@@ -64,4 +97,7 @@ export {
   fetchAsyncGetPointsCoordinates,
   fetchAsyncGetCars,
   fetchAsyncGetRate,
+  fetchAsyncGetOrderStatus,
+  fetchAsyncPostOrder,
+  fetchAsyncGetOrderById,
 };
